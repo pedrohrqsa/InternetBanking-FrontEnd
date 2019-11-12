@@ -1,0 +1,8 @@
+mat-grid-list{
+    margin: 20px;
+}
+
+mat-grid-tile {
+    background: white;
+    border-radius: 10px;
+}

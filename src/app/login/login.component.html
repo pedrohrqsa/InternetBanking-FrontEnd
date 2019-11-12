@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="content-overlay">
+        <div class="content">
+            <form class="form-login" [formGroup]="loginForm" (submit)="login()">
+                <h2 class="titulo">Login</h2>
+                
+                <mat-form-field>
+                    <input (keypress)="numberOnly($event)" type="text" matInput placeholder="CPF" formControlName="cpf" ngModel maxlength="11" autofocus>
+                </mat-form-field>
+                <small *ngIf="loginForm.get('cpf').errors && loginForm.get('cpf').touched" class="text-danger d-block">CPF é um campo obrigatório</small>
+
+                <br>
+
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Senha" formControlName="senha">
+                </mat-form-field>
+                <small *ngIf="loginForm.get('senha').errors && loginForm.get('senha').touched" class="text-danger d-block">Senha é um campo obrigatório</small>
+
+                <div class="button">
+                    <button mat-raised-button>Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

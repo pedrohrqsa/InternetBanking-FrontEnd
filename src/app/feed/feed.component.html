@@ -1,0 +1,41 @@
+    <mat-tab-group mat-align-tabs="center" dynamicHeight="true" backgroundColor="accent">
+        <mat-tab class="tab">
+          <ng-template mat-tab-label>
+            <mat-icon>account_balance_wallet</mat-icon>
+            Conta
+          </ng-template>
+          <app-infos-conta></app-infos-conta>
+        </mat-tab>
+
+        <mat-tab class="tab">
+          <ng-template mat-tab-label>
+            <mat-icon>list_alt</mat-icon>
+            Extrato
+          </ng-template>
+          <app-extrato></app-extrato>
+        </mat-tab>
+      
+        <mat-tab class="tab">
+          <ng-template mat-tab-label>
+            <mat-icon>input</mat-icon>
+            Depósito
+          </ng-template>
+          <app-deposito></app-deposito>
+        </mat-tab>
+      
+        <mat-tab class="tab">
+          <ng-template mat-tab-label>
+            <mat-icon>account_balance</mat-icon>
+            Saque
+          </ng-template>
+          <app-saque></app-saque>
+        </mat-tab>
+
+        <mat-tab class="tab">
+            <ng-template mat-tab-label>
+                <mat-icon>swap_horiz</mat-icon>
+                Transferência
+            </ng-template>
+            <app-transferencia></app-transferencia>
+        </mat-tab>
+    </mat-tab-group>

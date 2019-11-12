@@ -1,0 +1,25 @@
+<mat-nav-list>
+    <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
+      <span mat-line>Titular Conta Destino</span>
+      <span mat-line>Lucas Santos</span>
+    </a>
+  
+    <a href="https://docs.google.com/" mat-list-item (click)="openLink($event)">
+      <span mat-line>Nº Conta Destino</span>
+      <span mat-line>123456</span>
+    </a>
+  
+    <a href="https://plus.google.com/" mat-list-item (click)="openLink($event)">
+      <span mat-line>Valor Transferência</span>
+      <span mat-line>R$ 3600,00</span>
+    </a>
+
+    <div class="bottom-esquerda">
+    <button mat-raised-button (click)="openBottomSheet()">Cancelar</button>
+
+
+    <button class="right" mat-raised-button (click)="openBottomSheet()">Confirmar</button>
+  </div>  
+  
+    
+  </mat-nav-list>

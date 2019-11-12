@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo{
+  font-size: 40px;
+  color: darkslategray;
+  text-align: center;
+}
+
+mat-form-field{
+  width: 95%;
+}
+
+button{
+  text-align: center;
+  background-color: darkslategray;
+  color: white;
+}
+
+.centralizar-botao{
+  text-align: center;
+}
+
+.content{
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 50px;
+  width: 500px;
+  height: 80vh;
+}

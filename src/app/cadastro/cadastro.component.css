@@ -1,0 +1,63 @@
+.background{
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.banner{
+    background-image: url("../../assets/group-of-people-having-neon-party-1684187.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+.banner h3{
+    color: white;
+    /* text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; */
+    font-size: 60px;
+    margin-top: 200px;
+}
+
+.cadastro-container{
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.cadastro{
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
+    padding-top: 30px;
+    width: 70vw;
+    border-radius: 10px;
+}
+
+.halfDiv{
+    width: 45.8%;
+    border-style: none;
+    border-bottom-style: solid;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.fullDiv{
+    width: 93.4%;
+    border-style: none;
+    border-bottom-style: solid;
+    margin-bottom: 15px;
+}
+
+.w-475{
+    width: 47.5%;
+}
+
+.stepper{
+    background-color: white;
+    border-radius: 15px;
+}

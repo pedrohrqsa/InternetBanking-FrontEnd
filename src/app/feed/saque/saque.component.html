@@ -1,0 +1,24 @@
+<div class="container">
+        <div class="content">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <p class="titulo">
+                    Saque
+                </p>
+                
+                <br>
+                <br>
+                <app-saldo></app-saldo>
+                <br>
+    
+                <p>
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorSaque">
+                  </mat-form-field>
+                </p>
+        
+                <div class="centralizar-botao">
+                  <button mat-raised-button (click)="openBottomSheet()">Sacar</button>
+                </div>
+            </form>
+        </div>
+    </div>

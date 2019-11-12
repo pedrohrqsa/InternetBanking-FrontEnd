@@ -1,0 +1,39 @@
+<div class="container">
+        <div class="content">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <p class="titulo">
+                    Transferência
+                </p>
+                
+                <br>
+                <br>
+                <app-saldo></app-saldo>
+                <br>
+    
+                <p>
+                    <mat-form-field>
+                      <input type="text" matInput placeholder="Nome Titular Conta Destino" formTextNumber="Destino">
+                    </mat-form-field>
+                  </p>
+
+
+                  <p>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Nº da Conta a ser Transferido" formControlNumber="contaTransf">
+                    </mat-form-field>
+                </p>  
+                
+                
+                <p>
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorTransf">
+                  </mat-form-field>
+                </p>
+                        
+                
+                <div class="centralizar-botao">
+                  <button mat-raised-button (click)="openBottomSheet()">Transferir</button>
+                </div>
+            </form>
+        </div>
+    </div>
