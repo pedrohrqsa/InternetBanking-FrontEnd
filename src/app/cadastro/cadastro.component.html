@@ -9,46 +9,46 @@
     <div class="cadastro">
         <mat-vertical-stepper class="stepper" [linear]="false">
             <mat-step label="Dados pessoais">
-                <form [formGroup]="dadosPessoaisFormGroup">
+                <form [formGroup]="dadosPessoaisFormGroup" (submit)="onCadastro()">
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="cpf" placeholder="CPF" formControlName="cpf">
+                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="CPF" formControlName="cpf" minlength="11" maxlength="11">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="DtNascimento">
+                        <input matInput [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="dataNasc" minlength="8" maxlength="8">
                         <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
                         <mat-datepicker #nascimento></mat-datepicker>
                     </mat-form-field>
-
+                    
                     <br>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="rg" placeholder="RG" formControlName="rg">
+                        <input matInput name="rg" placeholder="RG" formControlName="rg" minlength="9" maxlength="9">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="orgaoemissor" placeholder="Órgão emissor" formControlName="orgaoemissor">
-                    </mat-form-field>
-
-                    <br>
-
-                    <mat-form-field class="w-475 mr-3">
-                        <input matInput name="nome" placeholder="Nome" formControlName="nome">
-                    </mat-form-field>
-
-                    <mat-form-field class="w-475 ml-4">
-                        <input matInput name="sobrenome" placeholder="Sobrenome" formControlName="sobrenome">
+                        <input matInput (keypress)="letterOnly($event)" name="orgao-emissor" placeholder="Órgão emissor" formControlName="orgaoRg" minlength="5" maxlength="5">
                     </mat-form-field>
 
                     <br>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade">
+                        <input matInput (keypress)="letterOnly($event)" name="nome" placeholder="Nome" formControlName="nome">
+                    </mat-form-field>
+            
+                    <mat-form-field class="w-475 ml-4">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome" placeholder="Sobrenome" formControlName="sobrenome">
                     </mat-form-field>
 
+                    <br>
+
+                    <mat-form-field class="w-475 mr-3">
+                        <input  matInput (keypress)="letterOnly($event)" name="nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade">
+                    </mat-form-field>
+        
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade">
+                        <input matInput (keypress)="letterOnly($event)" name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade">
                     </mat-form-field>
 
                     <label class="image-upload-container btn btn-bwm">
@@ -56,40 +56,39 @@
                         <input #imageInput
                                 type="file"
                                 accept="image/*"
-*/
                                 (change)="processFile(imageInput)"
-*/
                                 required>
                     </label>
 
                     <div>
                         <button mat-button matStepperNext>Próximo</button>
                     </div>
-                </form>
+                 </form>
             </mat-step>
 
 
 
             <mat-step label="Informações familiares">
-                <form [formGroup]="FamiliaresFormGroup">
+                <form [formGroup]="infosFamiliaresFormGroup">
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="nome-mae" placeholder="Nome da mãe" formControlName="nome_Mae">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-mae" placeholder="Nome da mãe" formControlName="nomeMae">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenome_Mae">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenomeMae">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="nome-pai" placeholder="Nome do pai" formControlName="nome_Pai">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-pai" placeholder="Nome do pai" formControlName="nomePai">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenome_Pai">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenomePai">
                     </mat-form-field>
                 </form>
 
                 <div>
+                    <button mat-button matStepperPrevious>Voltar</button>
                     <button mat-button matStepperNext>Próximo</button>
                 </div>
             </mat-step>
@@ -101,19 +100,18 @@
                     <mat-form-field class="w-100">
                         <input matInput type="email" name="email" placeholder="E-mail" formControlName="email">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="tel-residencial" placeholder="Telefone residencial" formControlName="tel_Resid">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-residencial" placeholder="Telefone residencial" formControlName="telefoneResid" minlength="8" maxlength="10">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="tel-celular" placeholder="Telefone celular" formControlName="tel_Cel">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-celular" placeholder="Telefone celular" formControlName="telefoneCel" minlength="9" maxlength="11">
                     </mat-form-field>
-
-
                 </form>
 
                 <div>
+                    <button mat-button matStepperPrevious>Voltar</button>
                     <button mat-button matStepperNext>Próximo</button>
                 </div>
             </mat-step>
@@ -125,33 +123,34 @@
                     <mat-form-field class="w-100">
                         <input matInput name="logradouro" placeholder="Logradouro" formControlName="logradouro">
                     </mat-form-field>
-
+                    
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput type="number" name="numero" placeholder="Número" formControlName="numero">
+                        <input matInput (keypress)="numberOnly($event)" name="numero" placeholder="Número" formControlName="numero">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
                         <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
                     </mat-form-field>
-
+                    
                     <mat-form-field class="w-475 mr-3">
                         <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="cidade" placeholder="Cidade" formControlName="cidade">
+                        <input matInput (keypress)="letterOnly($event)" name="cidade" placeholder="Cidade" formControlName="cidade">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="estado" placeholder="Sigla do estado" formControlName="sigla_Estado">
+                        <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="siglaEstado">
                     </mat-form-field>
-
+    
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput type="text" name="cep" placeholder="CEP" formControlName="cep">
+                        <input matInput (keypress)="numberOnly($event)" name="cep" placeholder="CEP" formControlName="cep" minlength="8" maxlength="8">
                     </mat-form-field>
                 </form>
 
                 <div>
+                    <button mat-button matStepperPrevious>Voltar</button>
                     <button mat-button matStepperNext>Próximo</button>
                 </div>
             </mat-step>
@@ -159,7 +158,11 @@
 
 
             <mat-step label="Confirmação">
-                <form [formGroup]="LoginFormGroup">
+                <form [formGroup]="confirmacaoFormGroup">
+                    
+                    <mat-form-field class="w-100">
+                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="Confirme seu CPF" formControlName="cpf" minlength="11" maxlength="11">
+                    </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
                         <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha">
@@ -170,17 +173,17 @@
                     </mat-form-field>
 
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking, com as seguintes informações:</p>
-
+    
                     <!-- TODAS AS INFORMAÇÕES DO USUÁRIO A SEREM CONFIRMADAS -->
-
+    
                     <div>
-                        <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
-
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && infosFamiliaresFormGroup.invalid" >Finalizar</button>
                         <button mat-button (click)="onCadastro()">Finalizar</button>
-                        <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
+                        <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && infosFamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
                     </div>
                 </form>
-
+                
             </mat-step>
         </mat-vertical-stepper>
     </div>
