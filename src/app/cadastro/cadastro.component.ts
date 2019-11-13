@@ -28,7 +28,7 @@ export class CadastroComponent implements OnInit {
       nome: ['', [Validators.required, Validators.maxLength(40)]],
       sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
       cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
-      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(/^[0-9]*$/)]],
+      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       orgaoemissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       dtNascimento: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
@@ -42,7 +42,7 @@ export class CadastroComponent implements OnInit {
     });
     this.contatoFormGroup = this._formBuilder.group({
       email:['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
-      tel_Resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      tel_resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       tel_Cel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
     this.enderecoFormGroup = this._formBuilder.group({

@@ -16,7 +16,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="Dtnascimento" minlength="8" maxlength="8">
+                        <input matInput [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="dtNascimento" minlength="8" maxlength="8">
                         <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
                         <mat-datepicker #nascimento></mat-datepicker>
                     </mat-form-field>
@@ -172,15 +172,11 @@
                         <input matInput type="password" name="senha" placeholder="Confirme a senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
                     </mat-form-field>
 
-                    <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking, com as seguintes informações:</p>
-
-                    <!-- TODAS AS INFORMAÇÕES DO USUÁRIO A SEREM CONFIRMADAS -->
+                    <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
 
                     <div>
                         <button mat-button matStepperPrevious>Voltar</button>
                         <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
-
-                        <button mat-button (click)="onCadastro()">Finalizar</button>
 
                         <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
                     </div>

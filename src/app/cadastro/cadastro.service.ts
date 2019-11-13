@@ -29,38 +29,3 @@ export class CadastroService {
         { headers: { 'Content-Type': 'application/json' } })
   }
 }
-
-//         var teste = {
-//           "CPF": "47958664818",
-//           "RG": "547858887",
-//           "ORGAOEMISSOR": "SSP",
-//           "DTNASCIMENTO": "1998-11-22",
-//           "NOME": "PEDRO",
-//           "SOBRENOME": "HENRIQUE",
-//           "NACIONALIDADE": "BRASILEIRA",
-//           "NATURALIDADE": "CARACAS",
-//           "ClienteLogin": [{
-//             "CPF": "47958664818",
-//             "senha": "TESTE"
-//           }],
-//           "familiares": [{
-//             "NOME_MAE": "Sara",
-//             "SOBRENOME_MAE": "Silva",
-//             "NOME_PAI": "Lucas",
-//             "SOBRENOME_PAI": "Da agresty"
-//           }],
-//           "contatos": [{
-//             "EMAIL": "pedrohenrique34@ig.com",
-//             "TEL_RESID": "11 4185-3265",
-//             "TEL_CEL": "11 95415-1355"
-//           }],
-//           "endereco": [{
-//             "LOGRADOURO": "Avenida 8",
-//             "NUMERO": 75,
-//             "COMPLEMENTO": "Casa18",
-//             "BAIRRO": "Bela Vista",
-//             "CIDADE": "São Paulo",
-//             "SIGLA_ESTADO": "SP",
-//             "CEP": "06322355"
-//           }]
-//         };

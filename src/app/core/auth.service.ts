@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { UserService } from './user/user.service';
 import { environment } from "../../environments/environment";
-// import { Token } from './token';
+import { TokenService } from './token/token.service';
 
 const API = environment.API_URL;
 
@@ -30,23 +30,10 @@ export class AuthService {
       .pipe(tap(res => {
         const authToken = res.body.token; 
 
-        // window.localStorage.setItem('authToken', authToken);
-
         this.userService.setToken(authToken); 
 
         console.log(`User ${cpf} authenticated with token ${authToken}`);
         console.log(res);
       }))
   }
-
-  // autenticar(cpf: string, senha: string) {
-  //   var x =  this.http.post(API_URL + '/api/token',{cpf,senha}, { observe: 'response' },)
-  //     .pipe(
-  //       tap(res => {
-  //               const authToken = res.headers.get('x-access-token');
-  //                console.log(authToken);
-  //              })
-  //     );
-  //     return x;
-  // }
 }
