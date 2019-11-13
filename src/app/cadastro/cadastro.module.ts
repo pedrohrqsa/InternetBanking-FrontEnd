@@ -7,6 +7,7 @@ import { CadastroComponent } from './cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from '../header/header.module';
 import { MatFormFieldModule, MatInputModule, MatCommonModule, MatOptionModule, MatSelectModule, MatStepperModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatFormFieldModule, MatInputModule, MatCommonModule, MatOptionModule, M
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule, 
+    HttpClientModule
   ],
   exports: [
     CadastroComponent

@@ -6,6 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 
 import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from './cadastroCliente';
 import { CadastroService } from './cadastro.service';
+import { HttpClient } from '@angular/common/http';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -31,7 +32,12 @@ export class CadastroComponent implements OnInit {
   clienteLoginFormGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private _formBuilder: FormBuilder, private servico: CadastroService, private router: Router) { }
+  fileToUpload: File = null;
+
+  constructor(private _formBuilder: FormBuilder,
+     private servico: CadastroService,
+      private router: Router,
+      private http: HttpClient) { }
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -115,4 +121,39 @@ export class CadastroComponent implements OnInit {
     let confirmPass = group.controls.confirmacaoSenha.value;
     return pass === confirmPass ? null : { notSame: true }
   }
+
+  // handleFileInput(files: FileList) {
+  //   this.fileToUpload = files.item(0);
+  // }
+
+  // uploadFileToActivity() {
+  //   this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+  //     // do something, if upload success
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  // }
+
+
+
+
+
+
+  // fileData: File = null;
+  // // constructor(private http: HttpClient) { }
+
+  // fileProgress(fileInput: any) {
+  //   this.fileData = <File>fileInput.target.files[0];
+  // }
+
+  // onSubmit() {
+  //   const formData = new FormData();
+  //   formData.append('file', this.fileData);
+  //   this.http.post('url/to/your/api', formData)
+  //     .subscribe(res => {
+  //       console.log(res);
+  //       alert('SUCCESS !!');
+  //     })
+  // }
+
 }
