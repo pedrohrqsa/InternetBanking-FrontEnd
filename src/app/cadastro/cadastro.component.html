@@ -34,21 +34,21 @@
                     <br>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nome" placeholder="Nome" formControlName="nome">
+                        <input matInput (keypress)="letterOnly($event)" name="nome" placeholder="Nome" formControlName="nome" maxlength="40">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="sobrenome" placeholder="Sobrenome" formControlName="sobrenome">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome" placeholder="Sobrenome" formControlName="sobrenome" maxlength="50">
                     </mat-form-field>
 
                     <br>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade">
+                        <input matInput (keypress)="letterOnly($event)" name="nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade" maxlength="20">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade">
+                        <input matInput (keypress)="letterOnly($event)" name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade" maxlength="20">
                     </mat-form-field>
 
                     <label class="image-upload-container btn btn-bwm">
@@ -71,19 +71,19 @@
             <mat-step label="Informações familiares">
                 <form [formGroup]="FamiliaresFormGroup">
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nome-mae" placeholder="Nome da mãe" formControlName="nome_Mae">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-mae" placeholder="Nome da mãe" formControlName="nome_Mae" maxlength="40">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenome_Mae">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenome_Mae" maxlength="50">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nome-pai" placeholder="Nome do pai" formControlName="nome_Pai">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-pai" placeholder="Nome do pai" formControlName="nome_Pai" maxlength="40">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenome_Pai">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenome_Pai" maxlength="50">
                     </mat-form-field>
                 </form>
 
@@ -121,7 +121,7 @@
             <mat-step label="Endereço">
                 <form [formGroup]="enderecoFormGroup">
                     <mat-form-field class="w-100">
-                        <input matInput name="logradouro" placeholder="Logradouro" formControlName="logradouro">
+                        <input matInput name="logradouro" placeholder="Logradouro" formControlName="logradouro" maxlength="50">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
@@ -129,15 +129,15 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
+                        <input matInput name="complemento" placeholder="Complemento" formControlName="complemento" maxlength="30">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
+                        <input matInput name="bairro" placeholder="Bairro" formControlName="bairro" maxlength="20">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="cidade" placeholder="Cidade" formControlName="cidade">
+                        <input matInput (keypress)="letterOnly($event)" name="cidade" placeholder="Cidade" formControlName="cidade" maxlength="30">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
@@ -165,11 +165,11 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha">
+                        <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput type="password" name="senha" placeholder="Confirme a senha do InternetBanking" formControlName="senha">
+                        <input matInput type="password" name="senha" placeholder="Confirme a senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
                     </mat-form-field>
 
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking, com as seguintes informações:</p>
