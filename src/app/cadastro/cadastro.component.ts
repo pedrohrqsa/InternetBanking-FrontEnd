@@ -27,8 +27,8 @@ export class CadastroComponent implements OnInit {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
       nome: ['', [Validators.required, Validators.maxLength(40)]],
       sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
-      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
+      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(/^[0-9]*$/)]],
       orgaoemissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       dtNascimento: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
@@ -41,7 +41,7 @@ export class CadastroComponent implements OnInit {
       sobrenome_Pai: ['', [Validators.maxLength(50)]]
     });
     this.contatoFormGroup = this._formBuilder.group({
-      email:['', [Validators.required, Validators.email]],
+      email:['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
       tel_Resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       tel_Cel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
@@ -51,11 +51,11 @@ export class CadastroComponent implements OnInit {
       complemento: ['', [Validators.maxLength(30)]],
       bairro: ['', [Validators.required, Validators.maxLength(20)]],
       cidade: ['', [Validators.required, Validators.maxLength(30)]],
-      sigla_estado: ['', [Validators.required, Validators.maxLength(2)]],
-      cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
+      sigla_estado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+      cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
     });
     this.clienteLoginFormGroup = this._formBuilder.group({
-      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
       senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     })
   }

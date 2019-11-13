@@ -98,7 +98,7 @@
             <mat-step label="Contato">
                 <form [formGroup]="contatoFormGroup">
                     <mat-form-field class="w-100">
-                        <input matInput type="email" name="email" placeholder="E-mail" formControlName="email">
+                        <input matInput type="email" name="email" placeholder="E-mail" formControlName="email" maxlength="30">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
@@ -125,7 +125,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="numberOnly($event)" type="number" name="numero" placeholder="Número" formControlName="numero">
+                        <input matInput (keypress)="numberOnly($event)" type="number" name="numero" placeholder="Número" formControlName="numero" maxlength="5">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
@@ -141,7 +141,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="sigla_estado">
+                        <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="sigla_estado" minlength="2" maxlength="2">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
