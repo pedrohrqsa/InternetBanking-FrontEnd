@@ -25,7 +25,6 @@ export class AuthService {
     return this.http.post(API + '/api/token',
       { cpf, senha },
       { observe: 'response' },
-      // httpOptions
     )
       .pipe(tap(res => {
         const authToken = res.body.token; 

@@ -1,17 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm, FormControl } from '@angular/forms';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Router } from '@angular/router';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from './cadastroCliente';
 import { CadastroService } from './cadastro.service';
 
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+    return (invalidCtrl || invalidParent);
+  }
+}
+
 @Component({
-    selector: 'app-cadastro',
-    templateUrl: 'cadastro.component.html',
-    styleUrls: ['cadastro.component.css'],
+  selector: 'app-cadastro',
+  templateUrl: 'cadastro.component.html',
+  styleUrls: ['cadastro.component.css'],
   providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
 export class CadastroComponent implements OnInit {
@@ -20,8 +29,9 @@ export class CadastroComponent implements OnInit {
   contatoFormGroup: FormGroup;
   enderecoFormGroup: FormGroup;
   clienteLoginFormGroup: FormGroup;
+  matcher = new MyErrorStateMatcher();
 
-  constructor(private _formBuilder: FormBuilder, private servico: CadastroService, private router: Router) {}
+  constructor(private _formBuilder: FormBuilder, private servico: CadastroService, private router: Router) { }
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -41,7 +51,7 @@ export class CadastroComponent implements OnInit {
       sobrenome_Pai: ['', [Validators.maxLength(50)]]
     });
     this.contatoFormGroup = this._formBuilder.group({
-      email:['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
       tel_resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       tel_Cel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
@@ -55,9 +65,11 @@ export class CadastroComponent implements OnInit {
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
     });
     this.clienteLoginFormGroup = this._formBuilder.group({
-      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
-      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
-    })
+      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      confirmacaoSenha: ['', [Validators.minLength(8), Validators.maxLength(15)]]
+    },
+      { validator: this.checkPasswords }
+    )
   }
 
   onCadastro() {
@@ -65,8 +77,9 @@ export class CadastroComponent implements OnInit {
     const familiares = this.FamiliaresFormGroup.getRawValue() as Familiares;
     const contato = this.contatoFormGroup.getRawValue() as Contato;
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
-    const clienteLogin = this.clienteLoginFormGroup.getRawValue() as ClienteLogin;
-    
+    let clienteLogin = this.clienteLoginFormGroup.getRawValue() as ClienteLogin;
+    clienteLogin.CPF = cliente.CPF;
+
     this.servico
       .cadastro(cliente, familiares, contato, endereco, clienteLogin)
       .subscribe(
@@ -86,14 +99,20 @@ export class CadastroComponent implements OnInit {
   letterOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) &&
-    charCode != 32 && (charCode < 128 || charCode > 144) && (charCode < 147 || charCode > 154) &&
-    (charCode < 160 || charCode > 165) && (charCode < 181 || charCode > 183) &&
-    (charCode < 198 || charCode > 199) && (charCode < 97 || charCode > 122) &&
-    (charCode < 210 || charCode > 216) && charCode != 222 && charCode != 224 &&
-    (charCode < 226 || charCode > 229) && (charCode < 233 || charCode > 237) &&
-    charCode != 96 && charCode != 126 && charCode != 239) {
+      charCode != 32 && (charCode < 128 || charCode > 144) && (charCode < 147 || charCode > 154) &&
+      (charCode < 160 || charCode > 165) && (charCode < 181 || charCode > 183) &&
+      (charCode < 198 || charCode > 199) && (charCode < 97 || charCode > 122) &&
+      (charCode < 210 || charCode > 216) && charCode != 222 && charCode != 224 &&
+      (charCode < 226 || charCode > 229) && (charCode < 233 || charCode > 237) &&
+      charCode != 96 && charCode != 126 && charCode != 239) {
       return false;
     }
     return true;
+  }
+
+  checkPasswords(group: FormGroup) {
+    let pass = group.controls.senha.value;
+    let confirmPass = group.controls.confirmacaoSenha.value;
+    return pass === confirmPass ? null : { notSame: true }
   }
 }

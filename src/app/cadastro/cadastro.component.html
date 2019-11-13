@@ -160,16 +160,12 @@
             <mat-step label="Confirmação">
                 <form [formGroup]="clienteLoginFormGroup">
 
-                    <mat-form-field class="w-100">
-                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="Confirme seu CPF" formControlName="cpf" minlength="11" maxlength="11">
-                    </mat-form-field>
-
                     <mat-form-field class="w-475 mr-3">
                         <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput type="password" name="senha" placeholder="Confirme a senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
+                        <input matInput type="password" name="confirmacaoSenha" placeholder="Confirme a senha do InternetBanking" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
                     </mat-form-field>
 
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
@@ -178,7 +174,7 @@
                         <button mat-button matStepperPrevious>Voltar</button>
                         <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
 
-                        <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
+                        <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Alguma informação está incorreta!</small>
                     </div>
                 </form>
 
