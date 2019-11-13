@@ -16,10 +16,10 @@ import { CadastroService } from './cadastro.service';
 })
 export class CadastroComponent implements OnInit {
   dadosPessoaisFormGroup: FormGroup;
-  infosFamiliaresFormGroup: FormGroup;
+  FamiliaresFormGroup: FormGroup;
   contatoFormGroup: FormGroup;
   enderecoFormGroup: FormGroup;
-  confirmacaoFormGroup: FormGroup;
+  clienteLoginFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private servico: CadastroService, private router: Router) {}
 
@@ -29,22 +29,21 @@ export class CadastroComponent implements OnInit {
       sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
       cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      orgaoRg: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      dataNasc: ['', [Validators.required]],
+      orgaoemissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      dtNascimento: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
       naturalidade: ['', [Validators.required, Validators.maxLength(20)]]
     });
-    this.infosFamiliaresFormGroup = this._formBuilder.group({
-      nomeMae: ['', [Validators.required, Validators.maxLength(40)]],
-      sobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
-      nomePai: ['', [Validators.maxLength(40)]],
-      sobrenomePai: ['', [Validators.maxLength(50)]]
+    this.FamiliaresFormGroup = this._formBuilder.group({
+      nome_Mae: ['', [Validators.required, Validators.maxLength(40)]],
+      sobrenome_Mae: ['', [Validators.required, Validators.maxLength(50)]],
+      nome_Pai: ['', [Validators.maxLength(40)]],
+      sobrenome_Pai: ['', [Validators.maxLength(50)]]
     });
     this.contatoFormGroup = this._formBuilder.group({
       email:['', [Validators.required, Validators.email]],
-      telefoneResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      telefoneCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      proprietario: ['']
+      tel_Resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      tel_Cel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
     this.enderecoFormGroup = this._formBuilder.group({
       logradouro: ['', [Validators.required, Validators.maxLength(50)]],
@@ -52,24 +51,24 @@ export class CadastroComponent implements OnInit {
       complemento: ['', [Validators.maxLength(30)]],
       bairro: ['', [Validators.required, Validators.maxLength(20)]],
       cidade: ['', [Validators.required, Validators.maxLength(30)]],
-      siglaEstado: ['', [Validators.required, Validators.maxLength(2)]],
+      sigla_estado: ['', [Validators.required, Validators.maxLength(2)]],
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
     });
-    this.confirmacaoFormGroup = this._formBuilder.group({
+    this.clienteLoginFormGroup = this._formBuilder.group({
       cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     })
   }
 
   onCadastro() {
-    const novoCliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
-    const familiaresUsuario = this.infosFamiliaresFormGroup.getRawValue() as Familiares;
-    const contatoUsuario = this.contatoFormGroup.getRawValue() as Contato;
-    const enderecoUsuario = this.enderecoFormGroup.getRawValue() as Endereco;
-    const confirmacaoUsuario = this.confirmacaoFormGroup.getRawValue() as ClienteLogin;
+    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
+    const familiares = this.FamiliaresFormGroup.getRawValue() as Familiares;
+    const contato = this.contatoFormGroup.getRawValue() as Contato;
+    const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
+    const clienteLogin = this.clienteLoginFormGroup.getRawValue() as ClienteLogin;
     
     this.servico
-      .cadastro(novoCliente, familiaresUsuario, contatoUsuario, enderecoUsuario, confirmacaoUsuario)
+      .cadastro(cliente, familiares, contato, endereco, clienteLogin)
       .subscribe(
         () => this.router.navigate(['']),
         err => console.log(err)

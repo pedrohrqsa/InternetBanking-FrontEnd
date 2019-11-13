@@ -13,8 +13,6 @@ export class CadastroService {
   cadastro(cliente: Cliente, familiares: Familiares,
     contato: Contato, endereco: Endereco, clienteLogin: ClienteLogin) {
 
-    
-
     cliente.ClienteLogin = new Array<ClienteLogin>();
     cliente.Familiares = new Array<Familiares>();
     cliente.Contatos = new Array<Contato>();
@@ -26,46 +24,43 @@ export class CadastroService {
     cliente.Endereco.push(endereco);
     console.log(cliente);
 
-    var teste = {
-      "CPF": "47958664818",
-      "RG": "547858887",
-      "ORGAOEMISSOR": "SSP",
-      "DTNASCIMENTO": "1998-11-22",
-      "NOME": "PEDRO",
-      "SOBRENOME": "HENRIQUE",
-      "NACIONALIDADE": "BRASILEIRA",
-      "NATURALIDADE": "CARACAS",
-      "ClienteLogin": [{
-        "CPF": "47958664818",
-        "senha": "TESTE"
-      }],
-      "familiares": [{
-        "NOME_MAE": "Sara",
-        "SOBRENOME_MAE": "Silva",
-        "NOME_PAI": "Lucas",
-        "SOBRENOME_PAI": "Da agresty"
-      }],
-      "contatos": [{
-        "EMAIL": "pedrohenrique34@ig.com",
-        "TEL_RESID": "11 4185-3265",
-        "TEL_CEL": "11 95415-1355"
-      }],
-      "endereco": [{
-        "LOGRADOURO": "Avenida 8",
-        "NUMERO": 75,
-        "COMPLEMENTO": "Casa18",
-        "BAIRRO": "Bela Vista",
-        "CIDADE": "São Paulo",
-        "SIGLA_ESTADO": "SP",
-        "CEP": "06322355"
-      }]
-    };
-
-    debugger
-     return this
+    return this
       .http.post(API + '/api/Clientes', cliente,
         { headers: { 'Content-Type': 'application/json' } })
-
-        debugger
   }
 }
+
+//         var teste = {
+//           "CPF": "47958664818",
+//           "RG": "547858887",
+//           "ORGAOEMISSOR": "SSP",
+//           "DTNASCIMENTO": "1998-11-22",
+//           "NOME": "PEDRO",
+//           "SOBRENOME": "HENRIQUE",
+//           "NACIONALIDADE": "BRASILEIRA",
+//           "NATURALIDADE": "CARACAS",
+//           "ClienteLogin": [{
+//             "CPF": "47958664818",
+//             "senha": "TESTE"
+//           }],
+//           "familiares": [{
+//             "NOME_MAE": "Sara",
+//             "SOBRENOME_MAE": "Silva",
+//             "NOME_PAI": "Lucas",
+//             "SOBRENOME_PAI": "Da agresty"
+//           }],
+//           "contatos": [{
+//             "EMAIL": "pedrohenrique34@ig.com",
+//             "TEL_RESID": "11 4185-3265",
+//             "TEL_CEL": "11 95415-1355"
+//           }],
+//           "endereco": [{
+//             "LOGRADOURO": "Avenida 8",
+//             "NUMERO": 75,
+//             "COMPLEMENTO": "Casa18",
+//             "BAIRRO": "Bela Vista",
+//             "CIDADE": "São Paulo",
+//             "SIGLA_ESTADO": "SP",
+//             "CEP": "06322355"
+//           }]
+//         };
