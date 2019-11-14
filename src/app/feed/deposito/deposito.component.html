@@ -1,24 +1,24 @@
 <div class="container">
-    <div class="content">
-        <form [formGroup]="form" (ngSubmit)="submit()">
-            <p class="titulo">
-                Depósito
-            </p>
-            
-            <br>
-            <br>
-            <app-saldo></app-saldo>
-            <br>
+  <div class="content">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p class="titulo">
+        Depósito
+      </p>
 
-            <p>
-              <mat-form-field>
-                <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorDeposito">
-              </mat-form-field>
-            </p>
+      <br>
+      <br>
+      <app-saldo></app-saldo>
+      <br>
 
-            <div class="centralizar-botao">
-              <button mat-raised-button (click)="openBottomSheet()">Depositar</button>
-            </div>
-        </form>
-    </div>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorDeposito">
+        </mat-form-field>
+      </p>
+
+      <div class="centralizar-botao">
+        <button mat-raised-button (click)="openBottomSheet()">Depositar</button>
+      </div>
+    </form>
+  </div>
 </div>

@@ -170,7 +170,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput type="password" name="senha" placeholder="Confirme a senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
+                            <input matInput type="password" name="confirmacaoSenha" placeholder="Confirme a senha do InternetBanking" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
                     </mat-form-field>
 
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
