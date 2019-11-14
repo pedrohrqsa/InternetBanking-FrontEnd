@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+
 import { UserService } from './user/user.service';
 import { environment } from "../../environments/environment";
-import { TokenService } from './token/token.service';
 
 const API = environment.API_URL;
 
@@ -12,7 +12,8 @@ const API = environment.API_URL;
 })
 export class AuthService {
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private userService: UserService) { }
 
   autenticar(cpf: string, senha: string) { 
@@ -26,7 +27,7 @@ export class AuthService {
       { cpf, senha },
       { observe: 'response' },
     )
-      .pipe(tap(res => {
+      .pipe(tap((res: any) => {
         const authToken = res.body.token; 
 
         this.userService.setToken(authToken); 

@@ -165,10 +165,6 @@
             <mat-step label="Confirmação">
                 <form [formGroup]="clienteLoginFormGroup">
 
-                    <mat-form-field class="w-100">
-                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="Confirme seu CPF" formControlName="cpf" minlength="11" maxlength="11">
-                    </mat-form-field>
-
                     <mat-form-field class="w-475 mr-3">
                         <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
                     </mat-form-field>
