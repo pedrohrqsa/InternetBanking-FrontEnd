@@ -28,7 +28,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="orgao-emissor" placeholder="Órgão emissor" formControlName="orgaoemissor" minlength="5" maxlength="5">
+                        <input matInput (keypress)="letterOnly($event)" name="orgao-emissor" placeholder="Órgão emissor" formControlName="orgaoEmissor" minlength="5" maxlength="5">
                     </mat-form-field>
 
                     <br>
@@ -76,19 +76,19 @@
             <mat-step label="Informações familiares">
                 <form [formGroup]="FamiliaresFormGroup">
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nome-mae" placeholder="Nome da mãe" formControlName="nome_Mae" maxlength="40">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-mae" placeholder="Nome da mãe" formControlName="nomeMae" maxlength="40">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenome_Mae" maxlength="50">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-mae" placeholder="Sobrenome da mãe" formControlName="sobrenomeMae" maxlength="50">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="nome-pai" placeholder="Nome do pai" formControlName="nome_Pai" maxlength="40">
+                        <input matInput (keypress)="letterOnly($event)" name="nome-pai" placeholder="Nome do pai" formControlName="nomePai" maxlength="40">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenome_Pai" maxlength="50">
+                        <input matInput (keypress)="letterOnly($event)" name="sobrenome-pai" placeholder="Sobrenome do pai" formControlName="sobrenomePai" maxlength="50">
                     </mat-form-field>
                 </form>
 
@@ -99,7 +99,6 @@
             </mat-step>
 
 
-
             <mat-step label="Contato">
                 <form [formGroup]="contatoFormGroup">
                     <mat-form-field class="w-100">
@@ -107,11 +106,11 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="numberOnly($event)" name="tel-residencial" placeholder="Telefone residencial" formControlName="tel_resid" minlength="8" maxlength="10">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-residencial" placeholder="Telefone residencial" formControlName="telResid" minlength="8" maxlength="10">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="numberOnly($event)" name="tel-celular" placeholder="Telefone celular" formControlName="tel_Cel" minlength="9" maxlength="11">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-celular" placeholder="Telefone celular" formControlName="telCel" minlength="9" maxlength="11">
                     </mat-form-field>
                 </form>
 
@@ -146,7 +145,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="sigla_estado" minlength="2" maxlength="2">
+                        <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="siglaEstado" minlength="2" maxlength="2">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
@@ -170,7 +169,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                            <input matInput type="password" name="confirmacaoSenha" placeholder="Confirme a senha do InternetBanking" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
+                        <input matInput type="password" name="confirmacaoSenha" placeholder="Confirme a senha do InternetBanking" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
                     </mat-form-field>
 
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.

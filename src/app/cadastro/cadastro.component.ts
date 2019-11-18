@@ -4,7 +4,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from './cadastroCliente';
+import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from './Cliente';
 import { CadastroService } from './cadastro.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -45,21 +45,21 @@ export class CadastroComponent implements OnInit {
       sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
       cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
       rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      orgaoemissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      orgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       dtNascimento: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
       naturalidade: ['', [Validators.required, Validators.maxLength(20)]]
     });
     this.FamiliaresFormGroup = this._formBuilder.group({
-      nome_Mae: ['', [Validators.required, Validators.maxLength(40)]],
-      sobrenome_Mae: ['', [Validators.required, Validators.maxLength(50)]],
-      nome_Pai: ['', [Validators.maxLength(40)]],
-      sobrenome_Pai: ['', [Validators.maxLength(50)]]
+      nomeMae: ['', [Validators.required, Validators.maxLength(40)]],
+      sobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
+      nomePai: ['', [Validators.maxLength(40)]],
+      sobrenomePai: ['', [Validators.maxLength(50)]]
     });
     this.contatoFormGroup = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
-      tel_resid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      tel_Cel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      telResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      telCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
     this.enderecoFormGroup = this._formBuilder.group({
       logradouro: ['', [Validators.required, Validators.maxLength(50)]],
@@ -67,7 +67,7 @@ export class CadastroComponent implements OnInit {
       complemento: ['', [Validators.maxLength(30)]],
       bairro: ['', [Validators.required, Validators.maxLength(20)]],
       cidade: ['', [Validators.required, Validators.maxLength(30)]],
-      sigla_estado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+      siglaEstado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
     });
     this.clienteLoginFormGroup = this._formBuilder.group({
@@ -84,7 +84,7 @@ export class CadastroComponent implements OnInit {
     const contato = this.contatoFormGroup.getRawValue() as Contato;
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
     let clienteLogin = this.clienteLoginFormGroup.getRawValue() as ClienteLogin;
-    clienteLogin.CPF = cliente.CPF;
+    clienteLogin.cpf = cliente.cpf;
 
     this.servico
       .cadastro(cliente, familiares, contato, endereco, clienteLogin)
@@ -121,39 +121,4 @@ export class CadastroComponent implements OnInit {
     let confirmPass = group.controls.confirmacaoSenha.value;
     return pass === confirmPass ? null : { notSame: true }
   }
-
-  // handleFileInput(files: FileList) {
-  //   this.fileToUpload = files.item(0);
-  // }
-
-  // uploadFileToActivity() {
-  //   this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-  //     // do something, if upload success
-  //     }, error => {
-  //       console.log(error);
-  //     });
-  // }
-
-
-
-
-
-
-  // fileData: File = null;
-  // // constructor(private http: HttpClient) { }
-
-  // fileProgress(fileInput: any) {
-  //   this.fileData = <File>fileInput.target.files[0];
-  // }
-
-  // onSubmit() {
-  //   const formData = new FormData();
-  //   formData.append('file', this.fileData);
-  //   this.http.post('url/to/your/api', formData)
-  //     .subscribe(res => {
-  //       console.log(res);
-  //       alert('SUCCESS !!');
-  //     })
-  // }
-
 }

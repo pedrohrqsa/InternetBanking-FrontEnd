@@ -23,25 +23,3 @@ export class AuthGuard implements CanActivate{
         return true;
     }
 }
-
-// export class LoginGuard implements CanActivate{
-
-//     canActivate(route: import("@angular/router").ActivatedRouteSnapshot, state: import("@angular/router").RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean>{
-//         if(this.userService.isLogged()){
-//             return true;
-//         }
-//         this.router.navigate(['']);
-//         return false;
-//     }
-//     constructor(private userService: UserService, private router: Router){}
-// }
-
-// export class NotLoggedGuard implements CanActivate {
-//     canActivate(route: import("@angular/router").ActivatedRouteSnapshot, state: import("@angular/router").RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean>{
-//         console.log("nao logado");
-//         this.router.navigate(['']);
-//         return this.userService.isLogged();
-//     }
-
-//     constructor(private userService: UserService, private router: Router) { }
-// }

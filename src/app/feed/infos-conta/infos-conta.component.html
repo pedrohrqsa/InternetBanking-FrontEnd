@@ -1,23 +1,23 @@
 <div class="container">
-        <div class="content">
-            <form [formGroup]="form" (ngSubmit)="submit()">
-                <p class="titulo">
-                    Bem-Vindo!
-                </p>
-                
-                <br>
-                <br>
-                <br>
-    
-                <p>Olá, {{this.nome}}</p>
-                <p>Conta-corrente: {{this.conta1}}</p>
-                <p>Agência: {{this.agencia}}</p>
-                <app-saldo></app-saldo>
+    <div class="content">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <p class="titulo">
+                Bem-Vindo!
+            </p>
 
-                <div class="centralizar-botao">
-                    <button mat-raised-button (click)="logout()">Sair</button>
-                </div>
-                
-            </form>
-        </div>
+            <br>
+            <br>
+            <br>
+
+            <p>Olá, {{this.nome}}</p>
+            <p>Conta-corrente: {{this.conta}}</p>
+            <p>Agência: {{this.agencia}}</p>
+            <app-saldo></app-saldo>
+
+            <div class="centralizar-botao">
+                <button mat-raised-button (click)="logout()">Sair</button>
+            </div>
+
+        </form>
     </div>
+</div>

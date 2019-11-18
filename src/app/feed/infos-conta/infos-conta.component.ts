@@ -2,12 +2,13 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/cadastro/Cliente';
 
-export interface DadosConta{
-  nome: string;
-  conta: string;
-  agencia: string;
-}
+// export interface DadosConta{
+//   nome: string;
+//   conta: string;
+//   agencia: string;
+// }
 
 @Component({
   selector: 'app-infos-conta',
@@ -15,20 +16,20 @@ export interface DadosConta{
   styleUrls: ['./infos-conta.component.css']
 })
 export class InfosContaComponent implements OnInit {
-  
-  public conta: DadosConta[] = [
-    {
-      nome: 'Luiz Henrique',
-      conta: '0000001-1',
-      agencia: '0001'
-    }
-  ];
 
-  public nome = this.conta[0].nome;
-  public conta1 = this.conta[0].conta;
-  public agencia = this.conta[0].agencia;
+  nome: Cliente[];
 
-  constructor(private userService: UserService, private router: Router) {}
+  //  public conta:DadosConta [] = [
+  //   {
+  //     nome: 'Luiz Henrique',
+  //     conta: '0000001-1',
+  //     agencia: '0001'
+  //   }
+  // ];
+
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
   form: FormGroup = new FormGroup({
     saldo: new FormControl(''),
@@ -45,11 +46,10 @@ export class InfosContaComponent implements OnInit {
 
   @Output() submitEM = new EventEmitter();
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  logout(){
+  logout() {
     this.userService.logout();
     this.router.navigate(['']);
   }
-
 }

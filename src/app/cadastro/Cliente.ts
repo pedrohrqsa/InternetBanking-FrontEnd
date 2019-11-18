@@ -2,19 +2,21 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { FormGroupDirective, NgForm, FormControl } from '@angular/forms';
 
 export interface Cliente{
-    CPF: string;
-    RG: string;
-    ORGAOEMISSOR: string;
-    DTNASCIMENTO: Date;
-    NOME: string;
-    SOBRENOME: string;
-    NACIONALIDADE: string;
-    NATURALIDADE: string;
+    cpf: string;
+    rg: string;
+    orgaoEmissor: string;
+    dtNascimento: Date;
+    nome: string;
+    sobrenome: string;
+    nacionalidade: string;
+    naturalidade: string;
 
     ClienteLogin:Array<ClienteLogin>;
     Familiares:Array<Familiares>;
-    Contatos:Array<Contato>;
+    Contato:Array<Contato>;
     Endereco:Array<Endereco>;
+    Conta : Array<Conta>;
+    Agencia:Array<Agencia>;
 }
 
 export interface Familiares {
@@ -40,6 +42,15 @@ export interface Endereco {
     cep: string;
 }
 export interface ClienteLogin {
-    CPF: string;
+    cpf: string;
     senha: string;
 }
+
+export interface Conta {
+    numConta: string;
+}
+
+export interface Agencia {
+    numAgencia: string;
+}
+
