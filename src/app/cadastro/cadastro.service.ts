@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Cliente, ClienteLogin, Contato, Endereco, Familiares } from './Cliente';
+import { Cliente, ClienteLogin, Contato, Endereco, Familiares } from '../Models/Cliente';
 
 const API = environment.API_URL;
 

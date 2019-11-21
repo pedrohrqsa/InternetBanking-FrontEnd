@@ -4,7 +4,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from './Cliente';
+import { Cliente, Endereco, Contato, Familiares, ClienteLogin } from '../Models/Cliente';
 import { CadastroService } from './cadastro.service';
 import { HttpClient } from '@angular/common/http';
 

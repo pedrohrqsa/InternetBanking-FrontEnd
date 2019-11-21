@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/cadastro/Cliente';
+import { Cliente } from 'src/app/Models/Cliente';
 
 // export interface DadosConta{
 //   nome: string;
@@ -18,6 +18,8 @@ import { Cliente } from 'src/app/cadastro/Cliente';
 export class InfosContaComponent implements OnInit {
 
   nome: Cliente[];
+  agencia: Cliente[];
+  conta: Cliente[];
 
   //  public conta:DadosConta [] = [
   //   {
