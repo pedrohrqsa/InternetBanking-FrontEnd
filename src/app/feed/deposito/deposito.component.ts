@@ -8,9 +8,9 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
   styleUrls: ['./deposito.component.css']
 })
 export class DepositoComponent {
+
   saldoAtual: number = 120.49;
   
-
   form: FormGroup = new FormGroup({
     saldo: new FormControl(''),
     valorDeposito: new FormControl('')
@@ -45,4 +45,7 @@ export class BottomSheetOverviewExampleSheet {
     event.preventDefault();
   }
 
+  onDeposito() {
+  //CRIAR METODO UPDATE/PUT PARA O SERVICE EXECUTAR
+  }
 }

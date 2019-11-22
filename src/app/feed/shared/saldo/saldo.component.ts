@@ -7,15 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaldoComponent implements OnInit {
 
-isShown: boolean = false ; // hidden by default
+  isShown: boolean = false; // hidden by default
 
-toggleShow() {
-this.isShown = ! this.isShown;
-}
+  toggleShow() {
+    this.isShown = !this.isShown;
+  }
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  onSaldo() {
+    //CRIAR METODO SELECT/GET PARA O SERVICE EXECUTAR
+    }
 
 }

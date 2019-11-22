@@ -3,9 +3,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Movimentacao } from './movimentacao';
 
-/**
- * @title Table with pagination
- */
 @Component({
   selector: 'app-extrato',
   templateUrl: 'extrato.component.html',
