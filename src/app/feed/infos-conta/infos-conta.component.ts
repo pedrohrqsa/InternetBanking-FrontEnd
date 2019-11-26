@@ -4,12 +4,6 @@ import { UserService } from 'src/app/core/user/user.service';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Models/Cliente';
 
-// export interface DadosConta{
-//   nome: string;
-//   conta: string;
-//   agencia: string;
-// }
-
 @Component({
   selector: 'app-infos-conta',
   templateUrl: './infos-conta.component.html',
@@ -20,14 +14,6 @@ export class InfosContaComponent implements OnInit {
   nome: Cliente[];
   // agencia: Cliente[];
   conta: Cliente[];
-
-  //  public conta:DadosConta [] = [
-  //   {
-  //     nome: 'Luiz Henrique',
-  //     conta: '0000001-1',
-  //     agencia: '0001'
-  //   }
-  // ];
 
   constructor(
     private userService: UserService,
@@ -55,6 +41,6 @@ export class InfosContaComponent implements OnInit {
     this.router.navigate(['']);
   }  
   onFunction() {
-    this.InfoContaService.get
+    // this.InfoContaService.get
     }
 }

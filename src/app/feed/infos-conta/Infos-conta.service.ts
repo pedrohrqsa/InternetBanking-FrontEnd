@@ -18,6 +18,7 @@ export class InfoContaService {
     GetInfoCliente(): Observable<Cliente[]> {
         return this.http.get<Cliente[]>(this.apiCliente);
     }
+    
     GetInfoConta(): Observable<Conta[]> {
         return this.http.get<Conta[]>(this.apiConta);
     }
