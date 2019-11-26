@@ -18,7 +18,7 @@ import { Cliente } from 'src/app/Models/Cliente';
 export class InfosContaComponent implements OnInit {
 
   nome: Cliente[];
-  agencia: Cliente[];
+  // agencia: Cliente[];
   conta: Cliente[];
 
   //  public conta:DadosConta [] = [
@@ -53,5 +53,8 @@ export class InfosContaComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigate(['']);
-  }
+  }  
+  onFunction() {
+    this.InfoContaService.get
+    }
 }
