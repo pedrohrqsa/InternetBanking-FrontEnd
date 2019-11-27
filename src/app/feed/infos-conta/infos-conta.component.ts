@@ -14,13 +14,13 @@ import { InfoContaService } from './Infos-conta.service';
 export class InfosContaComponent implements OnInit {
 
   nome: Cliente[];
+  saldo: ContaCorrente[];
   numConta: ContaCorrente[];
   // agencia: Cliente[];
-  saldo: ContaCorrente[];
 
   constructor(
     private userService: UserService,
-    private infoContaService : InfoContaService,
+    private infoContaService: InfoContaService,
     private router: Router) { }
 
   form: FormGroup = new FormGroup({
@@ -43,11 +43,12 @@ export class InfosContaComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigate(['']);
-  }  
-  
-  onFunction() {
-     this.infoContaService.getInfoCliente()
-     .subscribe( cliente => this.nome = cliente),
-     error => console.log(error); 
-    }
+  }
+
+  x: any;
+  onInfoCliente() {
+    this.infoContaService.getInfoCliente()
+      .subscribe(clientex => console.log(clientex[1].nome));
+    //  error => console.log(error);
+  }
 }

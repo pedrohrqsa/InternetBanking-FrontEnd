@@ -2,30 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from 'src/app/Models/Cliente';
-import { Conta } from 'src/app/Models/Conta';
 import { ContaCorrente } from 'src/app/Models/ContaCorrente';
 import { Agencia } from 'src/app/Models/Agencia';
 
 @Injectable({ providedIn: 'root' })
 export class InfoContaService {
-    
-    URL: 'http://localhost:5000/'
 
-    private apiCliente = this.URL + "api/Cliente";
-    private apiContaCorrente = this.URL + "api/contaCorrente";
+     url = "http://localhost:5000/";
 
-    constructor(private http: HttpClient,
-        @Inject(URL)
-        private UrlCliente: string,
-        private urlContaCorrente: string) { }
+    private apiCliente = this.url + "api/Clientes";
+    private apiContaCorrente = this.url + "api/contaCorrente";
+    // private apiAgencia = this.url + "api/agencia";
 
-    getInfoContaCorrente(): Observable<ContaCorrente[]> {
-        return this.http.get<ContaCorrente[]>(this.apiContaCorrente);
+    constructor(private http: HttpClient) { }
+
+        getInfoCliente(): Observable<Cliente[]> {
+            return this.http.get<Cliente[]>(this.apiCliente);
+        }
+
+        getInfoContaCorrente(): Observable<ContaCorrente[]> {
+            return this.http.get<ContaCorrente[]>(this.apiContaCorrente);
+        }
+
+        // getInfoAgencia(): Observable<Agencia[]> {
+        //     return this.http.get<Agencia[]>(this.apiAgencia);
+        // }
     }
     
-    getInfoCliente(): Observable<Cliente[]> {
-        return this.http.get<Cliente[]>(this.apiCliente);
-    }
-}
-
 
