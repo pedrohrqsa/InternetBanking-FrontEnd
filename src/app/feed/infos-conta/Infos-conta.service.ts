@@ -3,23 +3,29 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from 'src/app/Models/Cliente';
 import { Conta } from 'src/app/Models/Conta';
+import { ContaCorrente } from 'src/app/Models/ContaCorrente';
+import { Agencia } from 'src/app/Models/Agencia';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class InfoContaService {
     
-    private apiCliente = this.UrlCliente + "api/Cliente";
-    private apiConta = this.urlConta + "api/Cliente";
-    
-    constructor(private http: HttpClient,
-         @Inject('URL')
-          private UrlCliente: string,
-          private urlConta: string) { }
+    URL: 'http://localhost:5000/'
 
-    GetInfoCliente(): Observable<Cliente[]> {
+    private apiCliente = this.URL + "api/Cliente";
+    private apiContaCorrente = this.URL + "api/contaCorrente";
+
+    constructor(private http: HttpClient,
+        @Inject(URL)
+        private UrlCliente: string,
+        private urlContaCorrente: string) { }
+
+    getInfoContaCorrente(): Observable<ContaCorrente[]> {
+        return this.http.get<ContaCorrente[]>(this.apiContaCorrente);
+    }
+    
+    getInfoCliente(): Observable<Cliente[]> {
         return this.http.get<Cliente[]>(this.apiCliente);
     }
-    
-    GetInfoConta(): Observable<Conta[]> {
-        return this.http.get<Conta[]>(this.apiConta);
-    }
 }
+
+

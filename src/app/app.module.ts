@@ -15,6 +15,8 @@ import { LoginModule } from './login/login.module';
 import { FeedModule } from './feed/feed.module';
 import { HomeModule } from './home/home.module';
 import { HeaderModule } from './header/header.module';
+import { InfoContaService } from './feed/infos-conta/Infos-conta.service';
+import { InfosContaModule } from './feed/infos-conta/infos-conta.module';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { HeaderModule } from './header/header.module';
     HttpClientModule,
     FeedModule,
     HomeModule,
-    HeaderModule
+    HeaderModule,
+    InfosContaModule
   ],
-  providers: [],
+  providers: [InfoContaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

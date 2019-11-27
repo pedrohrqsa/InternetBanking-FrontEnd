@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Models/Cliente';
+import { ContaCorrente } from 'src/app/Models/ContaCorrente';
+import { InfoContaService } from './Infos-conta.service';
 
 @Component({
   selector: 'app-infos-conta',
@@ -12,11 +14,13 @@ import { Cliente } from 'src/app/Models/Cliente';
 export class InfosContaComponent implements OnInit {
 
   nome: Cliente[];
+  numConta: ContaCorrente[];
   // agencia: Cliente[];
-  conta: Cliente[];
+  saldo: ContaCorrente[];
 
   constructor(
     private userService: UserService,
+    private infoContaService : InfoContaService,
     private router: Router) { }
 
   form: FormGroup = new FormGroup({
@@ -40,7 +44,10 @@ export class InfosContaComponent implements OnInit {
     this.userService.logout();
     this.router.navigate(['']);
   }  
+  
   onFunction() {
-    // this.InfoContaService.get
+     this.infoContaService.getInfoCliente()
+     .subscribe( cliente => this.nome = cliente),
+     error => console.log(error); 
     }
 }
