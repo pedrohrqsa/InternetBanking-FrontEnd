@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContaCorrente } from 'src/app/Models/ContaCorrente';
+import { Injectable } from '@angular/core';
 
-
-const api = this.URL + " api/ContaCorrente";
-
+@Injectable({ providedIn: 'root' })
 export class SaldoService {
+    
+    url = "http://localhost:5000/";
 
-    constructor(private http: HttpClient, @Inject('URL') private Url: string) { }
+    private apiContaCorrente = this.url + "api/contaCorrente";
 
-    GetInfoCliente(): Observable<ContaCorrente[]> {
-        return this.http.get<ContaCorrente[]>(this.Url);
+    constructor(private http: HttpClient) { }
+
+    GetInfoSaldo(): Observable<ContaCorrente[]> {
+        return this.http.get<ContaCorrente[]>(this.apiContaCorrente);
     }
 }

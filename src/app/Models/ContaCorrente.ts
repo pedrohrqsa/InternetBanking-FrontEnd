@@ -1,4 +1,4 @@
 export interface ContaCorrente {
-    numConta: string;
-    saldo: string;
+    numConta: number;
+    saldo: number;
 }

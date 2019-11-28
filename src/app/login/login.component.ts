@@ -8,8 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css'],
 })
+
+
+
 export class LoginComponent implements OnInit {
+  @Input() recebeCPF; 
+
   loginForm: FormGroup;
+  cpfLogado: string;
 
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
@@ -32,9 +38,11 @@ export class LoginComponent implements OnInit {
     
     const cpf = this.loginForm.get('cpf').value;
     const senha = this.loginForm.get('senha').value;
+    this.recebeCPF = this.loginForm.get('cpf').value;
 
     this.autorizacao.autenticar(cpf, senha)
       .subscribe(() => this.router.navigate(['feed']),
         err => { alert("CPF ou Senha inválidos."); this.loginForm.reset() });
   }
+  
 }

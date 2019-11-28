@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SaldoService } from './saldo.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-saldo',
@@ -7,18 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaldoComponent implements OnInit {
 
+  constructor(private saldoService: SaldoService) { }
+
+  saldo: number;
+
   isShown: boolean = false; // hidden by default
 
   toggleShow() {
     this.isShown = !this.isShown;
+    this.onSaldo();
   }
 
-  constructor() { }
-
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   onSaldo() {
-    //CRIAR METODO SELECT/GET PARA O SERVICE EXECUTAR
-    }
-
+    return this.saldoService.GetInfoSaldo()
+      .subscribe(saldox =>
+        this.saldo = saldox[0].saldo
+      );
+  }
 }

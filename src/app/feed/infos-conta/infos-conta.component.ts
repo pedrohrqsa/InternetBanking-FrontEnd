@@ -2,8 +2,6 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/Models/Cliente';
-import { ContaCorrente } from 'src/app/Models/ContaCorrente';
 import { InfoContaService } from './Infos-conta.service';
 
 @Component({
@@ -12,16 +10,19 @@ import { InfoContaService } from './Infos-conta.service';
   styleUrls: ['./infos-conta.component.css']
 })
 export class InfosContaComponent implements OnInit {
+  CPFlogado: string;
 
-  nome: Cliente[];
-  saldo: ContaCorrente[];
-  numConta: ContaCorrente[];
+  nome: string;
+  numConta: number;
+  indexCPF: number;
+  cpfLogado: string;
   // agencia: Cliente[];
 
   constructor(
     private userService: UserService,
-    private infoContaService: InfoContaService,
-    private router: Router) { }
+    private infoContaService : InfoContaService,
+    private router: Router
+    ) { }
 
   form: FormGroup = new FormGroup({
     saldo: new FormControl(''),
@@ -38,17 +39,38 @@ export class InfosContaComponent implements OnInit {
 
   @Output() submitEM = new EventEmitter();
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log(this.CPFlogado);
+    this.getIndexCPF();
+    this.onInfoCliente();
+    this.onInfoCC();
+  }
 
   logout() {
     this.userService.logout();
     this.router.navigate(['']);
   }
 
-  x: any;
-  onInfoCliente() {
-    this.infoContaService.getInfoCliente()
-      .subscribe(clientex => console.log(clientex[1].nome));
+  getIndexCPF(){
+    return this.infoContaService.getInfoCliente()
+      .subscribe(clientex => 
+        this.indexCPF = clientex.findIndex(obj => obj.cpf == '11111111111')
+        );
+  }
+
+  
+  onInfoCliente(){
+    return this.infoContaService.getInfoCliente()
+      .subscribe(clientex => 
+        this.nome = clientex[this.indexCPF].nome
+        );
+    //  error => console.log(error);
+  }  
+  onInfoCC(){
+    return this.infoContaService.getInfoContaCorrente()
+      .subscribe(clientex => 
+        this.numConta = clientex[this.indexCPF].numConta,
+        );
     //  error => console.log(error);
   }
 }
