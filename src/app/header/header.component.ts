@@ -17,4 +17,7 @@ export class HeaderComponent implements OnInit {
     this.isShown = !this.isShown;
   }
 
+  public recebeCpf(RespFilho) {
+   console.log("A resposta é: ", RespFilho);
+   }
 }

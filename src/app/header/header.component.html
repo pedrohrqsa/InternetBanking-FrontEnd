@@ -1,10 +1,10 @@
 <ul class="topnav">
-    <li><a [routerLink]="['']" >Início</a></li>
+    <li><a [routerLink]="['']">Início</a></li>
     <li><a [routerLink]="['']">Sobre nós</a></li>
     <li class="right"><a (click)="toggleShow()">Entre na sua Conta</a></li>
     <li class="right"><a [routerLink]="['/cadastro']">Abra sua Conta</a></li>
 </ul>
 
 <div class="box-login" *ngIf="isShown">
-    <app-login></app-login>
+    <app-login (cpf)="recebeCpf($event)"></app-login>
 </div>

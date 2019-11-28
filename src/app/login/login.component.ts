@@ -9,13 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['login.component.css'],
 })
 
-
-
 export class LoginComponent implements OnInit {
-  @Input() recebeCPF; 
+
+  // @Input() cpf;
+  @Output() cpf = new EventEmitter();
 
   loginForm: FormGroup;
-  cpfLogado: string;
 
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
@@ -25,7 +24,10 @@ export class LoginComponent implements OnInit {
     return true;
   }
 
-  constructor(private formBuilder: FormBuilder, private autorizacao: AuthService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private autorizacao: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -35,14 +37,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    
-    const cpf = this.loginForm.get('cpf').value;
+    const cpfDigitado = this.loginForm.get('cpf').value;
     const senha = this.loginForm.get('senha').value;
-    this.recebeCPF = this.loginForm.get('cpf').value;
+    
+    var cpfEmiter = {
+      cpf:cpfDigitado
+    }
+    this.cpf.emit(cpfEmiter);
 
-    this.autorizacao.autenticar(cpf, senha)
+    this.autorizacao.autenticar(cpfDigitado, senha)
       .subscribe(() => this.router.navigate(['feed']),
         err => { alert("CPF ou Senha inválidos."); this.loginForm.reset() });
   }
-  
 }
