@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   // @Input() cpf;
-  @Output() cpf = new EventEmitter();
+  // @Output() cpf = new EventEmitter();
 
   loginForm: FormGroup;
 
@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
   login() {
     const cpfDigitado = this.loginForm.get('cpf').value;
     const senha = this.loginForm.get('senha').value;
-    
-    var cpfEmiter = {
-      cpf:cpfDigitado
-    }
-    this.cpf.emit(cpfEmiter);
+
+    // var cpfEmiter = {
+    //   cpf:cpfDigitado
+    // }
+    // this.cpf.emit(cpfEmiter);
 
     this.autorizacao.autenticar(cpfDigitado, senha)
-      .subscribe(() => this.router.navigate(['feed']),
+      .subscribe(() => this.router.navigate(['feed', cpfDigitado]),
         err => { alert("CPF ou Senha inválidos."); this.loginForm.reset() });
   }
 }

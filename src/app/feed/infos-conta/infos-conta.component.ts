@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { InfoContaService } from './Infos-conta.service';
 import { UserService } from 'src/app/core/user/user.service';
 import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-infos-conta',
@@ -11,8 +12,6 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 })
 export class InfosContaComponent implements OnInit {
 
-  cpf: string;
-  
   nome: string;
   numConta: number;
   indexCPF: number;
@@ -21,6 +20,7 @@ export class InfosContaComponent implements OnInit {
   constructor(
     private userService: UserService,
     private infoContaService: InfoContaService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -39,7 +39,7 @@ export class InfosContaComponent implements OnInit {
   @Output() submitEM = new EventEmitter();
 
   ngOnInit() {
-    console.log(this.cpf);
+    // console.log(this.cpf);
     this.getIndexCPF();
     this.onInfoCliente();
     this.onInfoCC();
@@ -55,9 +55,14 @@ export class InfosContaComponent implements OnInit {
   // }
 
   getIndexCPF() {
+
+    const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
+
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(this.indexCPF = clientex.findIndex(obj => obj.cpf == this.cpf))
+        console.log(getCpf,
+          this.indexCPF = clientex.findIndex(obj =>
+            obj.cpf == getCpf))
       );
   }
 
