@@ -1,3 +1,3 @@
 export interface Conta {
-    numConta: string;
+idCliente: number;
 }

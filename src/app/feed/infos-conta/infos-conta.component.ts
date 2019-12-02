@@ -21,8 +21,7 @@ export class InfosContaComponent implements OnInit {
     private userService: UserService,
     private infoContaService: InfoContaService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
   form: FormGroup = new FormGroup({
     saldo: new FormControl(''),
@@ -39,10 +38,7 @@ export class InfosContaComponent implements OnInit {
   @Output() submitEM = new EventEmitter();
 
   ngOnInit() {
-<<<<<<< HEAD
     // console.log(this.cpf);
-=======
->>>>>>> 01566e64a71b869bc45317db7749ad741792e4c9
     this.getIndexCPF();
     this.onInfoCliente();
     this.onInfoCC();
@@ -53,23 +49,15 @@ export class InfosContaComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  // public recebeCpf(RespFilho) {
-  //   console.log("A resposta é: ", RespFilho);
-  // }
-
   getIndexCPF() {
 
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-<<<<<<< HEAD
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf))
-=======
-        console.log(this.indexCPF = clientex.findIndex(obj => obj.cpf == "49546690813"))
->>>>>>> 01566e64a71b869bc45317db7749ad741792e4c9
       );
   }
 
