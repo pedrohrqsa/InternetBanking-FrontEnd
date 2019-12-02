@@ -39,7 +39,10 @@ export class InfosContaComponent implements OnInit {
   @Output() submitEM = new EventEmitter();
 
   ngOnInit() {
+<<<<<<< HEAD
     // console.log(this.cpf);
+=======
+>>>>>>> 01566e64a71b869bc45317db7749ad741792e4c9
     this.getIndexCPF();
     this.onInfoCliente();
     this.onInfoCC();
@@ -60,9 +63,13 @@ export class InfosContaComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
+<<<<<<< HEAD
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf))
+=======
+        console.log(this.indexCPF = clientex.findIndex(obj => obj.cpf == "49546690813"))
+>>>>>>> 01566e64a71b869bc45317db7749ad741792e4c9
       );
   }
 

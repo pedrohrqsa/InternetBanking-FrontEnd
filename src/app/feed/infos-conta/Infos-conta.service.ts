@@ -10,6 +10,10 @@ export class InfoContaService {
 
     url = "http://localhost:5000/";
 
+<<<<<<< HEAD
+=======
+    cpf: string;
+>>>>>>> 01566e64a71b869bc45317db7749ad741792e4c9
     private apiCliente = this.url + "api/Clientes";
     private apiContaCorrente = this.url + "api/contaCorrente";
     // private apiAgencia = this.url + "api/agencia";
