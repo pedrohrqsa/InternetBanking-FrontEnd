@@ -7,6 +7,7 @@ import { ClienteLogin } from '../Models/ClienteLogin';
 import { Familiares } from '../Models/Familiares';
 import { Contato } from '../Models/Contato';
 import { Endereco } from '../Models/Endereco';
+import { Conta } from '../Models/Conta';
 
 const API = environment.API_URL;
 
@@ -16,17 +17,19 @@ export class CadastroService {
   constructor(private http: HttpClient) { }
 
   cadastro(cliente: Cliente, familiares: Familiares,
-    contato: Contato, endereco: Endereco, clienteLogin: ClienteLogin) {
+    contato: Contato, endereco: Endereco, clienteLogin: ClienteLogin, conta: Conta) {
 
     cliente.ClienteLogin = new Array<ClienteLogin>();
     cliente.Familiares = new Array<Familiares>();
     cliente.Contato = new Array<Contato>();
     cliente.Endereco = new Array<Endereco>();
+    cliente.Conta = new Array<Conta>();
 
     cliente.ClienteLogin.push(clienteLogin);
     cliente.Familiares.push(familiares);
     cliente.Contato.push(contato);
     cliente.Endereco.push(endereco);
+    cliente.Conta.push(conta);
     console.log(cliente);
 
     return this

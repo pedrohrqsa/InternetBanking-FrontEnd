@@ -1,3 +1,3 @@
 export interface Conta {
-idCliente: number;
+    senhaTransacao: string;
 }

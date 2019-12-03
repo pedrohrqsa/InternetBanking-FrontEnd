@@ -1,15 +1,9 @@
 <mat-nav-list>
-    <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
-      <span mat-line>Valor Depositado</span>
-      <span mat-line>R$9600,00</span>
+    <a mat-list-item (click)="openLink($event)">
+      <span mat-line>Valor à ser Depositado</span>
+      <span mat-line>R$</span>
     </a>
 
-    <div class="bottom-esquerda">
-    <button mat-raised-button (click)="openBottomSheet()">Cancelar</button>
-
-
-    <button class="right" mat-raised-button (click)="openBottomSheet()">Confirmar</button>
-  </div>  
+    <button class="right" mat-raised-button (click)="onDeposito()">Confirmar</button> 
   
-    
-  </mat-nav-list>
+</mat-nav-list>

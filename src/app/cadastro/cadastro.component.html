@@ -172,16 +172,33 @@
                         <input matInput type="password" name="confirmacaoSenha" placeholder="Confirme a senha do InternetBanking" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
                     </mat-form-field>
 
-                    <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
-
-                        <div>
-                            <button mat-button matStepperPrevious>Voltar</button>
-                            <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
-
-                            <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
-                        </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext>Próximo</button>
+                    </div>
+                    
                 </form>
 
+            </mat-step>
+
+            <mat-step label="Senha">
+                <form [formGroup]="senhaFormGroup">
+                        <mat-form-field class="w-475 mr-3">
+                                <input matInput (keypress)="numberOnly($event)" minlength="4" maxlength="4" type="password" name="senha" placeholder="Senha para Transações" formControlName="senha" minlength="8" maxlength="15">
+                            </mat-form-field>
+        
+                            <mat-form-field class="w-475 ml-4">
+                                <input matInput (keypress)="numberOnly($event)" minlength="4" maxlength="4" type="password" name="confirmacaoSenha" placeholder="Confirme a senha para Transações" formControlName="confirmacaoSenha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
+                            </mat-form-field>
+
+                        <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
+                            <div>
+                                <button mat-button matStepperPrevious>Voltar</button>
+                                <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
+    
+                                <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
+                            </div>
+                </form>
             </mat-step>
         </mat-vertical-stepper>
     </div>

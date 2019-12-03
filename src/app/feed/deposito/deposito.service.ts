@@ -10,15 +10,17 @@ export class ExtratoService {
     constructor(private http: HttpClient) { }
 
     //ADC VALOR AO SALDO
-    Deposito( /*PARAMETROS QUE SERACAO NECESSARIOS PARA ALTERACAO DO VALOR ex: saldo*/ ) {
+    Deposito( valor ) {
         
+        console.log("passou aqui");
+
         /*
          obj.deposito/metodo.put(deposito); 
          console.log(deposito);
         */
 
-        return this
-            .http.put(API + '/api/ContaCorrente', this.Deposito,
-                { headers: { 'Content-Type': 'application/json' } })
+        // return this
+        //     .http.put(API + '/api/ContaCorrente', this.Deposito,
+        //     { headers: { 'Content-Type': 'application/json' } })
     }
 }
