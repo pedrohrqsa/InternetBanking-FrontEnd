@@ -1,3 +1,3 @@
 export interface Conta {
-    senhaTransacao: string;
+    senhaTransacoes: string;
 }

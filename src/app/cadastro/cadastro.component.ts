@@ -83,10 +83,9 @@ export class CadastroComponent implements OnInit {
       { validator: this.checkPasswords }
     );
     this.senhaFormGroup = this._formBuilder.group({
-      senha: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-      confirmacaoSenha: ['', [Validators.minLength(4), Validators.maxLength(4)]]
-    },
-      { validator: this.checkPasswords }
+      senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+    }//,
+      // { validator: this.checkPasswords }
     );
   }
 
@@ -96,11 +95,11 @@ export class CadastroComponent implements OnInit {
     const contato = this.contatoFormGroup.getRawValue() as Contato;
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
     let clienteLogin = this.clienteLoginFormGroup.getRawValue() as ClienteLogin;
-    let senhaConta = this.senhaFormGroup.getRawValue() as Conta;
+    let senhaTransacoes = this.senhaFormGroup.getRawValue() as Conta;
     clienteLogin.cpf = cliente.cpf;
 
     this.servico
-      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaConta)
+      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes)
       .subscribe(
         () => this.router.navigate(['']),
         err => console.log(err)

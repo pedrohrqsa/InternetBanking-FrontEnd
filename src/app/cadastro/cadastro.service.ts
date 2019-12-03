@@ -21,13 +21,13 @@ export class CadastroService {
 
     cliente.ClienteLogin = new Array<ClienteLogin>();
     cliente.Familiares = new Array<Familiares>();
-    cliente.Contato = new Array<Contato>();
+    cliente.Contatos = new Array<Contato>();
     cliente.Endereco = new Array<Endereco>();
     cliente.Conta = new Array<Conta>();
 
     cliente.ClienteLogin.push(clienteLogin);
     cliente.Familiares.push(familiares);
-    cliente.Contato.push(contato);
+    cliente.Contatos.push(contato);
     cliente.Endereco.push(endereco);
     cliente.Conta.push(conta);
     console.log(cliente);

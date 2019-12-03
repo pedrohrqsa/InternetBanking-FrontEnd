@@ -18,7 +18,7 @@ export interface Cliente{
 
     ClienteLogin:Array<ClienteLogin>;
     Familiares:Array<Familiares>;
-    Contato:Array<Contato>;
+    Contatos:Array<Contato>;
     Endereco:Array<Endereco>;
 
     Conta : Array<Conta>;
