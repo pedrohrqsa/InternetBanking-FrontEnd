@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Transacao } from 'src/app/Models/Transacao';
+import { Observable } from 'rxjs';
 
 const API = this.URL + " api/ ";
 // const API = environment.API_URL;
@@ -7,16 +9,21 @@ const API = this.URL + " api/ ";
 @Injectable({ providedIn: 'root' })
 export class SaqueService {
 
+
+    url = "http://localhost:5000/";
+
+    private apiTransacao = this.url + "api/Transacao";
+
     constructor(private http: HttpClient) { }
 
-    //SUBTRAI O VALOR DO SALDO
-    Saque( /*PARAMETROS QUE SERACAO NECESSARIOS PARA ALTERACAO DO VALOR*/) {
-        /*
-         obj.saque/metodo.put(saque); 
-         console.log(saque);
-        */
+
+
+    Saque(transacao: Transacao) {
         return this
-            .http.put(API + '/api/ContaCorrente', this.Saque,
-                { headers: { 'Content-Type': 'application/json' } })
+        .http.post(this.apiTransacao, transacao,
+          { headers: { 'Content-Type': 'application/json' } })
     }
+
+  
+    
 }

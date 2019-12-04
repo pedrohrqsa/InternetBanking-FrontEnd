@@ -12,21 +12,23 @@ export class InfoContaService {
 
     private apiCliente = this.url + "api/Clientes";
     private apiContaCorrente = this.url + "api/contaCorrente";
-    // private apiAgencia = this.url + "api/agencia";
+    private apiAgencia = this.url + "api/agencia";
 
     constructor(private http: HttpClient) { }
 
-    getInfoCliente(): Observable<Cliente[]> {
-        return this.http.get<Cliente[]>(this.apiCliente);
-    }
+
 
     getInfoContaCorrente(): Observable<ContaCorrente[]> {
         return this.http.get<ContaCorrente[]>(this.apiContaCorrente);
     }
 
-    // getInfoAgencia(): Observable<Agencia[]> {
-    //     return this.http.get<Agencia[]>(this.apiAgencia);
-    // }
+    getInfoCliente(): Observable<Cliente[]> {
+        return this.http.get<Cliente[]>(this.apiCliente);
+    }
+
+    getInfoAgencia(): Observable<Agencia[]> {
+        return this.http.get<Agencia[]>(this.apiAgencia);
+    }
 }
 
 
