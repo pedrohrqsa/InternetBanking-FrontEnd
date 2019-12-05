@@ -1,6 +1,6 @@
 <div class="container">
         <div class="content">
-            <form [formGroup]="FormGroup" (ngSubmit)="submit()">
+            <form [formGroup]="form" (ngSubmit)="submit()">
                 <p class="titulo">
                     Saque
                 </p>
@@ -17,7 +17,7 @@
                 </p>
         
                 <div class="centralizar-botao">
-                  <button mat-raised-button (click)="openBottomSheet()">Sacar</button>
+                  <button mat-raised-button (click)="onSaque()">Sacar</button>
                 </div>
             </form>
         </div>

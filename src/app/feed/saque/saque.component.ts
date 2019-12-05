@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class SaqueComponent {
-  saqueFormGroup: FormGroup;
+  
 
   
   saldoAtual: number = 120;
@@ -33,15 +33,13 @@ export class SaqueComponent {
 
   @Output() submitEM = new EventEmitter();
 
-  constructor(private _bottomSheet: MatBottomSheet, private servico: SaqueService,private router: Router,private http: HttpClient) {}
+  constructor(private _bottomSheet: MatBottomSheet,private servico: SaqueService,private router: Router,private http: HttpClient) {}
   
   openBottomSheet(): void {
     this._bottomSheet.open(BottomSheetOverviewExampleSheet);
   }
-
-
   onSaque() {
-    const saque = this.saqueFormGroup.getRawValue() as Transacao;
+    const saque = this.form.getRawValue() as Transacao;
 
     this.servico
       .Saque(saque)
@@ -50,6 +48,8 @@ export class SaqueComponent {
         err => console.log(err)
       );
     }
+
+  
 }
 
 @Component({
@@ -57,13 +57,23 @@ export class SaqueComponent {
   templateUrl: 'bottom-sheet-overview-example-sheet.html',
 })
 export class BottomSheetOverviewExampleSheet {
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>){}
+  form: FormGroup;
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,private servico: SaqueService,private router: Router,private http: HttpClient){}
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
+onSaque() {
+    const saque = this.form.getRawValue() as Transacao;
 
+    this.servico
+      .Saque(saque)
+      .subscribe(
+        () => this.router.navigate(['']),
+        err => console.log(err)
+      );
+    }
   
 }
 
