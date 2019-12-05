@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Transacao } from 'src/app/Models/Transacao';
 import { Observable } from 'rxjs';
 
-const API = this.URL + " api/ ";
+
 // const API = environment.API_URL;
 
 @Injectable({ providedIn: 'root' })
