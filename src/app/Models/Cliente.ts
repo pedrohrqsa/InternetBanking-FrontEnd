@@ -2,9 +2,7 @@ import { ClienteLogin } from './ClienteLogin';
 import { Familiares } from './Familiares';
 import { Contato } from './Contato';
 import { Endereco } from './Endereco';
-import { Agencia } from './Agencia';
 import { Conta } from './Conta';
-import { Banco } from './Banco';
 
 export interface Cliente{
     cpf: string;
@@ -20,8 +18,5 @@ export interface Cliente{
     Familiares:Array<Familiares>;
     Contatos:Array<Contato>;
     Endereco:Array<Endereco>;
-
     Conta : Array<Conta>;
-    Agencia : Array<Agencia>;
-    Banco : Array<Banco>;
 }
