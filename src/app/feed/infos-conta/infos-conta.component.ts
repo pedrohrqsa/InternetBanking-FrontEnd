@@ -13,9 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 export class InfosContaComponent implements OnInit {
 
   nome: string;
-  numConta: number;
+  numeroConta: number;
+  numeroAgencia: number;
   indexCPF: number;
-  // agencia: Cliente[];
 
   constructor(
     private userService: UserService,
@@ -38,10 +38,10 @@ export class InfosContaComponent implements OnInit {
   @Output() submitEM = new EventEmitter();
 
   ngOnInit() {
-    // console.log(this.cpf);
     this.getIndexCPF();
     this.onInfoCliente();
-    this.onInfoCC();
+    this.onInfoConta();
+    this.onInfoAgencia();
   }
 
   logout() {
@@ -68,10 +68,18 @@ export class InfosContaComponent implements OnInit {
       );
   }
 
-  onInfoCC() {
-    return this.infoContaService.getInfoContaCorrente()
+  onInfoConta() {
+    return this.infoContaService.getInfoConta()
       .subscribe(clientex =>
-        this.numConta = clientex[this.indexCPF].numConta,
+        this.numeroConta = clientex[this.indexCPF].numeroConta,
+      );
+  }
+
+  // AGENCIA SEMPRE TERÁ A MESMA POSIÇÃO ATÉ TER OUTRAS AGENCIAS.
+  onInfoAgencia() {
+    return this.infoContaService.getInfoAgencia()
+      .subscribe(clientex =>
+        this.numeroAgencia = clientex[0].numeroAgencia,
       );
   }
 }

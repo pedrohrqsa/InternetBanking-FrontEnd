@@ -1,3 +1,3 @@
 export interface Agencia {
-    senhaTransacao: string;
+    numeroAgencia: number;
 }

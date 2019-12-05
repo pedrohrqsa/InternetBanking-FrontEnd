@@ -17,11 +17,10 @@ export class SaldoComponent implements OnInit {
     private infoContaService: InfoContaService,
   ) { }
 
-  saldo: number;
+  saldoAtual: number;
   indexCPF: number;
 
-  isShown: boolean = false; // hidden by default
-
+  isShown: boolean = false;
   toggleShow() {
     this.isShown = !this.isShown;
     this.onSaldo();
@@ -29,7 +28,6 @@ export class SaldoComponent implements OnInit {
 
   ngOnInit() {
     this.getIndexCPF();
-    this.onSaldo();
   }
 
   getIndexCPF() {
@@ -46,7 +44,7 @@ export class SaldoComponent implements OnInit {
   onSaldo() {
     return this.saldoService.GetInfoSaldo()
       .subscribe(saldox =>
-        this.saldo = saldox[this.indexCPF].saldo
+        this.saldoAtual = saldox[this.indexCPF].saldoAtual
       );
   }
 }
