@@ -15,10 +15,10 @@ export class DepositoComponent {
   @Input() error: string | null;
   @Output() submitEM = new EventEmitter();
 
-  saldoAtual: number;
-  indexCPF: number;
-  numeroConta: number;
   senha: string;
+  indexCPF: number;
+  saldoAtual: number;
+  numeroConta: number;
 
   form: FormGroup = new FormGroup({
     valor: new FormControl('')

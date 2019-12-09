@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Transacao } from 'src/app/Models/Transacao';
+import { Conta } from 'src/app/Models/Conta';
 import { SaqueService } from './saque.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Transacao } from 'src/app/Models/Transacao';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { InfoContaService } from '../infos-conta/Infos-conta.service';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-saque',
@@ -18,7 +19,8 @@ export class SaqueComponent {
   @Output() submitEM = new EventEmitter();
 
   form: FormGroup = new FormGroup({
-    valor: new FormControl('')
+    valor: new FormControl('')//,
+    //senha1: new FormControl('')
   });
 
   senha: string;
@@ -34,6 +36,7 @@ export class SaqueComponent {
 
   ngOnInit(): void {
     this.getIndexCPF();
+    this.onInfoConta();
   }
 
   getIndexCPF() {
@@ -43,7 +46,7 @@ export class SaqueComponent {
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-          this.onInfoConta())
+          this.onInfoConta(), this.onSenhaConta())
       );
   }
 
@@ -64,11 +67,18 @@ export class SaqueComponent {
   onSaque() {
     this.getIndexCPF();
     this.onInfoConta();
+    this.onSenhaConta();
+
     const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
+
     const transacao1 = this.form.getRawValue() as Transacao;
-    transacao1.numeroConta = this.numeroConta;
-    transacao1.idTipoTransacao = 2;
-    transacao1.numeroContaOrigem = this.numeroConta;
-    this.servico.Saque(transacao1).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+    const senhaT = this.form.getRawValue() as Conta;
+
+    // if ("1234" == this.senha) {
+      transacao1.numeroConta = this.numeroConta;
+      transacao1.idTipoTransacao = 2;
+      transacao1.numeroContaOrigem = this.numeroConta;
+      this.servico.Saque(transacao1).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+    // }
   }
 }

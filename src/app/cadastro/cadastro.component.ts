@@ -6,7 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient } from '@angular/common/http';
 import { CadastroService } from './cadastro.service';
 
-import { Cliente} from '../Models/Cliente';
+import { Cliente } from '../Models/Cliente';
 import { Familiares } from '../Models/Familiares';
 import { Contato } from '../Models/Contato';
 import { Endereco } from '../Models/Endereco';
@@ -29,6 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
+
 export class CadastroComponent implements OnInit {
   dadosPessoaisFormGroup: FormGroup;
   FamiliaresFormGroup: FormGroup;
@@ -40,10 +41,11 @@ export class CadastroComponent implements OnInit {
 
   fileToUpload: File = null;
 
-  constructor(private _formBuilder: FormBuilder,
-     private servico: CadastroService,
-      private router: Router,
-      private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private servico: CadastroService,
+    private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -84,9 +86,7 @@ export class CadastroComponent implements OnInit {
     );
     this.senhaFormGroup = this._formBuilder.group({
       senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
-    }//,
-      // { validator: this.checkPasswords }
-    );
+    });
   }
 
   onCadastro() {

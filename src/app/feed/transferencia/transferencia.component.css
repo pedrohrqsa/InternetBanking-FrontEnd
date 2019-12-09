@@ -1,49 +1,41 @@
 .container {
     display: flex;
     justify-content: center;
-  }
-  
-  .titulo{
+}
+
+.titulo {
     font-size: 40px;
     color: darkslategray;
     text-align: center;
-  }
-  
-  mat-form-field{
+}
+
+mat-form-field {
     width: 95%;
-  }
-  
-  button{
+}
+
+button {
     text-align: center;
     background-color: darkslategray;
     color: white;
-  }
+}
 
-  
-
-  .centralizar-botao{
+.centralizar-botao {
     text-align: center;
-    
-  }
+}
 
-  .bottom-esquerda{
+.bottom-esquerda {
     display: flex;
-        }
+}
 
-   .right{
-     margin-left: 30px;
-   } 
+.right {
+    margin-left: 30px;
+}
 
-  
-  
-  
-
-  .content{
-    background-color: white;
+.content {
+    background-color: rgba(208, 231, 238, 0.438);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 50px;
-    width: 500px;
+    width: 5000px;
     height: 100vh;
-  }
-  
+}
