@@ -14,34 +14,36 @@ import { InfoContaService } from '../infos-conta/Infos-conta.service';
 
 export class SaqueComponent {
 
+  @Input() error: string | null;
+  @Output() submitEM = new EventEmitter();
+
   form: FormGroup = new FormGroup({
     valor: new FormControl('')
   });
-  
-  indexCPF : number;
-  numeroConta: number;
+
   senha: string;
+  indexCPF: number;
+  numeroConta: number;
 
   constructor(private _formBuilder: FormBuilder,
     private servico: SaqueService,
     private infoContaService: InfoContaService,
-     private router: Router,
-     private http: HttpClient,
-     private activatedRoute: ActivatedRoute){}
-     
-  ngOnInit(){
-    // this.getIndexCPF();
-    // this.onInfoConta();
+    private router: Router,
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.getIndexCPF();
   }
+
   getIndexCPF() {
-
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
-
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf))
+            obj.cpf == getCpf),
+          this.onInfoConta())
       );
   }
 
@@ -58,7 +60,8 @@ export class SaqueComponent {
         this.senha = clientex[this.indexCPF].senhaTransacoes,
       );
   }
-  onSaque(){
+
+  onSaque() {
     this.getIndexCPF();
     this.onInfoConta();
     const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
@@ -66,13 +69,6 @@ export class SaqueComponent {
     transacao1.numeroConta = this.numeroConta;
     transacao1.idTipoTransacao = 2;
     transacao1.numeroContaOrigem = this.numeroConta;
-
     this.servico.Saque(transacao1).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
   }
-
-
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
-  
 }
