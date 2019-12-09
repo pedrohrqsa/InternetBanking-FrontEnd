@@ -1,6 +1,6 @@
 <div class="container">
   <div class="content">
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form">
       <p class="titulo">
         Depósito
       </p>
@@ -12,12 +12,18 @@
 
       <p>
         <mat-form-field>
-          <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorDeposito">
+          <input type="number" matInput placeholder="Valor (R$)" formControlName="valor">
         </mat-form-field>
       </p>
 
+      <!-- <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Senha de Transações" formControlNumber="valorDeposito">
+        </mat-form-field>
+      </p> -->
+
       <div class="centralizar-botao">
-        <button mat-raised-button (click)="openBottomSheet()">Depositar</button>
+        <button mat-raised-button (click)="onDeposito()">Depositar</button>
       </div>
     </form>
   </div>

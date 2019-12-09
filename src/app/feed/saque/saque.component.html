@@ -12,9 +12,15 @@
     
                 <p>
                   <mat-form-field>
-                    <input type="text" matInput placeholder="Valor (R$)" formControlNumber="valorSaque">
+                    <input type="number" matInput placeholder="Valor (R$)" formControlName="valor">
                   </mat-form-field>
                 </p>
+
+                <!-- <p>
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Senha Transação" formControlNumber="valorSaque">
+                  </mat-form-field>
+                </p> -->
         
                 <div class="centralizar-botao">
                   <button mat-raised-button (click)="onSaque()">Sacar</button>

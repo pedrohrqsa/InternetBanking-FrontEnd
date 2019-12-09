@@ -1,26 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Transacao } from 'src/app/Models/Transacao';
+import { environment } from 'src/environments/environment';
+import { Conta } from 'src/app/Models/Conta';
+import { Observable } from 'rxjs';
 
-const API = this.URL + " api/ContaCorrente";
-// const API = environment.API_URL;
+
 
 @Injectable({ providedIn: 'root' })
-export class ExtratoService {
+export class DepositoService {
+    API = environment.API_URL;
+
+    private apiConta = this.API + "api/Conta";
+    private apiTransacao = this.API + '/api/Transacao';
 
     constructor(private http: HttpClient) { }
 
     //ADC VALOR AO SALDO
-    Deposito( valor ) {
-        
+    Deposito( transacao: Transacao ) {
         console.log("passou aqui");
+        console.log(transacao);
+        return this
+            .http.post(this.apiTransacao, transacao,
+            { headers: { 'Content-Type': 'application/json' } })
+    }
 
-        /*
-         obj.deposito/metodo.put(deposito); 
-         console.log(deposito);
-        */
-
-        // return this
-        //     .http.put(API + '/api/ContaCorrente', this.Deposito,
-        //     { headers: { 'Content-Type': 'application/json' } })
+    getInfoConta(): Observable<Conta[]>{
+        return this.http.get<Conta[]>(this.apiConta);
     }
 }

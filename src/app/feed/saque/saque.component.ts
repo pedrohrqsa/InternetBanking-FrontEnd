@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Transacao } from 'src/app/Models/Transacao';
 import { SaqueService } from './saque.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { InfoContaService } from '../infos-conta/Infos-conta.service';
 
 @Component({
   selector: 'app-saque',
@@ -13,67 +13,66 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class SaqueComponent {
-  
-
-  
-  saldoAtual: number = 120;
 
   form: FormGroup = new FormGroup({
-    saldo: new FormControl(''),
-    valorSaque: new FormControl(''),
+    valor: new FormControl('')
   });
+  
+  indexCPF : number;
+  numeroConta: number;
+  senha: string;
 
-  submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
-    }
+  constructor(private _formBuilder: FormBuilder,
+    private servico: SaqueService,
+    private infoContaService: InfoContaService,
+     private router: Router,
+     private http: HttpClient,
+     private activatedRoute: ActivatedRoute){}
+     
+  ngOnInit(){
+    // this.getIndexCPF();
+    // this.onInfoConta();
   }
+  getIndexCPF() {
+
+    const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
+
+    return this.infoContaService.getInfoCliente()
+      .subscribe(clientex =>
+        console.log(getCpf,
+          this.indexCPF = clientex.findIndex(obj =>
+            obj.cpf == getCpf))
+      );
+  }
+
+  onInfoConta() {
+    return this.infoContaService.getInfoConta()
+      .subscribe(clientex =>
+        this.numeroConta = clientex[this.indexCPF].numeroConta,
+      );
+  }
+
+  onSenhaConta() {
+    return this.infoContaService.getInfoConta()
+      .subscribe(clientex =>
+        this.senha = clientex[this.indexCPF].senhaTransacoes,
+      );
+  }
+  onSaque(){
+    this.getIndexCPF();
+    this.onInfoConta();
+    const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
+    const transacao1 = this.form.getRawValue() as Transacao;
+    transacao1.numeroConta = this.numeroConta;
+    transacao1.idTipoTransacao = 2;
+    transacao1.numeroContaOrigem = this.numeroConta;
+
+    this.servico.Saque(transacao1).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+  }
+
 
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
-
-  constructor(private _bottomSheet: MatBottomSheet,private servico: SaqueService,private router: Router,private http: HttpClient) {}
-  
-  openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
-  }
-  onSaque() {
-    const saque = this.form.getRawValue() as Transacao;
-
-    this.servico
-      .Saque(saque)
-      .subscribe(
-        () => this.router.navigate(['']),
-        err => console.log(err)
-      );
-    }
-
   
 }
-
-@Component({
-  selector: 'bottom-sheet-overview-example-sheet',
-  templateUrl: 'bottom-sheet-overview-example-sheet.html',
-})
-export class BottomSheetOverviewExampleSheet {
-  form: FormGroup;
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,private servico: SaqueService,private router: Router,private http: HttpClient){}
-
-  openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
-onSaque() {
-    const saque = this.form.getRawValue() as Transacao;
-
-    this.servico
-      .Saque(saque)
-      .subscribe(
-        () => this.router.navigate(['']),
-        err => console.log(err)
-      );
-    }
-  
-}
-
