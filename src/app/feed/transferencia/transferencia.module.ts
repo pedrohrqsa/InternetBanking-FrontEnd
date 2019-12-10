@@ -5,8 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatSidenavModule, MatListModule, MatBottomSheet, MatDialogModule, MatBottomSheetContainer, MatBottomSheetModule } from '@angular/material';
 import { SaldoModule } from '../shared/saldo/saldo.module';
 
-
-
 @NgModule({
   declarations: [TransferenciaComponent],
   imports: [

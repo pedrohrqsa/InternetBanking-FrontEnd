@@ -6,7 +6,8 @@ import { Conta } from 'src/app/Models/Conta';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class DepositoService {
+export class TransferenciaService {
+
     API = environment.API_URL;
 
     private apiConta = this.API + "api/Conta";
@@ -14,9 +15,9 @@ export class DepositoService {
 
     constructor(private http: HttpClient) { }
     
-    Deposito(transacao: Transacao) {
+    Transferecia(transacao3: Transacao) {
         return this
-            .http.post(this.apiTransacao, transacao,
+            .http.post(this.apiTransacao, transacao3,
                 { headers: { 'Content-Type': 'application/json' } })
     }
 
