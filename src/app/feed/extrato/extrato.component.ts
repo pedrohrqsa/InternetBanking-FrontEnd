@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import { Movimentacao } from './movimentacao';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ExtratoService } from './extrato.service';
 
 @Component({
   selector: 'app-extrato',
@@ -9,25 +9,23 @@ import { Movimentacao } from './movimentacao';
   styleUrls: ['extrato.component.css']
 })
 export class ExtratoComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Movimentacao>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  constructor(private extratoService: ExtratoService) { }
+
+  displayedColumns: string[] = ['dtTransacao', 'idTipoTransacao', 'valor'];
+
+  dataSource = new MatTableDataSource<any>();
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this.extratoService.getInfoExtrato()
+    .subscribe(stream => {
+      this.dataSource = new MatTableDataSource(stream);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 }
 
-const ELEMENT_DATA: Movimentacao[] = [
-  {
-    data: '30/12/2018', 
-    descricao: 'Saque', 
-    valor: '550,00'
-  },
-  {
-    data: '31/12/2018', 
-    descricao: 'Saque', 
-    valor: '750,00'
-  }
-];
+
+

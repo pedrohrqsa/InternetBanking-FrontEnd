@@ -1,16 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cliente } from 'src/app/Models/Cliente';
+import { Transacao } from 'src/app/Models/Transacao';
 
-
-const api = this.URL + " api/Cliente";
+@Injectable({ providedIn: 'root' })
 
 export class ExtratoService {
 
-    constructor(private http: HttpClient, @Inject('URL') private Url: string) { }
+    url = "http://localhost:5000/";
+    private apiExtrato = this.url + "api/Transacao";
 
-    GetInfoCliente(): Observable<Cliente[]> {
-        return this.http.get<Cliente[]>(this.Url);
+    constructor(private http: HttpClient) { }
+    
+    getInfoExtrato(): Observable<Transacao[]> {
+        return this.http.get<Transacao[]>(this.apiExtrato);
     }
 }
+
+

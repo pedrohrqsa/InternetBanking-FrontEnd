@@ -5,19 +5,19 @@
                 <table mat-table [dataSource]="dataSource">
 
                     <!-- Name Column -->
-                    <ng-container matColumnDef="name">
+                    <ng-container matColumnDef="dtTransacao">
                         <th mat-header-cell *matHeaderCellDef> Data </th>
-                        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.dtTransacao}} </td>
                     </ng-container>
 
                     <!-- Weight Column -->
-                    <ng-container matColumnDef="weight">
+                    <ng-container matColumnDef="idTipoTransacao">
                         <th mat-header-cell *matHeaderCellDef> Histórico </th>
-                        <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.idTipoTransacao}} </td>
                     </ng-container>
 
                     <!-- Symbol Column -->
-                    <ng-container matColumnDef="symbol">
+                    <ng-container matColumnDef="valor">
                         <th mat-header-cell *matHeaderCellDef> Valor (R$) </th>
                         <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
                     </ng-container>
