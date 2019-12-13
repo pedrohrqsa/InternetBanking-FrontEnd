@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule, MatIconModule, MatBottomSheetModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 import { FeedComponent } from './feed.component';
 import { SaldoModule } from './shared/saldo/saldo.module';
@@ -9,7 +10,7 @@ import { ExtratoModule } from './extrato/extrato.module';
 import { DepositoModule } from './deposito/deposito.module';
 import { SaqueModule } from './saque/saque.module';
 import { TransferenciaModule } from './transferencia/transferencia.module';
-import { RouterModule } from '@angular/router';
+import { PerfilModule } from './perfil/perfil.module';
 
 
 
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     ExtratoModule,
     DepositoModule,
     SaqueModule,
+    PerfilModule,
     TransferenciaModule,
     MatBottomSheetModule,
     RouterModule
