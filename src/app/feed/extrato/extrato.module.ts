@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { MatTabsModule, MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatTabsModule, MatTableModule, MatPaginatorModule, MatButtonModule } from '@angular/material';
 import { ExtratoComponent } from './extrato.component';
 
 
@@ -17,7 +17,8 @@ import { ExtratoComponent } from './extrato.component';
         BrowserAnimationsModule,
         MatTabsModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatButtonModule
     ],
     exports: [ExtratoComponent]
 })

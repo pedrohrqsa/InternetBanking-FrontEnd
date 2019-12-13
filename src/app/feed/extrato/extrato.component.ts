@@ -25,6 +25,9 @@ export class ExtratoComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+  refresh(): void {
+    window.location.reload();
+  }
 }
 
 
