@@ -1,0 +1,16 @@
+<form action="">
+    <mat-form-field class="w-100">
+        <input matInput type="password" name="senhaAtual" placeholder="Insira sua senha atual" minlength="8" maxlength="15">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-100">
+        <input matInput type="password" name="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-100">
+        <input matInput type="password" name="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-button>Confirmar</button>
+</form>
