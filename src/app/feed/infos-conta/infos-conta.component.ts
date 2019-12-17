@@ -57,7 +57,8 @@ export class InfosContaComponent implements OnInit {
       .subscribe(clientex =>
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf))
+            obj.cpf == getCpf),
+            this.onInfoConta())
       );
   }
 

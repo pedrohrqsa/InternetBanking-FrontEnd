@@ -8,6 +8,12 @@ import { TrocaSenha } from './troca-senha.component';
 import { TrocaInfo } from './troca-info.component';
 import { FechaConta } from './fecha-conta.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FeedComponent } from '../feed.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'feed/:cpf', component: FeedComponent, /*canActivate: [AuthGuard]*/ },
+];
 
 @NgModule({
   declarations: [ConfiguracoesComponent, TrocaSenha, TrocaInfo, FechaConta],
@@ -18,9 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
-  exports: [ConfiguracoesComponent, TrocaSenha, TrocaInfo, FechaConta],
+  exports: [ConfiguracoesComponent, TrocaSenha, TrocaInfo, FechaConta, RouterModule],
   entryComponents: [TrocaSenha, TrocaInfo, FechaConta]
 })
 export class ConfiguracoesModule { }

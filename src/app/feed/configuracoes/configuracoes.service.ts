@@ -14,14 +14,13 @@ export class ConfiguracoesService {
     private apiCliente = this.url + "api/Clientes";
     private apiFamiliares = this.url + "api/Familiares";
     private apiContato = this.url + "api/Contato";
-    private apiEndereco = this.url + "api/Endereco";
+    private apiEnderecos = this.url + "api/Enderecos";
 
     constructor(private http: HttpClient) { }
-
+    
     getInfoCliente(): Observable<Cliente[]> {
         return this.http.get<Cliente[]>(this.apiCliente);
     }
-
     getInfoFamiliares(): Observable<Familiares> {
         return this.http.get<Familiares>(this.apiFamiliares);
     }
@@ -31,6 +30,6 @@ export class ConfiguracoesService {
     }
 
     getInfoEndereco(): Observable<Endereco[]> {
-        return this.http.get<Endereco[]>(this.apiEndereco);
+        return this.http.get<Endereco[]>(this.apiEnderecos);
     }
 }
