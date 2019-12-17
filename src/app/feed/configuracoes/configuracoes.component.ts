@@ -6,11 +6,11 @@ import { TrocaInfo } from './troca-info.component';
 import { FechaConta } from './fecha-conta.component';
 
 @Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  selector: 'app-configuracoes',
+  templateUrl: './configuracoes.component.html',
+  styleUrls: ['./configuracoes.component.css']
 })
-export class PerfilComponent implements OnInit {
+export class ConfiguracoesComponent implements OnInit {
 
   constructor(private _bottomSheet: MatBottomSheet) { }
 

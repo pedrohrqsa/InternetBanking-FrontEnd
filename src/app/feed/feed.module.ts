@@ -10,7 +10,7 @@ import { ExtratoModule } from './extrato/extrato.module';
 import { DepositoModule } from './deposito/deposito.module';
 import { SaqueModule } from './saque/saque.module';
 import { TransferenciaModule } from './transferencia/transferencia.module';
-import { PerfilModule } from './perfil/perfil.module';
+import { ConfiguracoesModule } from './configuracoes/configuracoes.module';
 
 
 
@@ -25,7 +25,7 @@ import { PerfilModule } from './perfil/perfil.module';
     ExtratoModule,
     DepositoModule,
     SaqueModule,
-    PerfilModule,
+    ConfiguracoesModule,
     TransferenciaModule,
     MatBottomSheetModule,
     RouterModule
