@@ -4,27 +4,23 @@
             <p class="titulo">
                 Depósito
             </p>
-
-            <br>
-            <br>
+            <br><br>
             <app-saldo></app-saldo>
             <br>
-
             <p>
                 <mat-form-field>
                     <input type="number" matInput placeholder="Valor (R$)" formControlName="valor">
                 </mat-form-field>
             </p>
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Senha de Transações" formControlName="senhaTransacoes">
+                </mat-form-field>
+            </p>
 
-            <!-- <p>
-        <mat-form-field>
-          <input type="number" matInput placeholder="Senha de Transações" formControlNumber="valorDeposito">
-        </mat-form-field>
-      </p> -->
-
-            <div class="centralizar-botao">
-                <button mat-raised-button (click)="onDeposito()">Depositar</button>
-            </div>
         </form>
+        <div class="centralizar-botao">
+            <button mat-raised-button (click)="onDeposito()">Depositar</button>
+        </div>
     </div>
 </div>

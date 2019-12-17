@@ -5,4 +5,5 @@ export interface Transacao {
     numeroContaOrigem: number;
     valor: number;
     dtTransacao: Date;
+    senhaTransacoes: string;
 }

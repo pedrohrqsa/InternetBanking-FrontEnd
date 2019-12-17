@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Transacao } from 'src/app/Models/Transacao';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 import { Conta } from 'src/app/Models/Conta';
+import { HttpClient } from '@angular/common/http';
+import { Transacao } from 'src/app/Models/Transacao';
+import { environment } from 'src/environments/environment';
 
 const API = environment.API_URL;
 
@@ -25,5 +25,4 @@ export class SaqueService {
     getInfoConta(): Observable<Conta[]> {
         return this.http.get<Conta[]>(this.apiConta);
     }
-
 }

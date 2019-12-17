@@ -19,13 +19,14 @@ export class SaqueComponent {
   @Output() submitEM = new EventEmitter();
 
   form: FormGroup = new FormGroup({
-    valor: new FormControl('')//,
-    //senha1: new FormControl('')
+    valor: new FormControl(''),
+    senhaTransacoes: new FormControl('')
   });
 
   senha: string;
   indexCPF: number;
   numeroConta: number;
+  senhaTransacoes: string;
 
   constructor(private _formBuilder: FormBuilder,
     private servico: SaqueService,
@@ -46,7 +47,7 @@ export class SaqueComponent {
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-          this.onInfoConta(), this.onSenhaConta())
+          this.onInfoConta())
       );
   }
 
@@ -57,28 +58,18 @@ export class SaqueComponent {
       );
   }
 
-  onSenhaConta() {
-    return this.infoContaService.getInfoConta()
-      .subscribe(clientex =>
-        this.senha = clientex[this.indexCPF].senhaTransacoes,
-      );
-  }
-
   onSaque() {
     this.getIndexCPF();
-    this.onInfoConta();
-    this.onSenhaConta();
 
     const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
 
-    const transacao1 = this.form.getRawValue() as Transacao;
-    const senhaT = this.form.getRawValue() as Conta;
+    const transacao2 = this.form.getRawValue() as Transacao;
 
-    // if ("1234" == this.senha) {
-      transacao1.numeroConta = this.numeroConta;
-      transacao1.idTipoTransacao = 2;
-      transacao1.numeroContaOrigem = this.numeroConta;
-      this.servico.Saque(transacao1).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
-    // }
+    transacao2.numeroConta = this.numeroConta;
+    transacao2.idTipoTransacao = 2;
+    transacao2.numeroContaOrigem = this.numeroConta;
+    this.senhaTransacoes = transacao2.senhaTransacoes;
+    
+    this.servico.Saque(transacao2).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
   }
 }

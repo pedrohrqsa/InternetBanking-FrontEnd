@@ -6,30 +6,23 @@
             </p>
 
             <app-saldo></app-saldo>
-            <br>
-            <br>
-            <br>
-
-            <!-- <p>
-                <mat-form-field>
-                    <input type="text" matInput placeholder="Nome Titular Conta Destino" formControlName="NomeTitularContaDestino">
-                </mat-form-field>
-            </p> -->
-
+            <br><br><br>
 
             <p>
                 <mat-form-field>
                     <input type="number" matInput placeholder="Nº da Conta a ser Transferido" formControlName="numeroContaDestino">
                 </mat-form-field>
             </p>
-
-
             <p>
                 <mat-form-field>
                     <input type="number" matInput placeholder="Valor (R$)" formControlName="valor">
                 </mat-form-field>
             </p>
-
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Senha de Transações" formControlName="senhaTransacoes">
+                </mat-form-field>
+            </p>
 
             <div class="centralizar-botao">
                 <button mat-raised-button (click)="onTransferencia()">Transferir</button>

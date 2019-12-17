@@ -13,7 +13,7 @@ export class DepositoService {
     private apiTransacao = this.API + '/api/Transacao';
 
     constructor(private http: HttpClient) { }
-    
+
     Deposito(transacao: Transacao) {
         return this
             .http.post(this.apiTransacao, transacao,

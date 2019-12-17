@@ -16,23 +16,19 @@ export class TransferenciaComponent {
   @Input() error: string | null;
   @Output() submitEM = new EventEmitter();
 
-  // saldoAtual: number;
   nome: string;
   indexCPF: number;
   numeroConta: number;
   numeroContaOrigem: number;
   numeroContaDestino: number;
   valor: number;
+  senhaTransacoes: string;
 
   form: FormGroup = new FormGroup({
-    // saldo: new FormControl(''),
     numeroContaDestino: new FormControl(''),
-    // NomeTitularContaDestino: new FormControl(''),
     valor: new FormControl(''),
+    senhaTransacoes: new FormControl('')
   });
-
-  // this.valor = this.form.get('valor').value;
-  // this.numeroContaDestino = this.form.get('numeroContaDestino').value;
 
   constructor(private infoContaService: InfoContaService,
     private router: Router,
@@ -74,6 +70,7 @@ export class TransferenciaComponent {
     transacao3.numeroConta = this.numeroConta;
     transacao3.numeroContaOrigem = this.numeroConta;
     transacao3.idTipoTransacao = 3;
+    this.senhaTransacoes = transacao3.senhaTransacoes;
     transacao3.numeroContaDestino = this.form.get('numeroContaDestino').value;
 
     this.servico.Transferecia(transacao3)
