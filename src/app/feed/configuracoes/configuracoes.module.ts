@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ConfiguracoesComponent } from './configuracoes.component';
 import { SaldoModule } from '../shared/saldo/saldo.module';
 import { AlterarSenhaModule } from './alterar-senha/alterar-senha.module';
+import { AlterarInfoModule } from './alterar-info/alterar-info.module';
+import { InativarContaModule } from './inativar-conta/inativar-conta.module';
 
 @NgModule({
   declarations: [ConfiguracoesComponent],
@@ -17,7 +19,9 @@ import { AlterarSenhaModule } from './alterar-senha/alterar-senha.module';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    AlterarSenhaModule
+    AlterarSenhaModule,
+    AlterarInfoModule,
+    InativarContaModule
   ],
   exports: [ConfiguracoesComponent],
   entryComponents: []
