@@ -1,0 +1,12 @@
+h1, h3 {
+    display: flex;
+    justify-content: center;
+}
+
+mat-divider {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-left: 10px;
+}

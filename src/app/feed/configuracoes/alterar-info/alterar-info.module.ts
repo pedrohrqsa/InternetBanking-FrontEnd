@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDividerModule } from '@angular/material';
 
-
+import { AlterarInfoComponent } from './alterar-info.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [AlterarInfoComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    MatDividerModule
+  ],
+  exports: [AlterarInfoComponent]
 })
 export class AlterarInfoModule { }
