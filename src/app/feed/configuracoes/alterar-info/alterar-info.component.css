@@ -10,3 +10,15 @@ mat-divider {
 p {
     margin-left: 10px;
 }
+.Conteudo{
+    display: flex;
+    justify-content: space-around;
+}
+.Esquerda{
+    width: 50%;
+
+}
+.Direita{
+    width: 50%;
+
+}
