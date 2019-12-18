@@ -10,7 +10,27 @@ export class ConfiguracoesComponent implements OnInit {
 
   constructor(private _bottomSheet: MatBottomSheet) { }
 
+  conta: boolean = false;
+  senha: boolean = false;
+  dados: boolean = false;
+
   ngOnInit() {
+  }
+
+  onDados(){
+    this.conta = false;
+    this.senha = false;
+    this.dados = true;
+  }
+  onSenha(){
+    this.conta = false;
+    this.senha = true;
+    this.dados = false;
+  }
+  onConta(){
+    this.conta = true;
+    this.senha = false;
+    this.dados = false;
   }
 
   // abrirTrocaSenha(): void {

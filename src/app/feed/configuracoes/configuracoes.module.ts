@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatFormFieldModule, MatCommonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatCommonModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ConfiguracoesComponent } from './configuracoes.component';
@@ -22,6 +22,7 @@ import { InativarContaModule } from './inativar-conta/inativar-conta.module';
     AlterarSenhaModule,
     AlterarInfoModule,
     InativarContaModule
+
   ],
   exports: [ConfiguracoesComponent],
   entryComponents: []
