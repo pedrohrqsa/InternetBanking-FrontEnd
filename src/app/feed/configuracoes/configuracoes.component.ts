@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
-import { TrocaSenha } from './troca-senha.component';
-import { TrocaInfo } from './troca-info.component';
-import { FechaConta } from './fecha-conta.component';
-
 @Component({
   selector: 'app-configuracoes',
   templateUrl: './configuracoes.component.html',
@@ -17,15 +13,15 @@ export class ConfiguracoesComponent implements OnInit {
   ngOnInit() {
   }
 
-  abrirTrocaSenha(): void {
-    this._bottomSheet.open(TrocaSenha);
-  }
+  // abrirTrocaSenha(): void {
+  //   this._bottomSheet.open(TrocaSenhaComponent);
+  // }
   
-  abrirTrocaInfo(): void {
-    this._bottomSheet.open(TrocaInfo);
-  }
+  // abrirTrocaInfo(): void {
+  //   this._bottomSheet.open(TrocaInfoComponent);
+  // }
 
-  abrirFechamentoConta(): void {
-    this._bottomSheet.open(FechaConta);
-  }
+  // abrirInativarConta(): void {
+  //   this._bottomSheet.open(InativarContaComponent);
+  // }
 }

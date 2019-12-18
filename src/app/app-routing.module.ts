@@ -8,7 +8,6 @@ import { NotFoundComponent } from './erros/not-found/not-found.component';
 import { LoginGuard } from './core/not-logged.guard';
 import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './login/login.component';
-import { TrocaInfo } from './feed/configuracoes/troca-info.component';
 
 const routes: Routes = [
 
