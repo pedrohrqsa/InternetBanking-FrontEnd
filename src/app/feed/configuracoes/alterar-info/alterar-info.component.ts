@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { AlterarInfoService } from './alterar-info.service';
+import { Cliente } from 'src/app/Models/Cliente';
+import { Familiares } from 'src/app/Models/Familiares';
+import { Contato } from 'src/app/Models/Contato';
+import { Endereco } from 'src/app/Models/Endereco';
 
 @Component({
   selector: 'app-alterar-info',
@@ -7,9 +14,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlterarInfoComponent implements OnInit {
 
-  constructor() { }
+  indexCPF: number;
+
+  cliente: Cliente;
+  familiares: Familiares;
+  contato: Contato;
+  endereco: Endereco;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private alterarInfoService: AlterarInfoService
+  ) { }
 
   ngOnInit() {
+    this.getIndexCPF();
+    this.onInfoCliente();
+    this.onInfoFamiliares();
+    this.onInfoContato();
+    this.onInfoEndereco();
+  }
+
+  getIndexCPF() {
+    const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
+
+    return this.alterarInfoService.getInfoCliente()
+      .subscribe(clientex =>
+        console.log(getCpf,
+          this.indexCPF = clientex.findIndex(obj =>
+            obj.cpf == getCpf),
+            this.onInfoCliente())
+      );
+  }
+
+  onInfoCliente() {
+    return this.alterarInfoService.getInfoCliente()
+      .subscribe(clientex =>
+        this.cliente = clientex[this.indexCPF],
+      );
+  }
+
+  onInfoFamiliares() {
+    return this.alterarInfoService.getInfoFamiliares()
+      .subscribe(clientex =>
+        this.familiares = clientex[this.indexCPF],
+      );
+  }
+
+  onInfoContato() {
+    return this.alterarInfoService.getInfoContato()
+      .subscribe(clientex =>
+        this.contato = clientex[this.indexCPF],
+      );
+  }
+
+  onInfoEndereco() {
+    return this.alterarInfoService.getInfoEndereco()
+      .subscribe(clientex =>
+        this.endereco = clientex[this.indexCPF],
+      );
   }
 
 }

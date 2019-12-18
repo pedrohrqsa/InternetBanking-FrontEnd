@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { InfoContaService } from './Infos-conta.service';
-import { UserService } from 'src/app/core/user/user.service';
 import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { InfoContaService } from './Infos-conta.service';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
   selector: 'app-infos-conta',
@@ -50,7 +51,6 @@ export class InfosContaComponent implements OnInit {
   }
 
   getIndexCPF() {
-
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
 
     return this.infoContaService.getInfoCliente()
