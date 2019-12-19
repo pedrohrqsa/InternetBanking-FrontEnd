@@ -1,4 +1,8 @@
-h1, h3 {
+h1 {
+    text-align: justify;
+}
+
+h3 {
     display: flex;
     justify-content: center;
 }
