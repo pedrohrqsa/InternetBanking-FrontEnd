@@ -1,34 +1,32 @@
 .container {
     display: flex;
-    justify-content: center;
-}
-
-.titulo {
-    font-size: 40px;
-    color: darkslategray;
-    text-align: center;
-}
-
-mat-form-field {
-    width: 95%;
-}
-
-button {
-    text-align: center;
-    background-color: darkslategray;
-    color: white;
-    margin: 1em;
-}
-
-.centralizar-botao {
-    text-align: center;
-}
-
-.content {
     background-color: rgba(208, 231, 238, 0.438);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    padding: 50px;
-    width: 5000px;
-    height: 100vh;
+}
+
+.menu{
+    float: left;
+    width: 20vw;
+    height: 92vh;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu button{
+    border-style: none;
+    color: white;
+    background-color: mediumaquamarine;
+    height: 50px;
+}
+
+.menu button:hover{
+    background-color: aquamarine;
+    color: black;
+}
+
+.conteudo{
+    margin-left: 25px;
+    margin-top: 25px;
+    float: right;
+    width: 80vw;
 }

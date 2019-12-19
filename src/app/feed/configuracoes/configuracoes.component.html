@@ -1,9 +1,12 @@
 <div class="container">
-    <div class="content" align="center">
-        <button mat-button (click)="abrirTrocaSenha()">Alterar senha do InternetBanking</button>
-        <br>
-        <button mat-button (click)="abrirTrocaInfo()"> Alterar informações de cadastro</button>
-        <br>
-        <button mat-button (click)="abrirInativarConta()">Solicitação de inativamento de conta</button>
+    <div class="menu">
+        <button (click)="onDados()">Alterar Dados Pessoais</button>
+        <button (click)="onSenha()">Alterar Senha</button>
+        <button (click)="onConta()">Desativar Conta</button>
+    </div>
+    <div class="conteudo">
+        <app-alterar-info *ngIf="dados == true"></app-alterar-info>
+        <app-alterar-senha *ngIf="senha == true"></app-alterar-senha> 
+        <app-inativar-conta *ngIf="conta == true"></app-inativar-conta>
     </div>
 </div>

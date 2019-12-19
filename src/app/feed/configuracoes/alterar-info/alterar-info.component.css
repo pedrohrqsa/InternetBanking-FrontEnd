@@ -1,0 +1,46 @@
+h1 {
+    text-align: justify;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
+mat-divider {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-left: 10px;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.esquerda {
+    width: 50%;
+}
+
+.direita {
+    width: 50%;
+}
+
+.direita input {
+    margin-bottom: 9px;
+    width: 100%;
+}
+
+.direita .data {
+    width: 90.79%;
+}
+
+button {
+    float: right;
+}
+
+.alterarInfo {
+    margin-left: 5px;
+}

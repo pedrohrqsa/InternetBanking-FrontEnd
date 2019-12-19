@@ -1,5 +1,6 @@
 export interface Conta {
-    senhaTransacoes: string;
-    saldoAtual : number;
     numeroConta: number;
+    senhaTransacoes: string;
+    saldoAtual: number;
+    flagAtivo: number;
 }

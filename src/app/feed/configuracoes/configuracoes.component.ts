@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-configuracoes',
@@ -8,20 +7,29 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 })
 export class ConfiguracoesComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor() { }
+
+  dados: boolean = true;
+  senha: boolean = false;
+  conta: boolean = false;
 
   ngOnInit() {
   }
 
-  // abrirTrocaSenha(): void {
-  //   this._bottomSheet.open(TrocaSenhaComponent);
-  // }
-  
-  // abrirTrocaInfo(): void {
-  //   this._bottomSheet.open(TrocaInfoComponent);
-  // }
+  onDados(){
+    this.conta = false;
+    this.senha = false;
+    this.dados = true;
+  }
+  onSenha(){
+    this.conta = false;
+    this.senha = true;
+    this.dados = false;
+  }
+  onConta(){
+    this.conta = true;
+    this.senha = false;
+    this.dados = false;
+  }
 
-  // abrirInativarConta(): void {
-  //   this._bottomSheet.open(InativarContaComponent);
-  // }
 }

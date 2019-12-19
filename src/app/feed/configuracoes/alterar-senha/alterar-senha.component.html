@@ -1,4 +1,6 @@
-<form [formGroup]="trocaSenhaFormGroup">
+<h1>Alterar senha</h1>
+
+<form [formGroup]="alterarSenhaFormGroup">
     <mat-form-field class="w-100">
         <input matInput type="password" name="senhaAtual" formControlName="senhaAtual" placeholder="Insira sua senha atual" minlength="8" maxlength="15">
     </mat-form-field>
@@ -12,5 +14,5 @@
     </mat-form-field>
     <br>
     <br>
-    <button mat-button>Confirmar</button>
+    <button mat-raised-button>Confirmar</button>
 </form>

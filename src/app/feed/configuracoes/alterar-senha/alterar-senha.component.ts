@@ -17,7 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AlterarSenhaComponent implements OnInit {
 
-  trocaSenhaFormGroup: FormGroup;
+  alterarSenhaFormGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
 
   constructor(
@@ -25,9 +25,10 @@ export class AlterarSenhaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.trocaSenhaFormGroup = this._formBuilder.group({
+    this.alterarSenhaFormGroup = this._formBuilder.group({
+      senhaAtual: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       novaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      confirmacaoNovaSenha: ['', [Validators.minLength(8), Validators.maxLength(15)]]
+      confirmacaoNovaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     },
       { validator: this.checkPasswords }
     );
