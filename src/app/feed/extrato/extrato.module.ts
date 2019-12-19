@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatTabsModule, MatTableModule, MatPaginatorModule, MatButtonModule } from '@angular/material';
 import { ExtratoComponent } from './extrato.component';
+import { InfosContaModule } from '../infos-conta/infos-conta.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ExtratoComponent } from './extrato.component';
         MatTabsModule,
         MatTableModule,
         MatPaginatorModule,
-        MatButtonModule
+        MatButtonModule,
+        InfosContaModule
     ],
     exports: [ExtratoComponent]
 })
