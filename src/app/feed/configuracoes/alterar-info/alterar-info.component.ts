@@ -111,4 +111,26 @@ export class AlterarInfoComponent implements OnInit {
     }
   }
 
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  letterOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) &&
+      charCode != 32 && (charCode < 128 || charCode > 144) && (charCode < 147 || charCode > 154) &&
+      (charCode < 160 || charCode > 165) && (charCode < 181 || charCode > 183) &&
+      (charCode < 198 || charCode > 199) && (charCode < 97 || charCode > 122) &&
+      (charCode < 210 || charCode > 216) && charCode != 222 && charCode != 224 &&
+      (charCode < 226 || charCode > 229) && (charCode < 233 || charCode > 237) &&
+      charCode != 96 && charCode != 126 && charCode != 239) {
+      return false;
+    }
+    return true;
+  }
+
 }

@@ -1,9 +1,4 @@
-h1 {
-    text-align: justify;
-    font-size: 35px;
-}
-
-h3 {
+h1, h3 {
     display: flex;
     justify-content: center;
 }
@@ -40,4 +35,8 @@ p {
 
 button {
     float: right;
+}
+
+.alterarInfo {
+    margin-left: 5px;
 }

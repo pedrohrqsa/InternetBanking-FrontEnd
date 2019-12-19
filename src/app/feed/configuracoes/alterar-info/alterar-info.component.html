@@ -1,7 +1,9 @@
 <h1>Alteração de informações de cadastro</h1>
 <mat-divider></mat-divider>
 
-<button mat-raised-button (click)="onEditarPerfil()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == false" (click)="onEditarPerfil()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true" (click)="onEditarPerfil()">Cancelar</button>
 <h3>Perfil</h3>
 <mat-divider></mat-divider>
 
@@ -20,22 +22,24 @@
 
     <div class="direita">
         <form action="#" *ngIf="editarPerfil == true">
-            <input type="text" name="newNome" formControlName="newNome">
-            <input type="text" name="newSobrenome" formControlName="newSobrenome">
-            <input type="text" name="newCpf" formControlName="newCpf">
-            <input type="text" name="newRg" formControlName="newRg">
-            <input type="text" name="newOrgaoEmissor" formControlName="newOrgaoEmissor">
-            <input class="data"[matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento">
+            <input (keypress)="letterOnly($event)" name="newNome" formControlName="newNome" placeholder="Nome" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenome" formControlName="newSobrenome" placeholder="Sobrenome" maxlength="50">
+            <input (keypress)="numberOnly($event)" name="newCpf" formControlName="newCpf" placeholder="CPF" minlength="11" maxlength="11">
+            <input name="newRg" formControlName="newRg" placeholder="RG" minlength="9" maxlength="9">
+            <input (keypress)="letterOnly($event)" name="newOrgaoEmissor" formControlName="newOrgaoEmissor" placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input class="data" [matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento" placeholder="Data de nascimento" minlength="8" maxlength="8">
                 <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
                 <mat-datepicker #nascimento></mat-datepicker>
-            <input type="text" name="newNacionalidade" formControlName="newNacionalidade">
-            <input type="text" name="newNaturalidade" formControlName="newNaturalidade">
+            <input (keypress)="letterOnly($event)" name="newNacionalidade" formControlName="newNacionalidade" placeholder="Nacionalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="newNaturalidade" formControlName="newNaturalidade" placeholder="Naturalidade" maxlength="20">
         </form>
     </div>
 </div>
 
 <mat-divider></mat-divider>
-<button mat-raised-button (click)="onEditarFamiliares()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == false" (click)="onEditarFamiliares()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true" (click)="onEditarFamiliares()">Cancelar</button>
 <h3>Familiares</h3>
 <mat-divider></mat-divider>
 
@@ -49,10 +53,10 @@
 
     <div class="direita">
         <form action="#" *ngIf="editarFamiliares == true">
-            <input type="text" name="newNomeMae" formControlName="newNomeMae">
-            <input type="text" name="newSobrenomeMae" formControlName="newSobrenomeMae">
-            <input type="text" name="newNomePai" formControlName="newNomePai">
-            <input type="text" name="newSobrenomePai" formControlName="newSobrenomePai">
+            <input (keypress)="letterOnly($event)" name="newNomeMae" formControlName="newNomeMae" placeholder="Nome da mãe" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenomeMae" formControlName="newSobrenomeMae" placeholder="Sobrenome da mãe" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="newNomePai" formControlName="newNomePai" placeholder="Nome do pai" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenomePai" formControlName="newSobrenomePai" placeholder="Sobrenome do pai" maxlength="50">
         </form>
     </div>
 </div>
@@ -60,7 +64,9 @@
 <br>
 
 <mat-divider></mat-divider>
-<button mat-raised-button (click)="onEditarContato()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == false" (click)="onEditarContato()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true" (click)="onEditarContato()">Cancelar</button>
 <h3>Contato</h3>
 <mat-divider></mat-divider>
 
@@ -72,9 +78,9 @@
     </div>
     <div class="direita">
         <form action="#" *ngIf="editarContato == true">
-            <input type="text" name="newEmail" formControlName="newEmail">
-            <input type="text" name="newTelResid" formControlName="newTelResid">
-            <input type="text" name="newTelCel" formControlName="newTelCel">
+            <input name="newEmail" formControlName="newEmail" placeholder="Email" maxlength="30">
+            <input (keypress)="numberOnly($event)" name="newTelResid" formControlName="newTelResid" placeholder="Telefone residencial" minlength="8" maxlength="10">
+            <input (keypress)="numberOnly($event)" name="newTelCel" formControlName="newTelCel" placeholder="Telefone celular" minlength="9" maxlength="11">
         </form>
     </div>
 </div>
@@ -82,7 +88,9 @@
 <br>
 
 <mat-divider></mat-divider>
-<button mat-raised-button (click)="onEditarEndereco()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == false" (click)="onEditarEndereco()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true" (click)="onEditarEndereco()">Cancelar</button>
 <h3>Endereço</h3>
 <mat-divider></mat-divider>
 
@@ -98,13 +106,13 @@
     </div>
     <div class="direita">
         <form action="#" *ngIf="editarEndereco == true">
-            <input type="text" name="newLogradouro" formControlName="newLogradouro">
-            <input type="text" name="newNumero" formControlName="newNumero">
-            <input type="text" name="newComplemento" formControlName="newComplemento">
-            <input type="text" name="newBairro" formControlName="newBairro">
-            <input type="text" name="newCidade" formControlName="newCidade">
-            <input type="text" name="newEstado" formControlName="newEstado">
-            <input type="text" name="newCep" formControlName="newCep">
+            <input name="newLogradouro" formControlName="newLogradouro" placeholder="Logradouro" maxlength="50">
+            <input (keypress)="numberOnly($event)" name="newNumero" formControlName="newNumero" placeholder="Número" maxlength="5">
+            <input name="newComplemento" formControlName="newComplemento" placeholder="Complemento" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="newBairro" formControlName="newBairro" placeholder="Bairro" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="newCidade" formControlName="newCidade" placeholder="Cidade" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="newEstado" formControlName="newEstado" placeholder="Sigla do estado" minlength="2" maxlength="2">
+            <input (keypress)="numberOnly($event)" name="newCep" formControlName="newCep" placeholder="CEP" minlength="8" maxlength="8">
         </form>
     </div>
 </div>
