@@ -1,86 +1,121 @@
-<h1>Alteração de informações de cadastro</h1>
-
+<h1>Alterar informações de cadastro</h1>
 <mat-divider></mat-divider>
 
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == false" (click)="onEditarPerfil()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true" (click)="onEditarPerfil()">Cancelar</button>
 <h3>Perfil</h3>
 <mat-divider></mat-divider>
 
-<div class = "Conteudo">
+<div class="conteudo">
+    <div class="esquerda">
+        <p>Nome: {{this.nome}}</p>
+        <p>Sobrenome: {{this.sobrenome}}</p>
+        <p>CPF: {{this.cpf}}</p>
+        <p>RG: {{this.rg}}</p>
+        <p>Órgão emissor: {{this.orgaoEmissor}}</p>
+        <p>Data de nascimento: {{this.dtNascimento}}</p>
+        <p>Nacionalidade: {{this.nacionalidade}}</p>
+        <p>Naturalidade: {{this.naturalidade}}</p>
+        <br>
+    </div>
 
-<div class = "Esquerda">
-<p>Nome: {{this.nome}}</p>
-<p>Sobrenome: {{this.sobrenome}}</p>
-<p>CPF: {{this.cpf}}</p>
-<p>RG: {{this.rg}}</p>
-<p>Órgão emissor: {{this.orgaoEmissor}}</p>
-<p>Data de nascimento: {{this.dtNascimento}}</p>
-<p>Nacionalidade: {{this.nacionalidade}}</p>
-<p>Naturalidade: {{this.naturalidade}}</p>
-<br>
-</div>
-
-<div class = "Direita">
-    aaaaaaaaaaa
-</div>
+    <div class="direita">
+        <form action="#" *ngIf="editarPerfil == true">
+            <input (keypress)="letterOnly($event)" name="newNome" formControlName="newNome" placeholder="Nome" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenome" formControlName="newSobrenome" placeholder="Sobrenome" maxlength="50">
+            <input (keypress)="numberOnly($event)" name="newCpf" formControlName="newCpf" placeholder="CPF" minlength="11" maxlength="11">
+            <input name="newRg" formControlName="newRg" placeholder="RG" minlength="9" maxlength="9">
+            <input (keypress)="letterOnly($event)" name="newOrgaoEmissor" formControlName="newOrgaoEmissor" placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input class="data" [matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento" placeholder="Data de nascimento" minlength="8" maxlength="8">
+                <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
+                <mat-datepicker #nascimento></mat-datepicker>
+            <input (keypress)="letterOnly($event)" name="newNacionalidade" formControlName="newNacionalidade" placeholder="Nacionalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="newNaturalidade" formControlName="newNaturalidade" placeholder="Naturalidade" maxlength="20">
+        </form>
+    </div>
 </div>
 
 <mat-divider></mat-divider>
-
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == false" (click)="onEditarFamiliares()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true" (click)="onEditarFamiliares()">Cancelar</button>
 <h3>Familiares</h3>
 <mat-divider></mat-divider>
 
-<div class = "Conteudo">
+<div class="conteudo">
+    <div class="esquerda">
+        <p>Nome da mãe: {{this.nomeMae}}</p>
+        <p>Sobrenome da mãe: {{this.sobrenomeMae}}</p>
+        <p>Nome do pai: {{this.nomePai}}</p>
+        <p>Sobrenome do pai: {{this.sobrenomePai}}</p>
+    </div>
 
-<div class = "Esquerda">
-<p>Nome da mãe: {{this.nomeMae}}</p>
-<p>Sobrenome da mãe: {{this.sobrenomeMae}}</p>
-<p>Nome do pai: {{this.nomePai}}</p>
-<p>Sobrenome do pai: {{this.sobrenomePai}}</p>
+    <div class="direita">
+        <form action="#" *ngIf="editarFamiliares == true">
+            <input (keypress)="letterOnly($event)" name="newNomeMae" formControlName="newNomeMae" placeholder="Nome da mãe" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenomeMae" formControlName="newSobrenomeMae" placeholder="Sobrenome da mãe" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="newNomePai" formControlName="newNomePai" placeholder="Nome do pai" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="newSobrenomePai" formControlName="newSobrenomePai" placeholder="Sobrenome do pai" maxlength="50">
+        </form>
+    </div>
 </div>
 
-<div class = "Direita">
-    aaaaaaaaaaa
-</div>
-</div>
 <br>
 
 <mat-divider></mat-divider>
-
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == false" (click)="onEditarContato()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true" (click)="onEditarContato()">Cancelar</button>
 <h3>Contato</h3>
 <mat-divider></mat-divider>
 
-<div class = "Conteudo">
+<div class="conteudo">
+    <div class="esquerda">
+        <p>Email: {{this.email}}</p>
+        <p>Telefone residencial: {{this.telResid}}</p>
+        <p>Telefone celular: {{this.telCel}}</p>
+    </div>
+    <div class="direita">
+        <form action="#" *ngIf="editarContato == true">
+            <input name="newEmail" formControlName="newEmail" placeholder="Email" maxlength="30">
+            <input (keypress)="numberOnly($event)" name="newTelResid" formControlName="newTelResid" placeholder="Telefone residencial" minlength="8" maxlength="10">
+            <input (keypress)="numberOnly($event)" name="newTelCel" formControlName="newTelCel" placeholder="Telefone celular" minlength="9" maxlength="11">
+        </form>
+    </div>
+</div>
 
-<div class = "Esquerda">
-<p>Email: {{this.email}}</p>
-<p>Telefone residencial: {{this.telResid}}</p>
-<p>Telefone celular: {{this.telCel}}</p>
-</div>
-<div class = "Direita">
-    aaaaaaaaaaa
-</div>
-</div>
 <br>
 
 <mat-divider></mat-divider>
-
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == false" (click)="onEditarEndereco()">Editar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true" (click)="onEditarEndereco()">Cancelar</button>
 <h3>Endereço</h3>
 <mat-divider></mat-divider>
 
-<div class = "Conteudo">
+<div class="conteudo">
+    <div class="esquerda">
+        <p>Logradouro: {{this.logradouro}}</p>
+        <p>Número: {{this.numero}}</p>
+        <p>Complemento: {{this.complemento}}</p>
+        <p>Bairro: {{this.bairro}}</p>
+        <p>Cidade: {{this.cidade}}</p>
+        <p>Estado: {{this.siglaEstado}}</p>
+        <p>CEP: {{this.cep}}</p>
+    </div>
+    <div class="direita">
+        <form action="#" *ngIf="editarEndereco == true">
+            <input name="newLogradouro" formControlName="newLogradouro" placeholder="Logradouro" maxlength="50">
+            <input (keypress)="numberOnly($event)" name="newNumero" formControlName="newNumero" placeholder="Número" maxlength="5">
+            <input name="newComplemento" formControlName="newComplemento" placeholder="Complemento" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="newBairro" formControlName="newBairro" placeholder="Bairro" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="newCidade" formControlName="newCidade" placeholder="Cidade" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="newEstado" formControlName="newEstado" placeholder="Sigla do estado" minlength="2" maxlength="2">
+            <input (keypress)="numberOnly($event)" name="newCep" formControlName="newCep" placeholder="CEP" minlength="8" maxlength="8">
+        </form>
+    </div>
+</div>
 
-<div class = "Esquerda">
-<p>Logradouro: {{this.logradouro}}</p>
-<p>Número: {{this.numero}}</p>
-<p>Complemento: {{this.complemento}}</p>
-<p>Bairro: {{this.bairro}}</p>
-<p>Cidade: {{this.cidade}}</p>
-<p>Estado: {{this.siglaEstado}}</p>
-<p>CEP: {{this.cep}}</p>
-</div>
-<div class = "Direita">
-    aaaaaaaaaaa
-</div>
-</div>
 <br>
 <mat-divider></mat-divider>

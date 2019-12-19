@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    background-color: rgba(208, 231, 238, 0.438);
 }
 
 .menu{

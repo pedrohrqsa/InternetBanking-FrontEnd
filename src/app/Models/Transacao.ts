@@ -4,6 +4,6 @@ export interface Transacao {
     numeroContaDestino: number;
     numeroContaOrigem: number;
     valor: number;
-    dtTransacao: Date;
+    dtTransacao: string;
     senhaTransacoes: string;
 }
