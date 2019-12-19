@@ -1,7 +1,7 @@
 <h1>Alteração de informações de cadastro</h1>
 <mat-divider></mat-divider>
 
-<button mat-raised-button>Editar informações</button>
+<button mat-raised-button (click)="onEditarPerfil()">Editar informações</button>
 <h3>Perfil</h3>
 <mat-divider></mat-divider>
 
@@ -19,21 +19,23 @@
     </div>
 
     <div class="direita">
-        <input type="text" name="newNome" formControlName="newNome">
-        <input type="text" name="newSobrenome" formControlName="newSobrenome">
-        <input type="text" name="newCpf" formControlName="newCpf">
-        <input type="text" name="newRg" formControlName="newRg">
-        <input type="text" name="newOrgaoEmissor" formControlName="newOrgaoEmissor">
-        <input class="data" type="date" [matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento">
-            <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
-            <mat-datepicker #nascimento></mat-datepicker>
-        <input type="text" name="newNacionalidade" formControlName="newNacionalidade">
-        <input type="text" name="newNaturalidade" formControlName="newNaturalidade">
+        <form action="#" *ngIf="editarPerfil == true">
+            <input type="text" name="newNome" formControlName="newNome">
+            <input type="text" name="newSobrenome" formControlName="newSobrenome">
+            <input type="text" name="newCpf" formControlName="newCpf">
+            <input type="text" name="newRg" formControlName="newRg">
+            <input type="text" name="newOrgaoEmissor" formControlName="newOrgaoEmissor">
+            <input class="data"[matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento">
+                <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
+                <mat-datepicker #nascimento></mat-datepicker>
+            <input type="text" name="newNacionalidade" formControlName="newNacionalidade">
+            <input type="text" name="newNaturalidade" formControlName="newNaturalidade">
+        </form>
     </div>
 </div>
 
 <mat-divider></mat-divider>
-<button mat-raised-button>Editar informações</button>
+<button mat-raised-button (click)="onEditarFamiliares()">Editar informações</button>
 <h3>Familiares</h3>
 <mat-divider></mat-divider>
 
@@ -46,17 +48,19 @@
     </div>
 
     <div class="direita">
-        <input type="text" name="newNomeMae" formControlName="newNomeMae">
-        <input type="text" name="newSobrenomeMae" formControlName="newSobrenomeMae">
-        <input type="text" name="newNomePai" formControlName="newNomePai">
-        <input type="text" name="newSobrenomePai" formControlName="newSobrenomePai">
+        <form action="#" *ngIf="editarFamiliares == true">
+            <input type="text" name="newNomeMae" formControlName="newNomeMae">
+            <input type="text" name="newSobrenomeMae" formControlName="newSobrenomeMae">
+            <input type="text" name="newNomePai" formControlName="newNomePai">
+            <input type="text" name="newSobrenomePai" formControlName="newSobrenomePai">
+        </form>
     </div>
 </div>
 
 <br>
 
 <mat-divider></mat-divider>
-<button mat-raised-button>Editar informações</button>
+<button mat-raised-button (click)="onEditarContato()">Editar informações</button>
 <h3>Contato</h3>
 <mat-divider></mat-divider>
 
@@ -67,16 +71,18 @@
         <p>Telefone celular: {{this.telCel}}</p>
     </div>
     <div class="direita">
-        <input type="text" name="newEmail" formControlName="newEmail">
-        <input type="text" name="newTelResid" formControlName="newTelResid">
-        <input type="text" name="newTelCel" formControlName="newTelCel">
+        <form action="#" *ngIf="editarContato == true">
+            <input type="text" name="newEmail" formControlName="newEmail">
+            <input type="text" name="newTelResid" formControlName="newTelResid">
+            <input type="text" name="newTelCel" formControlName="newTelCel">
+        </form>
     </div>
 </div>
 
 <br>
 
 <mat-divider></mat-divider>
-<button mat-raised-button>Editar informações</button>
+<button mat-raised-button (click)="onEditarEndereco()">Editar informações</button>
 <h3>Endereço</h3>
 <mat-divider></mat-divider>
 
@@ -91,13 +97,15 @@
         <p>CEP: {{this.cep}}</p>
     </div>
     <div class="direita">
-        <input type="text" name="newLogradouro" formControlName="newLogradouro">
-        <input type="text" name="newNumero" formControlName="newNumero">
-        <input type="text" name="newComplemento" formControlName="newComplemento">
-        <input type="text" name="newBairro" formControlName="newBairro">
-        <input type="text" name="newCidade" formControlName="newCidade">
-        <input type="text" name="newEstado" formControlName="newEstado">
-        <input type="text" name="newCep" formControlName="newCep">
+        <form action="#" *ngIf="editarEndereco == true">
+            <input type="text" name="newLogradouro" formControlName="newLogradouro">
+            <input type="text" name="newNumero" formControlName="newNumero">
+            <input type="text" name="newComplemento" formControlName="newComplemento">
+            <input type="text" name="newBairro" formControlName="newBairro">
+            <input type="text" name="newCidade" formControlName="newCidade">
+            <input type="text" name="newEstado" formControlName="newEstado">
+            <input type="text" name="newCep" formControlName="newCep">
+        </form>
     </div>
 </div>
 

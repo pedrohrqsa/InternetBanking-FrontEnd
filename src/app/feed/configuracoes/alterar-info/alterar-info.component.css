@@ -36,10 +36,6 @@ p {
 
 .direita .data {
     width: 90.79%;
-    box-shadow: none;
-    border-width: 2px;
-    border-style: inset;
-    border-color: grey;
 }
 
 button {

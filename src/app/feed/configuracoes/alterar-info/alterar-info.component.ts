@@ -21,6 +21,11 @@ export class AlterarInfoComponent implements OnInit {
   contato: Contato;
   endereco: Endereco;
 
+  editarPerfil: boolean = false;
+  editarFamiliares: boolean = false;
+  editarContato: boolean = false;
+  editarEndereco: boolean = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private alterarInfoService: AlterarInfoService
@@ -72,6 +77,38 @@ export class AlterarInfoComponent implements OnInit {
       .subscribe(clientex =>
         this.endereco = clientex[this.indexCPF],
       );
+  }
+
+  onEditarPerfil() {
+    if(this.editarPerfil == false) {
+      this.editarPerfil = true;
+    } else {
+      this.editarPerfil = false;
+    }
+  }
+
+  onEditarFamiliares() {
+    if(this.editarFamiliares == false) {
+      this.editarFamiliares = true;
+    } else {
+      this.editarFamiliares = false;
+    }
+  }
+
+  onEditarContato() {
+    if(this.editarContato == false) {
+      this.editarContato = true;
+    } else {
+      this.editarContato = false;
+    }
+  }
+
+  onEditarEndereco() {
+    if(this.editarEndereco == false) {
+      this.editarEndereco = true;
+    } else {
+      this.editarEndereco = false;
+    }
   }
 
 }
