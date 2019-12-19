@@ -35,14 +35,35 @@ export class AlterarInfoComponent implements OnInit {
   nacionalidade: string;
   naturalidade: string;
 
+  nomeMae: string;
+  sobrenomeMae: string;
+  nomePai: string;
+  sobrenomePai: string;
+
+  logradouro: string;
+  numero: number;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  siglaEstado: string;
+  cep: string;
+
+  email: string;
+  telResid: string;
+  telCel: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private infoContaService: InfoContaService
+    private infoContaService: InfoContaService,
+    private alterarInfoService: AlterarInfoService
   ) { }
 
   ngOnInit() {
     this.getIndexCPF();
     this.onInfoCliente();
+    this.onInfoFamiliares();
+    this.onEditarContato();
+    this.onInfoEndereco();
   }
 
   getIndexCPF() {
@@ -53,27 +74,63 @@ export class AlterarInfoComponent implements OnInit {
         console.log(getCpf,
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-            this.onInfoCliente())
+          this.onInfoCliente(),
+          this.onInfoFamiliares(), 
+          this.onInfoContato(), 
+          this.onInfoEndereco()
+          )
       );
   }
 
   onInfoCliente() {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex => {
-          this.nome = clientex[this.indexCPF].nome;
-          this.sobrenome = clientex[this.indexCPF].sobrenome;
-          this.cpf = clientex[this.indexCPF].cpf;
-          this.rg = clientex[this.indexCPF].rg;
-          this.orgaoEmissor = clientex[this.indexCPF].orgaoEmissor;
-          this.dtNascimento = clientex[this.indexCPF].dtNascimento.toString().substring(0, 10);
-          this.nacionalidade = clientex[this.indexCPF].nacionalidade;
-          this.naturalidade = clientex[this.indexCPF].naturalidade;
-        },
+        this.nome = clientex[this.indexCPF].nome;
+        this.sobrenome = clientex[this.indexCPF].sobrenome;
+        this.cpf = clientex[this.indexCPF].cpf;
+        this.rg = clientex[this.indexCPF].rg;
+        this.orgaoEmissor = clientex[this.indexCPF].orgaoEmissor;
+        this.dtNascimento = clientex[this.indexCPF].dtNascimento.toString().substring(0, 10);
+        this.nacionalidade = clientex[this.indexCPF].nacionalidade;
+        this.naturalidade = clientex[this.indexCPF].naturalidade;
+      },
       );
   }
 
+  onInfoFamiliares() {
+    return this.alterarInfoService.getInfoFamiliares()
+      .subscribe(clientex => {
+        this.nomeMae = clientex[this.indexCPF].nomeMae;
+        this.sobrenomeMae = clientex[this.indexCPF].sobrenomeMae;
+        this.nomePai = clientex[this.indexCPF].nomePai;
+        this.sobrenomePai = clientex[this.indexCPF].sobrenomePai;
+      });
+  }  
+
+  onInfoContato() {
+    return this.alterarInfoService.getInfoContato()
+      .subscribe(clientex => {
+        this.email = clientex[this.indexCPF].email;
+        this.telResid = clientex[this.indexCPF].telResid;
+        this.telCel = clientex[this.indexCPF].telCel;
+      });
+  }  
+
+  onInfoEndereco() {
+    return this.alterarInfoService.getInfoEndereco()
+      .subscribe(clientex => {
+        this.logradouro = clientex[this.indexCPF].logradouro;
+        this.numero = clientex[this.indexCPF].numero;
+        this.complemento = clientex[this.indexCPF].complemento;
+        this.bairro = clientex[this.indexCPF].bairro;
+        this.cidade = clientex[this.indexCPF].cidade;
+        this.siglaEstado=clientex[this.indexCPF].siglaEstado;
+        this.cep = clientex[this.indexCPF].cep;
+      });
+  }
+
   onEditarPerfil() {
-    if(this.editarPerfil == false) {
+    if (this.editarPerfil == false) {
       this.editarPerfil = true;
     } else {
       this.editarPerfil = false;
@@ -81,7 +138,7 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   onEditarFamiliares() {
-    if(this.editarFamiliares == false) {
+    if (this.editarFamiliares == false) {
       this.editarFamiliares = true;
     } else {
       this.editarFamiliares = false;
@@ -89,7 +146,7 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   onEditarContato() {
-    if(this.editarContato == false) {
+    if (this.editarContato == false) {
       this.editarContato = true;
     } else {
       this.editarContato = false;
@@ -97,7 +154,7 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   onEditarEndereco() {
-    if(this.editarEndereco == false) {
+    if (this.editarEndereco == false) {
       this.editarEndereco = true;
     } else {
       this.editarEndereco = false;
@@ -125,5 +182,4 @@ export class AlterarInfoComponent implements OnInit {
     }
     return true;
   }
-
 }

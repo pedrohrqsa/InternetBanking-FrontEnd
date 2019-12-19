@@ -9,14 +9,14 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p>Nome: {{this.nome}}</p>
-        <p>Sobrenome: {{this.sobrenome}}</p>
-        <p>CPF: {{this.cpf}}</p>
-        <p>RG: {{this.rg}}</p>
-        <p>Órgão emissor: {{this.orgaoEmissor}}</p>
-        <p>Data de nascimento: {{this.dtNascimento}}</p>
-        <p>Nacionalidade: {{this.nacionalidade}}</p>
-        <p>Naturalidade: {{this.naturalidade}}</p>
+        <p><strong>Nome:</strong> {{this.nome}}</p>
+        <p><strong>Sobrenome:</strong> {{this.sobrenome}}</p>
+        <p> <strong>CPF:</strong> {{this.cpf}}</p>
+        <p><strong>RG:</strong> {{this.rg}}</p>
+        <p><strong>Órgão emissor:</strong> {{this.orgaoEmissor}}</p>
+        <p><strong>Data de nascimento:</strong> {{this.dtNascimento}}</p>
+        <p><strong>Nacionalidade:</strong> {{this.nacionalidade}}</p>
+        <p><strong>Naturalidade:</strong> {{this.naturalidade}}</p>
         <br>
     </div>
 
@@ -28,8 +28,8 @@
             <input name="newRg" formControlName="newRg" placeholder="RG" minlength="9" maxlength="9">
             <input (keypress)="letterOnly($event)" name="newOrgaoEmissor" formControlName="newOrgaoEmissor" placeholder="Órgão emissor" minlength="5" maxlength="5">
             <input class="data" [matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento" placeholder="Data de nascimento" minlength="8" maxlength="8">
-                <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
-                <mat-datepicker #nascimento></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
+            <mat-datepicker #nascimento></mat-datepicker>
             <input (keypress)="letterOnly($event)" name="newNacionalidade" formControlName="newNacionalidade" placeholder="Nacionalidade" maxlength="20">
             <input (keypress)="letterOnly($event)" name="newNaturalidade" formControlName="newNaturalidade" placeholder="Naturalidade" maxlength="20">
         </form>
@@ -45,10 +45,10 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p>Nome da mãe: {{this.nomeMae}}</p>
-        <p>Sobrenome da mãe: {{this.sobrenomeMae}}</p>
-        <p>Nome do pai: {{this.nomePai}}</p>
-        <p>Sobrenome do pai: {{this.sobrenomePai}}</p>
+        <p><strong>Nome da mãe:</strong> {{this.nomeMae}}</p>
+        <p><strong>Sobrenome da mãe:</strong> {{this.sobrenomeMae}}</p>
+        <p><strong>Nome do pai:</strong> {{this.nomePai}}</p>
+        <p><strong>Sobrenome do pai:</strong> {{this.sobrenomePai}}</p>
     </div>
 
     <div class="direita">
@@ -72,9 +72,9 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p>Email: {{this.email}}</p>
-        <p>Telefone residencial: {{this.telResid}}</p>
-        <p>Telefone celular: {{this.telCel}}</p>
+        <p><strong>Email:</strong> {{this.email}}</p>
+        <p><strong>Residencial:</strong> {{this.telResid}}</p>
+        <p><strong>Celular:</strong> {{this.telCel}}</p>
     </div>
     <div class="direita">
         <form action="#" *ngIf="editarContato == true">
@@ -96,13 +96,13 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p>Logradouro: {{this.logradouro}}</p>
-        <p>Número: {{this.numero}}</p>
-        <p>Complemento: {{this.complemento}}</p>
-        <p>Bairro: {{this.bairro}}</p>
-        <p>Cidade: {{this.cidade}}</p>
-        <p>Estado: {{this.siglaEstado}}</p>
-        <p>CEP: {{this.cep}}</p>
+        <p><strong>Logradouro:</strong> {{this.logradouro}}</p>
+        <p><strong>Número:</strong> {{this.numero}}</p>
+        <p><strong>Complemento: </strong> {{this.complemento}}</p>
+        <p><strong>Bairro:</strong> {{this.bairro}}</p>
+        <p><strong>Cidade:</strong> {{this.cidade}}</p>
+        <p><strong>Estado:</strong> {{this.siglaEstado}}</p>
+        <p><strong>CEP:</strong> {{this.cep}}</p>
     </div>
     <div class="direita">
         <form action="#" *ngIf="editarEndereco == true">

@@ -15,7 +15,7 @@ p {
     margin-left: 10px;
 }
 
-.conteudo{
+.conteudo {
     display: flex;
     justify-content: space-around;
 }
