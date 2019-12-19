@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDividerModule } from '@angular/material';
+import { MatDividerModule, MatCommonModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
 
 import { AlterarInfoComponent } from './alterar-info.component';
 
@@ -8,7 +8,10 @@ import { AlterarInfoComponent } from './alterar-info.component';
   declarations: [AlterarInfoComponent],
   imports: [
     CommonModule,
-    MatDividerModule
+    MatCommonModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatDatepickerModule
   ],
   exports: [AlterarInfoComponent]
 })

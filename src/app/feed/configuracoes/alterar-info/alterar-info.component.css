@@ -1,4 +1,9 @@
-h1, h3 {
+h1 {
+    text-align: justify;
+    font-size: 35px;
+}
+
+h3 {
     display: flex;
     justify-content: center;
 }
@@ -10,15 +15,33 @@ mat-divider {
 p {
     margin-left: 10px;
 }
-.Conteudo{
+
+.conteudo{
     display: flex;
     justify-content: space-around;
 }
-.Esquerda{
-    width: 50%;
 
+.esquerda {
+    width: 50%;
 }
-.Direita{
-    width: 50%;
 
+.direita {
+    width: 50%;
+}
+
+.direita input {
+    margin-bottom: 9px;
+    width: 100%;
+}
+
+.direita .data {
+    width: 90.79%;
+    box-shadow: none;
+    border-width: 2px;
+    border-style: inset;
+    border-color: grey;
+}
+
+button {
+    float: right;
 }
