@@ -26,6 +26,7 @@ p {
 
 .direita {
     width: 50%;
+    transition: 5s 5s active 5s;
 }
 
 .direita input {

@@ -62,7 +62,7 @@ export class AlterarInfoComponent implements OnInit {
     this.getIndexCPF();
     this.onInfoCliente();
     this.onInfoFamiliares();
-    this.onEditarContato();
+    this.onInfoContato();
     this.onInfoEndereco();
   }
 
