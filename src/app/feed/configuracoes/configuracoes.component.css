@@ -6,7 +6,6 @@
 .menu{
     float: left;
     width: 20vw;
-    height: 92vh;
     background-color: darkcyan;
     display: flex;
     flex-direction: column;
