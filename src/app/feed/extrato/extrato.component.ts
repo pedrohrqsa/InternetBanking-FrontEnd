@@ -75,8 +75,8 @@ export class ExtratoComponent implements OnInit {
       );
   }
 
-  refresh(): void {
-    window.location.reload();
+  refresh() {
+    this.extrato();
   }
 }
 

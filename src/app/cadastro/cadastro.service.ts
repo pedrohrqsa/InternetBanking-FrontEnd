@@ -30,7 +30,6 @@ export class CadastroService {
     cliente.Contatos.push(contato);
     cliente.Endereco.push(endereco);
     cliente.Conta.push(conta);
-    console.log(cliente);
 
     return this
       .http.post(API + '/api/Clientes', cliente,
