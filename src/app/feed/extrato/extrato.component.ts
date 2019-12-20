@@ -53,7 +53,7 @@ export class ExtratoComponent implements OnInit {
   }
 
   extrato(){
-    this.extratoService.getInfoExtrato(this.numeroConta)
+    this.extratoService.getInfoExtrato(this.getCpf)
     .subscribe(stream => {
       this.dataSource = new MatTableDataSource(stream);
       this.dataSource.paginator = this.paginator;
