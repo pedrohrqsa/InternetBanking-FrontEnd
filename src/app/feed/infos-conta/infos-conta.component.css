@@ -1,12 +1,19 @@
 .container {
     display: flex;
     justify-content: center;
+    background-color: darkcyan;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 80vw;
+    height: 92.4vh;
 }
 
-.titulo {
+h1{
+    margin-top: 20px;
+}
+
+p{
     font-size: 40px;
-    color: darkslategray;
-    text-align: center;
 }
 
 mat-form-field {
@@ -17,7 +24,7 @@ button {
     text-align: center;
     background-color: darkslategray;
     color: white;
-    margin: 3em;
+    margin-top: -10px;
 }
 
 .centralizar-botao {
@@ -25,10 +32,11 @@ button {
 }
 
 .content {
-    background-color: rgba(208, 231, 238, 0.438);
-    border-bottom-right-radius: 20px;
+    width: 60vw;
+    height: 80vh;
+    background-color: white;
+    color: darkslategray;
+    text-align: center;
     border-bottom-left-radius: 20px;
-    padding: 50px;
-    width: 5000px;
-    height: 100vh;
+    border-bottom-right-radius: 20px;
 }

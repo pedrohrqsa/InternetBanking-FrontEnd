@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCommonModule, MatButtonModule } from '@angular/material';
+import { MatCommonModule, MatButtonModule, MatDividerModule } from '@angular/material';
 import { InativarContaComponent } from './inativar-conta.component';
 
 @NgModule({
@@ -8,7 +8,8 @@ import { InativarContaComponent } from './inativar-conta.component';
   imports: [
     CommonModule,
     MatCommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule
   ],
   exports: [InativarContaComponent]
 })

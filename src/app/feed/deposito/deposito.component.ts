@@ -21,6 +21,7 @@ export class DepositoComponent {
   saldoAtual: number;
   numeroConta: number;
   senhaTransacoes: string;
+  sucesso: boolean = false;
 
   form: FormGroup = new FormGroup({
     valor: new FormControl(''),
@@ -68,5 +69,8 @@ export class DepositoComponent {
 
     this.servico.Deposito(transacao1)
       .subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
-  }
+
+    this.form.reset();
+    this.sucesso = true;
+   }
 }

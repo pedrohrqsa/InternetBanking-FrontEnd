@@ -14,6 +14,7 @@ import { UserService } from 'src/app/core/user/user.service';
 export class InfosContaComponent implements OnInit {
 
   nome: string;
+  sobrenome: string;
   numeroConta: number;
   numeroAgencia: number;
   indexCPF: number;
@@ -64,8 +65,10 @@ export class InfosContaComponent implements OnInit {
 
   onInfoCliente() {
     return this.infoContaService.getInfoCliente()
-      .subscribe(clientex =>
-        this.nome = clientex[this.indexCPF].nome
+      .subscribe(clientex => {
+        this.nome = clientex[this.indexCPF].nome;
+        this.sobrenome = clientex[this.indexCPF].sobrenome;
+      }
       );
   }
 

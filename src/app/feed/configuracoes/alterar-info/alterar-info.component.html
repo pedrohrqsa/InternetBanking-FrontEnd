@@ -9,14 +9,14 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p><strong>Nome:</strong> {{this.nome}}</p>
-        <p><strong>Sobrenome:</strong> {{this.sobrenome}}</p>
-        <p> <strong>CPF:</strong> {{this.cpf}}</p>
-        <p><strong>RG:</strong> {{this.rg}}</p>
-        <p><strong>Órgão emissor:</strong> {{this.orgaoEmissor}}</p>
-        <p><strong>Data de nascimento:</strong> {{this.dtNascimento}}</p>
-        <p><strong>Nacionalidade:</strong> {{this.nacionalidade}}</p>
-        <p><strong>Naturalidade:</strong> {{this.naturalidade}}</p>
+        <p><b>Nome:</b> {{this.nome}}</p>
+        <p><b>Sobrenome:</b> {{this.sobrenome}}</p>
+        <p><b>CPF:</b> {{this.cpf}}</p>
+        <p><b>RG:</b> {{this.rg}}</p>
+        <p><b>Órgão emissor:</b> {{this.orgaoEmissor}}</p>
+        <p><b>Data de nascimento:</b> {{this.dtNascimento}}</p>
+        <p><b>Nacionalidade:</b> {{this.nacionalidade}}</p>
+        <p><b>Naturalidade:</b> {{this.naturalidade}}</p>
         <br>
     </div>
 
@@ -45,10 +45,10 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p><strong>Nome da mãe:</strong> {{this.nomeMae}}</p>
-        <p><strong>Sobrenome da mãe:</strong> {{this.sobrenomeMae}}</p>
-        <p><strong>Nome do pai:</strong> {{this.nomePai}}</p>
-        <p><strong>Sobrenome do pai:</strong> {{this.sobrenomePai}}</p>
+        <p><b>Nome da mãe:</b> {{this.nomeMae}}</p>
+        <p><b>Sobrenome da mãe:</b> {{this.sobrenomeMae}}</p>
+        <p><b>Nome do pai:</b> {{this.nomePai}}</p>
+        <p><b>Sobrenome do pai:</b> {{this.sobrenomePai}}</p>
     </div>
 
     <div class="direita">
@@ -72,9 +72,9 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p><strong>Email:</strong> {{this.email}}</p>
-        <p><strong>Telefone residencial:</strong> {{this.telResid}}</p>
-        <p><strong>Telefone celular:</strong> {{this.telCel}}</p>
+        <p><b>Email:</b> {{this.email}}</p>
+        <p><b>Telefone residencial:</b> {{this.telResid}}</p>
+        <p><b>Telefone celular:</b> {{this.telCel}}</p>
     </div>
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
@@ -96,13 +96,13 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p><strong>Logradouro:</strong> {{this.logradouro}}</p>
-        <p><strong>Número:</strong> {{this.numero}}</p>
-        <p><strong>Complemento: </strong> {{this.complemento}}</p>
-        <p><strong>Bairro:</strong> {{this.bairro}}</p>
-        <p><strong>Cidade:</strong> {{this.cidade}}</p>
-        <p><strong>Estado:</strong> {{this.siglaEstado}}</p>
-        <p><strong>CEP:</strong> {{this.cep}}</p>
+        <p><b>Logradouro:</b> {{this.logradouro}}</p>
+        <p><b>Número:</b> {{this.numero}}</p>
+        <p><b>Complemento: </b> {{this.complemento}}</p>
+        <p><b>Bairro:</b> {{this.bairro}}</p>
+        <p><b>Cidade:</b> {{this.cidade}}</p>
+        <p><b>Estado:</b> {{this.siglaEstado}}</p>
+        <p><b>CEP:</b> {{this.cep}}</p>
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">

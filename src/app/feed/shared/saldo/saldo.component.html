@@ -1,11 +1,10 @@
-<div>
+<div class="content">
     Saldo Atual:
+    
     <a (click)="toggleShow()">
         <mat-icon>visibility</mat-icon>
+        <p *ngIf="isShown">
+            R$ {{this.saldoAtual}}
+        </p>
     </a>
-
-    <p *ngIf="isShown">
-        R$ {{this.saldoAtual}}
-    </p>
-
 </div>

@@ -71,5 +71,6 @@ export class SaqueComponent {
     this.senhaTransacoes = transacao2.senhaTransacoes;
     
     this.servico.Saque(transacao2).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+    this.form.reset();
   }
 }

@@ -1,26 +1,13 @@
 <div class="container">
-    <div class="content" align="center">
-        <form [formGroup]="form">
-            <p class="titulo">
-                Depósito
-            </p>
-            <br><br>
-            <app-saldo></app-saldo>
-            <br>
-            <p>
-                <mat-form-field>
-                    <input type="number" matInput placeholder="Valor (R$)" formControlName="valor">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <input type="password" matInput placeholder="Senha de Transações" formControlName="senhaTransacoes">
-                </mat-form-field>
-            </p>
-
-        </form>
-        <div class="centralizar-botao">
-            <button mat-raised-button (click)="onDeposito()">Depositar</button>
+    <div class="fundo">
+        <div class="frente">
+            <h1>Depósito</h1>
+            <form [formGroup]="form">        
+                <app-saldo></app-saldo>       
+                <p><input type="number" placeholder="Valor (R$)" formControlName="valor"></p>
+                <p><input type="password" placeholder="Senha de transações" formControlName="senhaTransacoes"></p>
+                <p><button mat-raised-button (click)="onDeposito()">Depositar</button></p>
+            </form>
         </div>
     </div>
 </div>
