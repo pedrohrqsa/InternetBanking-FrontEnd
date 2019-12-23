@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlterarInfoService } from './alterar-info.service';
 import { Cliente } from 'src/app/Models/Cliente';
@@ -7,6 +7,7 @@ import { Familiares } from 'src/app/Models/Familiares';
 import { Contato } from 'src/app/Models/Contato';
 import { Endereco } from 'src/app/Models/Endereco';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alterar-info',
@@ -14,6 +15,11 @@ import { InfoContaService } from '../../infos-conta/Infos-conta.service';
   styleUrls: ['./alterar-info.component.css']
 })
 export class AlterarInfoComponent implements OnInit {
+
+  alterarPerfilFormGroup: FormGroup;
+  alterarFamiliaresFormGroup: FormGroup;
+  alterarContatoFormGroup: FormGroup;
+  alterarEnderecoFormGroup: FormGroup;
 
   editarPerfil: boolean = false;
   editarFamiliares: boolean = false;
@@ -53,9 +59,11 @@ export class AlterarInfoComponent implements OnInit {
   telCel: string;
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private infoContaService: InfoContaService,
-    private alterarInfoService: AlterarInfoService
+    private alterarInfoService: AlterarInfoService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -64,6 +72,64 @@ export class AlterarInfoComponent implements OnInit {
     this.onInfoFamiliares();
     this.onInfoContato();
     this.onInfoEndereco();
+
+    this.alterarPerfilFormGroup = this.formBuilder.group({
+      newNome: ['', [Validators.required, Validators.maxLength(40)]],
+      newSobrenome: ['', [Validators.required, Validators.maxLength(50)]],
+      newCpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
+      newRg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      newOrgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      newDtNascimento: ['', [Validators.required]],
+      newNacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
+      newNaturalidade: ['', [Validators.required, Validators.maxLength(20)]]
+    });
+
+    this.alterarFamiliaresFormGroup = this.formBuilder.group({
+      newNomeMae: ['', [Validators.required, Validators.maxLength(40)]],
+      newSobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
+      newNomePai: ['', [Validators.maxLength(40)]],
+      newSobrenomePai: ['', [Validators.maxLength(50)]]
+    });
+
+    this.alterarContatoFormGroup = this.formBuilder.group({
+      newEmail: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
+      newTelResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      newTelCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+    });
+
+    this.alterarEnderecoFormGroup = this.formBuilder.group({
+      newLogradouro: ['', [Validators.required, Validators.maxLength(50)]],
+      newNumero: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      newComplemento: ['', [Validators.maxLength(30)]],
+      newBairro: ['', [Validators.required, Validators.maxLength(20)]],
+      newCidade: ['', [Validators.required, Validators.maxLength(30)]],
+      newEstado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+      newCep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
+    })
+  }
+
+  // MÉTODO QUE ATIVA A FUNÇÃO PARA A ENTRADA DE NÚMEROS, APENAS
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  // MÉTODO QUE ATIVA A FUNÇÃO PARA A ENTRADA DE LETRAS, APENAS
+  letterOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) &&
+      charCode != 32 && (charCode < 128 || charCode > 144) && (charCode < 147 || charCode > 154) &&
+      (charCode < 160 || charCode > 165) && (charCode < 181 || charCode > 183) &&
+      (charCode < 198 || charCode > 199) && (charCode < 97 || charCode > 122) &&
+      (charCode < 210 || charCode > 216) && charCode != 222 && charCode != 224 &&
+      (charCode < 226 || charCode > 229) && (charCode < 233 || charCode > 237) &&
+      charCode != 96 && charCode != 126 && charCode != 239) {
+      return false;
+    }
+    return true;
   }
 
   getIndexCPF() {
@@ -75,13 +141,14 @@ export class AlterarInfoComponent implements OnInit {
           this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
           this.onInfoCliente(),
-          this.onInfoFamiliares(), 
-          this.onInfoContato(), 
+          this.onInfoFamiliares(),
+          this.onInfoContato(),
           this.onInfoEndereco()
-          )
+        )
       );
   }
 
+  // MÉTODOS "onInfo": MÉTODOS QUE SUBSTITUEM AS INFORMAÇÕES ANTIGAS PELAS NOVAS
   onInfoCliente() {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex => {
@@ -105,7 +172,7 @@ export class AlterarInfoComponent implements OnInit {
         this.nomePai = clientex[this.indexCPF].nomePai;
         this.sobrenomePai = clientex[this.indexCPF].sobrenomePai;
       });
-  }  
+  }
 
   onInfoContato() {
     return this.alterarInfoService.getInfoContato()
@@ -114,7 +181,7 @@ export class AlterarInfoComponent implements OnInit {
         this.telResid = clientex[this.indexCPF].telResid;
         this.telCel = clientex[this.indexCPF].telCel;
       });
-  }  
+  }
 
   onInfoEndereco() {
     return this.alterarInfoService.getInfoEndereco()
@@ -124,11 +191,12 @@ export class AlterarInfoComponent implements OnInit {
         this.complemento = clientex[this.indexCPF].complemento;
         this.bairro = clientex[this.indexCPF].bairro;
         this.cidade = clientex[this.indexCPF].cidade;
-        this.siglaEstado=clientex[this.indexCPF].siglaEstado;
+        this.siglaEstado = clientex[this.indexCPF].siglaEstado;
         this.cep = clientex[this.indexCPF].cep;
       });
   }
 
+  // MÉTODOS "onEditar": MÉTODOS QUE ATIVAM A FUNÇÃO DE ALTERAR INFORMAÇÕES NA PÁGINA "alterar-info"
   onEditarPerfil() {
     if (this.editarPerfil == false) {
       this.editarPerfil = true;
@@ -161,25 +229,51 @@ export class AlterarInfoComponent implements OnInit {
     }
   }
 
-  numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
+  // MÉTODOS "saltarAlteracoes": MÉTODOS QUE ENVIAM AS NOVAS INFORMAÇÕES PARA AS APIs
+  salvarAlteracoesPerfil() {
+    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
+
+    this.alterarInfoService
+      .alterarInfoPerfil(newPerfil)
+      .subscribe(
+        () => this.router.navigate(['/feed']),
+        err => console.log(err)
+      );
   }
 
-  letterOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) &&
-      charCode != 32 && (charCode < 128 || charCode > 144) && (charCode < 147 || charCode > 154) &&
-      (charCode < 160 || charCode > 165) && (charCode < 181 || charCode > 183) &&
-      (charCode < 198 || charCode > 199) && (charCode < 97 || charCode > 122) &&
-      (charCode < 210 || charCode > 216) && charCode != 222 && charCode != 224 &&
-      (charCode < 226 || charCode > 229) && (charCode < 233 || charCode > 237) &&
-      charCode != 96 && charCode != 126 && charCode != 239) {
-      return false;
-    }
-    return true;
+  salvarAlteracoesFamiliares() {
+    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
+    const newFamiliares = this.alterarFamiliaresFormGroup.getRawValue() as Familiares;
+
+    this.alterarInfoService
+      .alterarInfoFamiliares(newPerfil, newFamiliares)
+      .subscribe(
+        () => this.router.navigate(['/feed']),
+        err => console.log(err)
+      );
+  }
+
+  salvarAlteracoesContato() {
+    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
+    const newContato = this.alterarContatoFormGroup.getRawValue() as Contato;
+
+    this.alterarInfoService
+      .alterarInfoContato(newPerfil, newContato)
+      .subscribe(
+        () => this.router.navigate(['/feed']),
+        err => console.log(err)
+      );
+  }
+
+  salvarAlteracoesEndereco() {
+    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
+    const newEndereco = this.alterarEnderecoFormGroup.getRawValue() as Endereco;
+
+    this.alterarInfoService
+      .alterarInfoEndereco(newPerfil, newEndereco)
+      .subscribe(
+        () => this.router.navigate(['/feed']),
+        err => console.log(err)
+      );
   }
 }

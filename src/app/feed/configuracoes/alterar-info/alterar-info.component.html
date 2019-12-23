@@ -2,7 +2,7 @@
 <mat-divider></mat-divider>
 
 <button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == false" (click)="onEditarPerfil()">Editar informações</button>
-<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true" (click)="salvarAlteracoesPerfil()">Salvar alterações</button>
 <button mat-raised-button class="alterarInfo" *ngIf="editarPerfil == true" (click)="onEditarPerfil()">Cancelar</button>
 <h3>Perfil</h3>
 <mat-divider></mat-divider>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="direita">
-        <form action="#" *ngIf="editarPerfil == true">
+        <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="newNome" formControlName="newNome" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="newSobrenome" formControlName="newSobrenome" placeholder="Sobrenome" maxlength="50">
             <input (keypress)="numberOnly($event)" name="newCpf" formControlName="newCpf" placeholder="CPF" minlength="11" maxlength="11">
@@ -38,7 +38,7 @@
 
 <mat-divider></mat-divider>
 <button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == false" (click)="onEditarFamiliares()">Editar informações</button>
-<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true" (click)="salvarAlteracoesFamiliares()">Salvar alterações</button>
 <button mat-raised-button class="alterarInfo" *ngIf="editarFamiliares == true" (click)="onEditarFamiliares()">Cancelar</button>
 <h3>Familiares</h3>
 <mat-divider></mat-divider>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="direita">
-        <form action="#" *ngIf="editarFamiliares == true">
+        <form [formGroup]="alterarFamiliaresFormGroup" *ngIf="editarFamiliares == true">
             <input (keypress)="letterOnly($event)" name="newNomeMae" formControlName="newNomeMae" placeholder="Nome da mãe" maxlength="40">
             <input (keypress)="letterOnly($event)" name="newSobrenomeMae" formControlName="newSobrenomeMae" placeholder="Sobrenome da mãe" maxlength="50">
             <input (keypress)="letterOnly($event)" name="newNomePai" formControlName="newNomePai" placeholder="Nome do pai" maxlength="40">
@@ -65,7 +65,7 @@
 
 <mat-divider></mat-divider>
 <button mat-raised-button class="alterarInfo" *ngIf="editarContato == false" (click)="onEditarContato()">Editar informações</button>
-<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarContato == true" (click)="salvarAlteracoesContato()">Salvar alterações</button>
 <button mat-raised-button class="alterarInfo" *ngIf="editarContato == true" (click)="onEditarContato()">Cancelar</button>
 <h3>Contato</h3>
 <mat-divider></mat-divider>
@@ -77,7 +77,7 @@
         <p><strong>Telefone celular:</strong> {{this.telCel}}</p>
     </div>
     <div class="direita">
-        <form action="#" *ngIf="editarContato == true">
+        <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
             <input name="newEmail" formControlName="newEmail" placeholder="Email" maxlength="30">
             <input (keypress)="numberOnly($event)" name="newTelResid" formControlName="newTelResid" placeholder="Telefone residencial" minlength="8" maxlength="10">
             <input (keypress)="numberOnly($event)" name="newTelCel" formControlName="newTelCel" placeholder="Telefone celular" minlength="9" maxlength="11">
@@ -89,7 +89,7 @@
 
 <mat-divider></mat-divider>
 <button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == false" (click)="onEditarEndereco()">Editar informações</button>
-<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true">Salvar informações</button>
+<button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true" (click)="salvarAlteracoesEndereco()">Salvar alterações</button>
 <button mat-raised-button class="alterarInfo" *ngIf="editarEndereco == true" (click)="onEditarEndereco()">Cancelar</button>
 <h3>Endereço</h3>
 <mat-divider></mat-divider>
@@ -105,7 +105,7 @@
         <p><strong>CEP:</strong> {{this.cep}}</p>
     </div>
     <div class="direita">
-        <form action="#" *ngIf="editarEndereco == true">
+        <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
             <input name="newLogradouro" formControlName="newLogradouro" placeholder="Logradouro" maxlength="50">
             <input (keypress)="numberOnly($event)" name="newNumero" formControlName="newNumero" placeholder="Número" maxlength="5">
             <input name="newComplemento" formControlName="newComplemento" placeholder="Complemento" maxlength="30">

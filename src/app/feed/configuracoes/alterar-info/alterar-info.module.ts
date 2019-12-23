@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDividerModule, MatCommonModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
 
 import { AlterarInfoComponent } from './alterar-info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AlterarInfoComponent],
@@ -11,7 +12,9 @@ import { AlterarInfoComponent } from './alterar-info.component';
     MatCommonModule,
     MatButtonModule,
     MatDividerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [AlterarInfoComponent]
 })

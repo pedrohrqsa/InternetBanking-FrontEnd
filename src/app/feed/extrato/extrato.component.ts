@@ -31,12 +31,7 @@ export class ExtratoComponent implements OnInit {
 
   ngOnInit() {
     this.getIndexCPF();
-    // this.onInfoCliente();
     this.onInfoConta();
-
-    console.log(this.getCpf);
-    console.log(this.numeroConta);
-
     this.extrato();
   }
 
@@ -60,14 +55,6 @@ export class ExtratoComponent implements OnInit {
     });
   }
 
-  // onInfoCliente() {
-  //   return this.infoContaService.getInfoCliente()
-  //     .subscribe(clientex =>
-  //       this.nome = clientex[this.indexCPF].nome
-  //     );
-  // }
-
-
   onInfoConta() {
     return this.infoContaService.getInfoConta()
       .subscribe(clientex =>
@@ -79,6 +66,3 @@ export class ExtratoComponent implements OnInit {
     this.extrato();
   }
 }
-
-
-

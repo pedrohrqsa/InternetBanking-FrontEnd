@@ -18,7 +18,6 @@ export class ExtratoService {
     constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) { }
     
     getInfoExtrato(conta: string): Observable<Transacao[]> {
-        console.log(conta);
         const apiExtrato = this.url + "api/Transacao/" + conta;
         return this.http.get<Transacao[]>(apiExtrato);
     }
