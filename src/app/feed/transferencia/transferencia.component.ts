@@ -77,6 +77,8 @@ export class TransferenciaComponent {
       .subscribe(() =>
         this.router.navigate(['feed/' + cpf]),
         err => console.log(err));
+
+    this.form.reset();
   }
 
 

@@ -1,19 +1,18 @@
 <div class="container">
     <div class="content" align="center">
-        <p class="titulo">
-            Bem-vindo!
-        </p>
+
+        <h1>Bem-vindo ao <b>InternetBanking!</b></h1>
 
         <br>
         <br>
-        <br>
-        <p>Olá, {{this.nome}}</p>
+
+        <p>Olá, {{this.nome}} {{this.sobrenome}}</p>
         <p>Conta-corrente: {{this.numeroConta}}</p>
-        <p>Agência: {{this.numeroAgencia}}</p>
+        <p>Agência: 000{{this.numeroAgencia}}</p>
         <app-saldo></app-saldo>
 
         <div class="centralizar-botao">
-            <button mat-raised-button (click)="logout()">Sair</button>
+            <button mat-raised-button (click)="logout()">Encerrar Sessão</button>
         </div>
 
     </div>

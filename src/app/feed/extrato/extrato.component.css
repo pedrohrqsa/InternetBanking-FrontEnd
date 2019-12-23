@@ -19,7 +19,7 @@ td {
 }
 
 .extrato-box {
-    margin-top: 20%;
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
 }

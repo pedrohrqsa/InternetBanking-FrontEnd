@@ -1,3 +1,11 @@
 .content{
     height: 88.7vh;
 }
+
+form input{
+    width: 50%;
+}
+
+mat-divider{
+    margin-bottom: 10px;
+}

@@ -7,6 +7,7 @@ import { Familiares } from 'src/app/Models/Familiares';
 import { Contato } from 'src/app/Models/Contato';
 import { Endereco } from 'src/app/Models/Endereco';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-alterar-info',

@@ -1,20 +1,17 @@
 <div class="content">
+    
     <h1>Alterar senha</h1>
 
+    <mat-divider></mat-divider>
+
+    <p>Para alterar sua senha atual, insira sua senha atual.</p>
+
     <form [formGroup]="alterarSenhaFormGroup">
-        <mat-form-field class="w-100">
-            <input matInput type="password" name="senhaAtual" formControlName="senhaAtual" placeholder="Insira sua senha atual" minlength="8" maxlength="15">
-        </mat-form-field>
-        <br>
-        <mat-form-field class="w-100">
-            <input matInput type="password" name="novaSenha" formControlName="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15">
-        </mat-form-field>
-        <br>
-        <mat-form-field class="w-100">
-            <input matInput type="password" name="confirmacaoNovaSenha" formControlName="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15" [errorStateMatcher]="matcher">
-        </mat-form-field>
-        <br>
-        <br>
-        <button mat-raised-button>Confirmar</button>
+
+        <p><input type="password" name="senhaAtual" formControlName="senhaAtual" placeholder="Insira sua senha atual" minlength="8" maxlength="15"></p>
+        <p><input type="password" name="novaSenha" formControlName="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15"></p>            
+        <p><input type="password" name="confirmacaoNovaSenha" formControlName="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15"></p>
+
+        <button mat-raised-button>Confirmar Alteração</button>
     </form>
 </div>
