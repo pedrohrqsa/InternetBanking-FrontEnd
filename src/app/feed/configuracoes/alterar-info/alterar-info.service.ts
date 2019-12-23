@@ -18,7 +18,7 @@ export class AlterarInfoService {
 
     url = "http://localhost:5000/api/";
 
-    private apiCliente = this.url + "Clientes";
+    private apiCliente = this.url + "Clientes/";
     private apiFamiliares = this.url + "Familiares";
     private apiContato = this.url + "Contato";
     private apiEnderecos = this.url + "Enderecos";

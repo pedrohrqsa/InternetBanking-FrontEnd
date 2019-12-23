@@ -17,10 +17,12 @@ import { HomeModule } from './home/home.module';
 import { HeaderModule } from './header/header.module';
 import { InfoContaService } from './feed/infos-conta/Infos-conta.service';
 import { InfosContaModule } from './feed/infos-conta/infos-conta.module';
+import { AtivarContaComponent } from './ativar-conta/ativar-conta.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AtivarContaComponent
   ],
   imports: [
     CommonModule,

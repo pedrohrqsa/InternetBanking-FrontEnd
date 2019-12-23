@@ -232,7 +232,7 @@ export class AlterarInfoComponent implements OnInit {
   // MÉTODOS "saltarAlteracoes": MÉTODOS QUE ENVIAM AS NOVAS INFORMAÇÕES PARA AS APIs
   salvarAlteracoesPerfil() {
     const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
-
+    console.log(newPerfil);
     this.alterarInfoService
       .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
