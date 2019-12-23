@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+h3{
+    margin-top: 30px;
+}
+
+form input{
+    width: 25vw;
+}

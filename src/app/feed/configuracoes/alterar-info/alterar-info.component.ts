@@ -74,7 +74,7 @@ export class AlterarInfoComponent implements OnInit {
     this.onInfoEndereco();
 
     this.alterarPerfilFormGroup = this.formBuilder.group({
-      newNome: ['', [Validators.required, Validators.maxLength(40)]],
+      newNome: [this.nome, [Validators.required, Validators.maxLength(40)]],
       newSobrenome: ['', [Validators.required, Validators.maxLength(50)]],
       newCpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
       newRg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
@@ -232,7 +232,7 @@ export class AlterarInfoComponent implements OnInit {
   // MÉTODOS "saltarAlteracoes": MÉTODOS QUE ENVIAM AS NOVAS INFORMAÇÕES PARA AS APIs
   salvarAlteracoesPerfil() {
     const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
-
+    console.log(newPerfil);
     this.alterarInfoService
       .alterarInfoPerfil(newPerfil)
       .subscribe(

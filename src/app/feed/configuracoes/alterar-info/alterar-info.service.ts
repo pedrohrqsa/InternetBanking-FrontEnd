@@ -18,7 +18,7 @@ export class AlterarInfoService {
 
     url = "http://localhost:5000/api/";
 
-    private apiCliente = this.url + "Clientes";
+    private apiCliente = this.url + "Clientes/";
     private apiFamiliares = this.url + "Familiares";
     private apiContato = this.url + "Contato";
     private apiEnderecos = this.url + "Enderecos";
@@ -46,9 +46,9 @@ export class AlterarInfoService {
     }
 
     // MÉTODOS QUE ALTERAM AS INFORMAÇÕES
-    alterarInfoPerfil(perfil: Cliente) {
+    alterarInfoPerfil(perfil: any) {
         return this
-          .http.put(API + '/api/Clientes/' + perfil.cpf, perfil,
+          .http.put(this.apiCliente + perfil.newCpf, perfil,
             { headers: { 'Content-Type': 'application/json' } })
     }
     

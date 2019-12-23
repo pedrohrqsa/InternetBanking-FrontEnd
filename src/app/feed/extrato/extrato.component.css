@@ -19,9 +19,11 @@ td {
 }
 
 .extrato-box {
-    margin-top: 10px;
     display: flex;
     justify-content: space-around;
+    background-color: darkcyan;
+    width: 100vw;
+    height: 92.5vh;
 }
 
 .resize {
@@ -45,10 +47,8 @@ mat-paginator {
 }
 
 .content {
-    background-color: rgba(208, 231, 238, 0.438);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    padding: 50px;
     width: 500px;
     height: 80vh;
 }
