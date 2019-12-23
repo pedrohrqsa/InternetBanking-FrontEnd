@@ -74,37 +74,37 @@ export class AlterarInfoComponent implements OnInit {
     this.onInfoEndereco();
 
     this.alterarPerfilFormGroup = this.formBuilder.group({
-      newNome: ['', [Validators.required, Validators.maxLength(40)]],
-      newSobrenome: ['', [Validators.required, Validators.maxLength(50)]],
-      newCpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
-      newRg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      newOrgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      newDtNascimento: ['', [Validators.required]],
-      newNacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
-      newNaturalidade: ['', [Validators.required, Validators.maxLength(20)]]
+      Nome: ['', [Validators.required, Validators.maxLength(40)]],
+      Sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
+      Cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
+      Rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      OrgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      DtNascimento: ['', [Validators.required]],
+      Nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
+      Naturalidade: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
     this.alterarFamiliaresFormGroup = this.formBuilder.group({
-      newNomeMae: ['', [Validators.required, Validators.maxLength(40)]],
-      newSobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
-      newNomePai: ['', [Validators.maxLength(40)]],
-      newSobrenomePai: ['', [Validators.maxLength(50)]]
+      NomeMae: ['', [Validators.required, Validators.maxLength(40)]],
+      SobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
+      NomePai: ['', [Validators.maxLength(40)]],
+      SobrenomePai: ['', [Validators.maxLength(50)]]
     });
 
     this.alterarContatoFormGroup = this.formBuilder.group({
-      newEmail: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
-      newTelResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      newTelCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      Email: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
+      TelResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      TelCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
 
     this.alterarEnderecoFormGroup = this.formBuilder.group({
-      newLogradouro: ['', [Validators.required, Validators.maxLength(50)]],
-      newNumero: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      newComplemento: ['', [Validators.maxLength(30)]],
-      newBairro: ['', [Validators.required, Validators.maxLength(20)]],
-      newCidade: ['', [Validators.required, Validators.maxLength(30)]],
-      newEstado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
-      newCep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
+      logradouro: ['', [Validators.required, Validators.maxLength(50)]],
+      numero: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      complemento: ['', [Validators.maxLength(30)]],
+      bairro: ['', [Validators.required, Validators.maxLength(20)]],
+      cidade: ['', [Validators.required, Validators.maxLength(30)]],
+      siglaEstado: ['', [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+      cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
     })
   }
 
@@ -234,7 +234,7 @@ export class AlterarInfoComponent implements OnInit {
     const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
 
     this.alterarInfoService
-      .alterarInfoPerfil(newPerfil)
+      .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
         () => this.router.navigate(['/feed']),
         err => console.log(err)
@@ -242,11 +242,9 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   salvarAlteracoesFamiliares() {
-    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
     const newFamiliares = this.alterarFamiliaresFormGroup.getRawValue() as Familiares;
-
     this.alterarInfoService
-      .alterarInfoFamiliares(newPerfil, newFamiliares)
+      .alterarInfoFamiliares(this.cpf, newFamiliares)
       .subscribe(
         () => this.router.navigate(['/feed']),
         err => console.log(err)
@@ -254,11 +252,9 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   salvarAlteracoesContato() {
-    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
     const newContato = this.alterarContatoFormGroup.getRawValue() as Contato;
-
     this.alterarInfoService
-      .alterarInfoContato(newPerfil, newContato)
+      .alterarInfoContato(this.cpf, newContato )
       .subscribe(
         () => this.router.navigate(['/feed']),
         err => console.log(err)
@@ -266,11 +262,9 @@ export class AlterarInfoComponent implements OnInit {
   }
 
   salvarAlteracoesEndereco() {
-    const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
     const newEndereco = this.alterarEnderecoFormGroup.getRawValue() as Endereco;
-
     this.alterarInfoService
-      .alterarInfoEndereco(newPerfil, newEndereco)
+      .alterarInfoEndereco(this.cpf, newEndereco)
       .subscribe(
         () => this.router.navigate(['/feed']),
         err => console.log(err)

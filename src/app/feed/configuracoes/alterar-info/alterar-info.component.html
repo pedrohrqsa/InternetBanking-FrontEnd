@@ -22,16 +22,16 @@
 
     <div class="direita">
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
-            <input (keypress)="letterOnly($event)" name="newNome" formControlName="newNome" placeholder="Nome" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="newSobrenome" formControlName="newSobrenome" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" name="newCpf" formControlName="newCpf" placeholder="CPF" minlength="11" maxlength="11">
-            <input name="newRg" formControlName="newRg" placeholder="RG" minlength="9" maxlength="9">
-            <input (keypress)="letterOnly($event)" name="newOrgaoEmissor" formControlName="newOrgaoEmissor" placeholder="Órgão emissor" minlength="5" maxlength="5">
-            <input class="data" [matDatepicker]="nascimento" name="newDtNascimento" formControlName="newDtNascimento" placeholder="Data de nascimento" minlength="8" maxlength="8">
+            <input (keypress)="letterOnly($event)" name="Nome" formControlName="Nome" placeholder="Nome" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="Sobrenome" formControlName="Sobrenome" placeholder="Sobrenome" maxlength="50">
+            <input (keypress)="numberOnly($event)" name="Cpf" formControlName="Cpf" placeholder="CPF" minlength="11" maxlength="11">
+            <input name="Rg" formControlName="Rg" placeholder="RG" minlength="9" maxlength="9">
+            <input (keypress)="letterOnly($event)" name="OrgaoEmissor" formControlName="OrgaoEmissor" placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input class="data" [matDatepicker]="nascimento" name="DtNascimento" formControlName="DtNascimento" placeholder="Data de nascimento" minlength="8" maxlength="8">
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
-            <input (keypress)="letterOnly($event)" name="newNacionalidade" formControlName="newNacionalidade" placeholder="Nacionalidade" maxlength="20">
-            <input (keypress)="letterOnly($event)" name="newNaturalidade" formControlName="newNaturalidade" placeholder="Naturalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="Nacionalidade" formControlName="Nacionalidade" placeholder="Nacionalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="Naturalidade" formControlName="Naturalidade" placeholder="Naturalidade" maxlength="20">
         </form>
     </div>
 </div>
@@ -53,10 +53,10 @@
 
     <div class="direita">
         <form [formGroup]="alterarFamiliaresFormGroup" *ngIf="editarFamiliares == true">
-            <input (keypress)="letterOnly($event)" name="newNomeMae" formControlName="newNomeMae" placeholder="Nome da mãe" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="newSobrenomeMae" formControlName="newSobrenomeMae" placeholder="Sobrenome da mãe" maxlength="50">
-            <input (keypress)="letterOnly($event)" name="newNomePai" formControlName="newNomePai" placeholder="Nome do pai" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="newSobrenomePai" formControlName="newSobrenomePai" placeholder="Sobrenome do pai" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="NomeMae" formControlName="NomeMae" placeholder="Nome da mãe" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="SobrenomeMae" formControlName="SobrenomeMae" placeholder="Sobrenome da mãe" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="NomePai" formControlName="NomePai" placeholder="Nome do pai" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="SobrenomePai" formControlName="SobrenomePai" placeholder="Sobrenome do pai" maxlength="50">
         </form>
     </div>
 </div>
@@ -78,9 +78,9 @@
     </div>
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
-            <input name="newEmail" formControlName="newEmail" placeholder="Email" maxlength="30">
-            <input (keypress)="numberOnly($event)" name="newTelResid" formControlName="newTelResid" placeholder="Telefone residencial" minlength="8" maxlength="10">
-            <input (keypress)="numberOnly($event)" name="newTelCel" formControlName="newTelCel" placeholder="Telefone celular" minlength="9" maxlength="11">
+            <input name="Email" formControlName="Email" placeholder="Email" maxlength="30">
+            <input (keypress)="numberOnly($event)" name="TelResid" formControlName="TelResid" placeholder="Telefone residencial" minlength="8" maxlength="10">
+            <input (keypress)="numberOnly($event)" name="TelCel" formControlName="TelCel" placeholder="Telefone celular" minlength="9" maxlength="11">
         </form>
     </div>
 </div>
@@ -106,13 +106,13 @@
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
-            <input name="newLogradouro" formControlName="newLogradouro" placeholder="Logradouro" maxlength="50">
-            <input (keypress)="numberOnly($event)" name="newNumero" formControlName="newNumero" placeholder="Número" maxlength="5">
-            <input name="newComplemento" formControlName="newComplemento" placeholder="Complemento" maxlength="30">
-            <input (keypress)="letterOnly($event)" name="newBairro" formControlName="newBairro" placeholder="Bairro" maxlength="20">
-            <input (keypress)="letterOnly($event)" name="newCidade" formControlName="newCidade" placeholder="Cidade" maxlength="30">
-            <input (keypress)="letterOnly($event)" name="newEstado" formControlName="newEstado" placeholder="Sigla do estado" minlength="2" maxlength="2">
-            <input (keypress)="numberOnly($event)" name="newCep" formControlName="newCep" placeholder="CEP" minlength="8" maxlength="8">
+            <input name="logradouro" formControlName="logradouro" placeholder="logradouro" maxlength="50">
+            <input (keypress)="numberOnly($event)" type="number" name="numero" formControlName="numero" placeholder="numero" maxlength="5">
+            <input name="complemento" formControlName="complemento" placeholder="complemento" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" placeholder="bairro" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" placeholder="cidade" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="siglaEstado" formControlName="siglaEstado" placeholder="siglaEstado" minlength="2" maxlength="2">
+            <input (keypress)="letterOnly($event)" name="cep" formControlName="cep" placeholder="cep" minlength="8" maxlength="8">
         </form>
     </div>
 </div>

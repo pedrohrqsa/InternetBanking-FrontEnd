@@ -46,42 +46,32 @@ export class AlterarInfoService {
     }
 
     // MÉTODOS QUE ALTERAM AS INFORMAÇÕES
-    alterarInfoPerfil(perfil: Cliente) {
+    alterarInfoPerfil(cpf: string, perfil: Cliente) {
+      const apiClientes = '/api/Clientes/' + cpf;
         return this
-          .http.put(API + '/api/Clientes/' + perfil.cpf, perfil,
+          .http.put(API + apiClientes, perfil,
             { headers: { 'Content-Type': 'application/json' } })
     }
     
-    alterarInfoFamiliares(perfil: Cliente, familiares: Familiares) {
-
-        perfil.Familiares = new Array<Familiares>();
-
-        perfil.Familiares.push(familiares);
-
+    alterarInfoFamiliares(cpf: string, familiares: Familiares) {
+      const apiFamiliares = '/api/Familiares/' + cpf;
         return this
-          .http.put(API + '/api/Familiares', perfil,
+          .http.put(API + apiFamiliares, familiares,
             { headers: { 'Content-Type': 'application/json' } })
     }
 
-    alterarInfoContato(perfil: Cliente, contato: Contato) {
-        
-        perfil.Contatos = new Array<Contato>();
-
-        perfil.Contatos.push(contato);
-        
+    alterarInfoContato(cpf : string, contato: Contato) {
+        const apiContato = '/api/Contato/' + cpf;
         return this
-          .http.put(API + '/api/Contato/' + perfil.cpf, contato,
+          .http.put(API + apiContato, contato,
             { headers: { 'Content-Type': 'application/json' } })
     }
 
-    alterarInfoEndereco(perfil: Cliente, endereco: Endereco) {
-        
-        perfil.Endereco = new Array<Endereco>();
-
-        perfil.Endereco.push(endereco);
-        
+    alterarInfoEndereco(cpf: string, endereco: Endereco) {
+      const apiEndereco = '/api/Enderecos/' + cpf;
+      console.log(endereco);
         return this
-          .http.put(API + '/api/Enderecos', perfil,
+          .http.put(API + apiEndereco, endereco,
             { headers: { 'Content-Type': 'application/json' } })
     }
 }
