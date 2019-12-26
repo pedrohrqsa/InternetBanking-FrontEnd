@@ -24,7 +24,7 @@
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="Nome" formControlName="Nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="Sobrenome" formControlName="Sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" name="Cpf" formControlName="Cpf" value="{{this.cpf}}"placeholder="CPF" minlength="11" maxlength="11">
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="Cpf" formControlName="Cpf" value="{{this.cpf}}"placeholder="CPF" minlength="11" maxlength="11">
             <input name="Rg" formControlName="Rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9">
             <input (keypress)="letterOnly($event)" name="OrgaoEmissor" formControlName="OrgaoEmissor" value="{{this.orgaoEmissor}}"placeholder="Órgão emissor" minlength="5" maxlength="5">
             <input class="data" [matDatepicker]="nascimento" name="DtNascimento" formControlName="DtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
