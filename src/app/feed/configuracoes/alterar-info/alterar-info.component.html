@@ -24,9 +24,9 @@
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="Nome" formControlName="Nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="Sobrenome" formControlName="Sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" readonly="readonly" name="Cpf" formControlName="Cpf" value="{{this.cpf}}"placeholder="CPF" minlength="11" maxlength="11">
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="Cpf" formControlName="Cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11">
             <input name="Rg" formControlName="Rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9">
-            <input (keypress)="letterOnly($event)" name="OrgaoEmissor" formControlName="OrgaoEmissor" value="{{this.orgaoEmissor}}"placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input (keypress)="letterOnly($event)" name="OrgaoEmissor" formControlName="OrgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
             <input class="data" [matDatepicker]="nascimento" name="DtNascimento" formControlName="DtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
@@ -106,10 +106,10 @@
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
-            <input name="logradouro" formControlName="logradouro" value="{{this.logradouro}}" placeholder="logradouro" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="logradouro" formControlName="logradouro" value="{{this.logradouro}}" placeholder="logradouro" maxlength="50">
             <input (keypress)="numberOnly($event)" type="number" name="numero" formControlName="numero" value="{{this.numero}}" placeholder="numero" maxlength="5">
-            <input name="complemento" formControlName="complemento" value="{{this.complemento}" placeholder="complemento" maxlength="30">
-            <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}" placeholder="bairro" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="complemento" formControlName="complemento" value="{{this.complemento}}" placeholder="complemento" maxlength="30">
+            <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}}" placeholder="bairro" maxlength="20">
             <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" value="{{this.cidade}}" placeholder="cidade" maxlength="30">
             <input (keypress)="letterOnly($event)" name="siglaEstado" formControlName="siglaEstado" value="{{this.siglaEstado}}" placeholder="siglaEstado" minlength="2" maxlength="2">
             <input (keypress)="letterOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8">
