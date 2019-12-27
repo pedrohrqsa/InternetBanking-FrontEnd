@@ -20,14 +20,11 @@ export class SaldoComponent implements OnInit {
   saldoAtual: number;
   indexCPF: number;
 
-  isShown: boolean = false;
-  toggleShow() {
-    this.isShown = !this.isShown;
-    this.onSaldo();
-  }
+
 
   ngOnInit() {
     this.getIndexCPF();
+    this.onSaldo();
   }
 
   getIndexCPF() {

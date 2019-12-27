@@ -1,12 +1,34 @@
+.background{
+    background-color: #5D8BE8;
+    width: 100%;
+    height: 92vh;
+}
 .container{
     display: flex;
     justify-content: center;
 }
 
-h3{
-    margin-top: 30px;
+.content{
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
 }
 
-form input{
+h3{
+    text-align: center;
+    color: darkslategray;
+}
+
+p{
+    text-align: center;
+}
+
+input{
     width: 25vw;
+    text-align: center;
+}
+
+button{
+    text-align: center;
 }

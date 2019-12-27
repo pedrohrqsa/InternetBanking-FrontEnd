@@ -1,11 +1,9 @@
 .container {
     display: flex;
     justify-content: center;
-    background-color: darkcyan;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 80vw;
-    height: 92.4vh;
+    background-color: #5D8BE8;
+    width: 100vw;
+    height: 92.5vh;
 }
 
 h1{
@@ -32,10 +30,10 @@ button {
 }
 
 .content {
-    width: 60vw;
+    width: 70vw;
     height: 80vh;
     background-color: white;
-    color: darkslategray;
+    color: black;
     text-align: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;

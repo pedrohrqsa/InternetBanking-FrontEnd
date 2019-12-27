@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtivarContaComponent implements OnInit {
 
+  ativar: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onAtivar(){
+    if(this.ativar == false){
+      this.ativar = true;
+    } 
   }
 
 }

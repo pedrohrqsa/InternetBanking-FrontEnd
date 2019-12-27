@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule, MatIconModule, MatBottomSheetModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatBottomSheetModule, MatMenuModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { FeedComponent } from './feed.component';
@@ -11,7 +11,9 @@ import { DepositoModule } from './deposito/deposito.module';
 import { SaqueModule } from './saque/saque.module';
 import { TransferenciaModule } from './transferencia/transferencia.module';
 import { ConfiguracoesModule } from './configuracoes/configuracoes.module';
-
+import { AlterarSenhaModule } from './configuracoes/alterar-senha/alterar-senha.module';
+import { AlterarInfoModule } from './configuracoes/alterar-info/alterar-info.module';
+import { InativarContaModule } from './configuracoes/inativar-conta/inativar-conta.module';
 
 
 @NgModule({
@@ -28,7 +30,12 @@ import { ConfiguracoesModule } from './configuracoes/configuracoes.module';
     ConfiguracoesModule,
     TransferenciaModule,
     MatBottomSheetModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    MatButtonModule,
+    AlterarSenhaModule,
+    AlterarInfoModule,
+    InativarContaModule
   ]
 })
 export class FeedModule { }

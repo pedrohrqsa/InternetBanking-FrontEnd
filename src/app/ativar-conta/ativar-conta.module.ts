@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule, MatDatepickerModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -8,7 +9,11 @@ import { MatButtonModule } from '@angular/material';
   declarations: [],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AtivarContaModule { }

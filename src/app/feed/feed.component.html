@@ -1,99 +1,59 @@
-<mat-tab-group mat-align-tabs="center" dynamicHeight="true">
+<!-- Conta
+<app-infos-conta></app-infos-conta>
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>account_balance_wallet</mat-icon>
-            Conta
-        </ng-template>
-        <app-infos-conta></app-infos-conta>
-    </mat-tab>
+Extrato
+<app-extrato></app-extrato>
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>list_alt</mat-icon>
-            Extrato
-        </ng-template>
-        <app-extrato></app-extrato>
-    </mat-tab>
+Depósito
+<app-deposito></app-deposito>
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>input</mat-icon>
-            Depósito
-        </ng-template>
-        <app-deposito></app-deposito>
-    </mat-tab>
+Saque
+<app-saque></app-saque>
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>account_balance</mat-icon>
-            Saque
-        </ng-template>
-        <app-saque></app-saque>
-    </mat-tab>
+Transferência
+<app-transferencia></app-transferencia>
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>swap_horiz</mat-icon>
-            Transferência
-        </ng-template>
-        <app-transferencia></app-transferencia>
-    </mat-tab>
+Configurações
+<app-configuracoes></app-configuracoes> -->
 
-    <mat-tab class="tab">
-        <ng-template mat-tab-label>
-            <mat-icon>settings</mat-icon>
-            Configurações
-        </ng-template>
-        <app-configuracoes></app-configuracoes>
-    </mat-tab>
+<div class="menu-lateral">
+    <button mat-button (click)="onInicio()">Início</button>
+    <br>
+    <button mat-button (click)="onExtrato()">Extrato</button>
+    <br>
+    <button mat-button (click)="onDeposito()">Depósito</button>
+    <br>
+    <button mat-button (click)="onSaque()">Saque</button>
+    <br>
+    <button mat-button (click)="onTransferencia()">Transferência</button>  
+    <br>
+    <button mat-button (click)="onConfig()">Configurações</button>
+    <br>
+        <div *ngIf="config == true" class="config">
+            <button mat-button (click)="onAlterarDados()">Alterar Dados Pessoais</button>
+            <br>
+            <button mat-button (click)="onAlterarSenha()">Alterar Senha</button>
+            <br>
+            <button mat-button (click)="onDesativarConta()">Desativar Conta</button>
+        </div>
+    
+    <button mat-button class="botaoSaldo" (click)="onSaldo()">Saldo</button>
 
-    <mat-tab-group mat-align-tabs="center" dynamicHeight="true" backgroundColor="accent">
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>account_balance_wallet</mat-icon>
-                Conta
-            </ng-template>
-            <app-infos-conta></app-infos-conta>
-        </mat-tab>
+        <div *ngIf="saldo == true" class="saldo">
+            <app-saldo></app-saldo>
+        </div>
+    <br>
+    <button mat-button (click)="logout()" class="logout">Encerrar Sessão</button> 
+</div>
 
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>list_alt</mat-icon>
-                Extrato
-            </ng-template>
-            <app-extrato></app-extrato>
-        </mat-tab>
+<div class="conteudo">
+    <app-infos-conta *ngIf="inicio == true"></app-infos-conta>
+    <app-extrato *ngIf="extrato == true"></app-extrato>
+    <app-deposito *ngIf="deposito == true"></app-deposito>
+    <app-saque *ngIf="saque == true"></app-saque>
+    <app-transferencia *ngIf="transferencia == true"></app-transferencia>
 
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>input</mat-icon>
-                Depósito
-            </ng-template>
-            <app-deposito></app-deposito>
-        </mat-tab>
-
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>account_balance</mat-icon>
-                Saque
-            </ng-template>
-            <app-saque></app-saque>
-        </mat-tab>
-
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>swap_horiz</mat-icon>
-                Transferência
-            </ng-template>
-            <app-transferencia></app-transferencia>
-        </mat-tab>
-
-        <mat-tab class="tab">
-            <ng-template mat-tab-label>
-                <mat-icon>settings</mat-icon>
-                Configurações
-            </ng-template>
-            <app-configuracoes></app-configuracoes>
-        </mat-tab>
-    </mat-tab-group>
+    <app-alterar-info *ngIf="alterarDados == true"></app-alterar-info>
+    <app-alterar-senha *ngIf="alterarSenha == true"></app-alterar-senha>
+    <app-inativar-conta *ngIf="desativarConta == true"></app-inativar-conta>
+</div>
