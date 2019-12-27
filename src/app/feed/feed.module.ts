@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule, MatIconModule, MatBottomSheetModule, MatMenuModule, MatButtonModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatBottomSheetModule, MatMenuModule, MatButtonModule, MatProgressBarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { FeedComponent } from './feed.component';
@@ -35,7 +35,8 @@ import { InativarContaModule } from './configuracoes/inativar-conta/inativar-con
     MatButtonModule,
     AlterarSenhaModule,
     AlterarInfoModule,
-    InativarContaModule
+    InativarContaModule,
+    MatProgressBarModule
   ]
 })
 export class FeedModule { }

@@ -6,12 +6,16 @@
     height: 92.5vh;
 }
 
+b{
+    color: #5D8BE8;
+}
+
 h1{
     margin-top: 20px;
 }
 
 p{
-    font-size: 40px;
+    font-size: 30px;
 }
 
 mat-form-field {

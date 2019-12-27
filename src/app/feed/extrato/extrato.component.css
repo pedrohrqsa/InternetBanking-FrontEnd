@@ -1,5 +1,5 @@
 table {
-    width: 100%;
+    width: 98%;
     background-color: white;
 }
 
@@ -14,57 +14,21 @@ td {
     font-size: 18px;
 }
 
-.aaa {
-    text-align: center;
-}
-
-.extrato-box {
-    display: flex;
-    justify-content: space-around;
-    background-color: darkcyan;
-    width: 100vw;
-    height: 92.5vh;
-}
-
-.resize {
-    width: 60%;
-    display: flex;
-    justify-content: space-around;
-}
-
 mat-paginator {
-    color: royalblue;
-}
-
-.fundo {
-    width: 100%;
-    height: 92.5vh;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-}
-
-.content {
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 500px;
-    height: 80vh;
+    color: #5D8BE8;
+    width: 98%;
 }
 
 .titulo {
     font-size: 40px;
-    color: darkslategray;
-    text-align: center;
+}
+
+b{
+    color: #5D8BE8;
 }
 
 button {
     text-align: center;
-    background-color: darkslategray;
+    background-color: #5D8BE8;
     color: white;
-}
-
-.centralizar-botao {
-    text-align: center;
 }

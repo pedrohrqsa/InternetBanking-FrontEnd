@@ -1,45 +1,13 @@
-.container {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.fundo{
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    background-color: darkcyan;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    width: 80vw;
-    height: 92.4vh;
-}
-
-.frente{
-    float: right;
-    width: 60vw;
-    height: 80vh;
-    background-color: white;
-    color: darkslategray;
-    text-align: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.frente h1{
+h1{
     margin-top: 20px;
 }
 
-.frente form{
-    justify-content: center;
+b{
+    color: #5D8BE8;;
 }
 
-.frente form input{
-    width: 80%;
-}
-
-button{
-    color: white;
-    background-color: darkslategray;
+input{
+    width: 25vw;
 }
 
 input::-webkit-outer-spin-button,

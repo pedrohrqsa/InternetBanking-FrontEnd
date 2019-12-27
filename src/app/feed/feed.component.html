@@ -17,7 +17,7 @@ Configurações
 <app-configuracoes></app-configuracoes> -->
 
 <div class="menu-lateral">
-    <button mat-button (click)="onInicio()">Início</button>
+    <button mat-button (click)="onInicio()" autofocus>Início</button>
     <br>
     <button mat-button (click)="onExtrato()">Extrato</button>
     <br>
@@ -27,7 +27,13 @@ Configurações
     <br>
     <button mat-button (click)="onTransferencia()">Transferência</button>  
     <br>
-    <button mat-button (click)="onConfig()">Configurações</button>
+    <button mat-button class="botaoSaldo" (click)="onSaldo()">{{this.infoSaldo}}</button>
+
+        <div *ngIf="saldo == true" class="saldo">
+            <app-saldo></app-saldo>
+        </div>
+
+    <button mat-button (click)="onConfig()" class="botaoConfig">Configurações</button>
     <br>
         <div *ngIf="config == true" class="config">
             <button mat-button (click)="onAlterarDados()">Alterar Dados Pessoais</button>
@@ -37,16 +43,11 @@ Configurações
             <button mat-button (click)="onDesativarConta()">Desativar Conta</button>
         </div>
     
-    <button mat-button class="botaoSaldo" (click)="onSaldo()">Saldo</button>
-
-        <div *ngIf="saldo == true" class="saldo">
-            <app-saldo></app-saldo>
-        </div>
-    <br>
     <button mat-button (click)="logout()" class="logout">Encerrar Sessão</button> 
 </div>
 
 <div class="conteudo">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     <app-infos-conta *ngIf="inicio == true"></app-infos-conta>
     <app-extrato *ngIf="extrato == true"></app-extrato>
     <app-deposito *ngIf="deposito == true"></app-deposito>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaqueComponent } from './saque.component';
-import { MatInputModule, MatFormFieldModule, MatButtonModule, MatSidenavModule, MatListModule, MatBottomSheet, MatDialogModule, MatBottomSheetContainer, MatBottomSheetModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatButtonModule, MatSidenavModule, MatListModule, MatBottomSheet, MatDialogModule, MatBottomSheetContainer, MatBottomSheetModule, MatDividerModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SaldoModule } from '../shared/saldo/saldo.module';
 
@@ -20,7 +20,8 @@ import { SaldoModule } from '../shared/saldo/saldo.module';
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatDividerModule
   ],
   exports: [SaqueComponent],
   providers: [MatBottomSheet],

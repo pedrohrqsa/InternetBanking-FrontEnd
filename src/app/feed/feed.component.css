@@ -1,9 +1,13 @@
+.conteudo mat-progress-bar{
+  width: 98%;
+}
+
 .menu-lateral{
-  float: left;
+    float: left;
     width: 23vw;
     height: 100vh;
     background-color: #5D8BE8;
-    position: sticky;
+    position: fixed;
     left: 0;
 }
 
@@ -21,8 +25,9 @@
 }
 
 .menu-lateral .config{
-  position: fixed;
+  position: absolute;
   margin-left: 23vw;
+  margin-top: 156px;
   width: 23vw;
   z-index: 9999;
 }
@@ -35,13 +40,19 @@
   color: white;
 }
 
+.botaoConfig{
+  position: absolute;
+  bottom: 50px;
+  margin-left: -23vw;
+}
+
 .logout{
   position: absolute;
   bottom: 0;
 }
 
 .conteudo{
-  z-index: -1;
+  z-index: -999999;
   float: right;
   width: 75vw;
   height: 100vh;
