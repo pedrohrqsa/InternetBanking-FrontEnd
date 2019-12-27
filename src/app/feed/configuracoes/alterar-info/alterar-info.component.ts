@@ -160,8 +160,7 @@ export class AlterarInfoComponent implements OnInit {
         this.dtNascimento = clientex[this.indexCPF].dtNascimento.toString().substring(0, 10);
         this.nacionalidade = clientex[this.indexCPF].nacionalidade;
         this.naturalidade = clientex[this.indexCPF].naturalidade;
-      },
-      );
+      });
   }
 
   onInfoFamiliares() {
@@ -236,7 +235,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
-        () => this.router.navigate(['/feed/' + this.cpf]),
+        () => this.reload(),
         err => console.log(err)
       );
   }
@@ -246,7 +245,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoFamiliares(this.cpf, newFamiliares)
       .subscribe(
-        () => this.router.navigate(['/feed/' + this.cpf]),
+        () => this.reload(),
         err => console.log(err)
       );
   }
@@ -254,9 +253,9 @@ export class AlterarInfoComponent implements OnInit {
   salvarAlteracoesContato() {
     const newContato = this.alterarContatoFormGroup.getRawValue() as Contato;
     this.alterarInfoService
-      .alterarInfoContato(this.cpf, newContato )
+      .alterarInfoContato(this.cpf, newContato)
       .subscribe(
-        () => this.router.navigate(['/feed/' + this.cpf]),
+        () => this.reload(),
         err => console.log(err)
       );
   }
@@ -266,8 +265,13 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoEndereco(this.cpf, newEndereco)
       .subscribe(
-        () => this.router.navigate(['/feed/' + this.cpf]),
+        () => this.reload(),
         err => console.log(err)
       );
+  }
+
+  reload() {
+    alert("Informações alteradas com sucesso!");
+    window.location.reload();
   }
 }
