@@ -26,10 +26,17 @@
 
 .menu-lateral .config{
   position: absolute;
-  margin-left: 23vw;
-  margin-top: 156px;
   width: 23vw;
   z-index: 9999;
+  bottom: 100px;
+}
+
+.menu-lateral .config button{
+  background-color: rgb(44, 44, 128);
+}
+
+.menu-lateral .config button:hover{
+  background-color: #5D8BE8;
 }
 
 .menu-lateral .saldo{
@@ -57,4 +64,10 @@
   width: 75vw;
   height: 100vh;
   padding-top: 15px;
+}
+
+.saldo{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(44, 44, 128);
 }

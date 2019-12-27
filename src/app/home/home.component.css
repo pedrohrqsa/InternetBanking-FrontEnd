@@ -13,9 +13,11 @@
 
 .center {
     margin-left: 40px;
-    margin-top: 100px;
-    background-color: #5D8BE8;
-    height: 80%;
+    margin-top: 30px;
+    color: #5D8BE8;
+    background-color: white;
+    height: 50%;
+    width: 50vw;
     border-radius: 15px;
     padding: 1%;
     text-align: center;
@@ -23,21 +25,14 @@
     /* align-self: flex-end; */
 }
 
-a {
-    display: block;
+button {
     color: whitesmoke;
     text-align: center;
-    padding: 14px 16px;
+    width: 80%;
+    height: 50px;
     text-decoration: none;
-}
-
-a:hover:not(.active) {
-    background-color: whitesmoke;
-    color: #5D8BE8
-}
-
-a.active {
     background-color: #5D8BE8;
+    border: none;
 }
 
 .titulo-container {
