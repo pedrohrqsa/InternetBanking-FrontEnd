@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ClienteLogin } from 'src/app/Models/ClienteLogin';
 import { AlterarSenhaService } from './alterar-senha.service';
@@ -29,7 +29,6 @@ export class AlterarSenhaComponent implements OnInit {
   cpf: string;
 
   constructor(
-    private router: Router,
     private alterarSenhaService: AlterarSenhaService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
@@ -78,7 +77,7 @@ export class AlterarSenhaComponent implements OnInit {
   alterarSenha() {
     const newClienteLogin = this.alterarSenhaFormGroup.getRawValue() as ClienteLogin;
     this.alterarSenhaService
-      .alterarSenha(this.senha, this.cpf, newClienteLogin)
+      .alterarSenha(this.cpf, newClienteLogin)
       .subscribe(
         () => this.reload(),
         err => console.log(err)

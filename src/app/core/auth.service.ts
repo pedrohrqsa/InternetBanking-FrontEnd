@@ -16,7 +16,7 @@ export class AuthService {
     private http: HttpClient,
     private userService: UserService) { }
 
-  autenticar(cpf: string, senha: string) { 
+  autenticar(cpf: string, senhaAcesso: string) { 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export class AuthService {
     };
 
     return this.http.post(API + '/api/token',
-      { cpf, senha },
+      { cpf, senhaAcesso },
       { observe: 'response' },
     )
       .pipe(tap((res: any) => {

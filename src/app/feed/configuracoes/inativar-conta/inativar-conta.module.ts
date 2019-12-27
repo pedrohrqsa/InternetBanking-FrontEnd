@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCommonModule, MatButtonModule, MatDividerModule } from '@angular/material';
+import { MatCommonModule, MatButtonModule, MatDividerModule, MatFormFieldModule } from '@angular/material';
 import { InativarContaComponent } from './inativar-conta.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [InativarContaComponent],
@@ -9,7 +10,9 @@ import { InativarContaComponent } from './inativar-conta.component';
     CommonModule,
     MatCommonModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   exports: [InativarContaComponent]
 })
