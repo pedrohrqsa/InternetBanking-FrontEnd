@@ -40,7 +40,7 @@ export class AlterarSenhaComponent implements OnInit {
     this.onInfoClienteLogin();
 
     this.alterarSenhaFormGroup = this.formBuilder.group({
-      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      antigaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       novaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       confirmacaoNovaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     },
@@ -80,9 +80,14 @@ export class AlterarSenhaComponent implements OnInit {
     this.alterarSenhaService
       .alterarSenha(this.senha, this.cpf, newClienteLogin)
       .subscribe(
-        () => this.router.navigate(['/feed/' + this.cpf]),
+        () => this.reload(),
         err => console.log(err)
       );
+  }
+
+  reload() {
+    alert("Informações alteradas com sucesso!");
+    window.location.reload();
   }
 
 }
