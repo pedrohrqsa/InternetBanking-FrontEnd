@@ -236,7 +236,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
-        () => this.router.navigate(['/feed']),
+        () => this.router.navigate(['/feed/' + this.cpf]),
         err => console.log(err)
       );
   }
@@ -246,7 +246,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoFamiliares(this.cpf, newFamiliares)
       .subscribe(
-        () => this.router.navigate(['/feed']),
+        () => this.router.navigate(['/feed/' + this.cpf]),
         err => console.log(err)
       );
   }
@@ -256,7 +256,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoContato(this.cpf, newContato )
       .subscribe(
-        () => this.router.navigate(['/feed']),
+        () => this.router.navigate(['/feed/' + this.cpf]),
         err => console.log(err)
       );
   }
@@ -266,7 +266,7 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoEndereco(this.cpf, newEndereco)
       .subscribe(
-        () => this.router.navigate(['/feed']),
+        () => this.router.navigate(['/feed/' + this.cpf]),
         err => console.log(err)
       );
   }
