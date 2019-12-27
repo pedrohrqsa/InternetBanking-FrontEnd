@@ -52,7 +52,7 @@
                     </mat-form-field>
 
                     <label class="image-upload-container btn btn-bwm">
-                        <!-- <span>Selecione uma imagem da parte frontal e traseira do seu documento digitalizado.</span>
+                        <span>Selecione uma imagem da parte frontal e traseira do seu documento digitalizado.</span>
                          <input #imageInput
                                 type="file"
 
@@ -62,7 +62,7 @@
 
                                 (change)="handleFileInput($event.target.files)" 
 
-                                required> -->
+                                required>
                     </label>
 
                     <div>
@@ -165,7 +165,7 @@
                 <form [formGroup]="clienteLoginFormGroup">
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput type="password" name="senha" placeholder="Senha do InternetBanking" formControlName="senha" minlength="8" maxlength="15">
+                        <input matInput type="password" name="senhaAcesso" placeholder="Senha do InternetBanking" formControlName="senhaAcesso" minlength="8" maxlength="15">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">

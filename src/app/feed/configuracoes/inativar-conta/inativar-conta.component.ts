@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { InativarContaService } from './inativar-conta.service';
 import { Cliente } from 'src/app/Models/Cliente';
 import { Conta } from 'src/app/Models/Conta';
+import { InativarContaService } from './inativar-conta.service';
+import { InfoContaService } from '../../infos-conta/Infos-conta.service';
 
 @Component({
   selector: 'app-inativar-conta',
@@ -12,45 +14,70 @@ import { Conta } from 'src/app/Models/Conta';
 })
 export class InativarContaComponent implements OnInit {
 
-  indexCPF: number;
-
+  inativarContaFormGroup: FormGroup;
   cliente: Cliente;
   conta: Conta;
 
+  indexCpf: number;
+  indexNumeroConta: number;
+  numeroConta: number;
+
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private infoContaService: InfoContaService,
     private inativarContaService: InativarContaService
   ) { }
 
   ngOnInit() {
     this.getIndexCPF();
-    this.onInfoCliente();
     this.onInfoConta();
+
+    this.inativarContaFormGroup = this.formBuilder.group({
+      senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+    });
   }
 
   getIndexCPF() {
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
 
-    return this.inativarContaService.getInfoCliente()
+    return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
+          this.indexCpf = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-            this.onInfoConta())
+          this.onInfoConta())
       );
   }
 
-  onInfoCliente() {
-    return this.inativarContaService.getInfoCliente()
-      .subscribe(clientex =>
-        this.cliente = clientex[this.indexCPF],
-      );
-  }
+  // getNumeroConta() {
+  //   const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
+
+  //   return this.infoContaService.getInfoConta()
+  //     .subscribe(clientex =>
+  //       console.log(getCpf,
+  //         this.indexCpf = clientex.findIndex(obj =>
+  //           obj.cpf == getCpf),
+  //         this.onInfoConta())
+  //     )
+  // }
 
   onInfoConta() {
     return this.inativarContaService.getInfoConta()
       .subscribe(clientex =>
-        this.conta.flagAtivo = clientex[this.indexCPF].flagAtivo,
+        this.conta.flagAtivo = clientex[this.indexNumeroConta].flagAtivo,
+      );
+  }
+
+  inativarConta() {
+    const newConta = this.inativarContaFormGroup.getRawValue() as Conta;
+    this.inativarContaService
+      .inativarConta(this.numeroConta, newConta)
+      .subscribe(
+        () => this.router.navigate(['/home']),
+        err => console.log(err)
       );
   }
 

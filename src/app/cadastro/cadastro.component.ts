@@ -79,7 +79,7 @@ export class CadastroComponent implements OnInit {
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
     });
     this.clienteLoginFormGroup = this._formBuilder.group({
-      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       confirmacaoSenha: ['', [Validators.minLength(8), Validators.maxLength(15)]]
     },
       { validator: this.checkPasswords }
@@ -129,7 +129,7 @@ export class CadastroComponent implements OnInit {
   }
 
   checkPasswords(group: FormGroup) {
-    let pass = group.controls.senha.value;
+    let pass = group.controls.senhaAcesso.value;
     let confirmPass = group.controls.confirmacaoSenha.value;
     return pass === confirmPass ? null : { notSame: true }
   }

@@ -4,14 +4,12 @@
 
     <mat-divider></mat-divider>
 
-    <p>Para alterar sua senha atual, insira sua senha atual.</p>
-
     <form [formGroup]="alterarSenhaFormGroup">
 
-        <p><input type="password" name="senhaAtual" formControlName="senhaAtual" placeholder="Insira sua senha atual" minlength="8" maxlength="15"></p>
+        <p><input type="password" name="senha" formControlName="antigaSenha" placeholder="Insira sua senha atual" minlength="8" maxlength="15"></p>
         <p><input type="password" name="novaSenha" formControlName="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15"></p>            
         <p><input type="password" name="confirmacaoNovaSenha" formControlName="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15"></p>
 
-        <button mat-raised-button>Confirmar Alteração</button>
+        <button mat-raised-button (click)="alterarSenha()">Confirmar Alteração</button>
     </form>
 </div>

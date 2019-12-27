@@ -1,7 +1,8 @@
 import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AuthService } from '../core/auth.service';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,6 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-
-  // @Input() cpf;
-  // @Output() cpf = new EventEmitter();
 
   loginForm: FormGroup;
 
@@ -32,18 +30,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       cpf: ['', [Validators.required, Validators.maxLength(11)]],
-      senha: ['', [Validators.required]]
+      senhaAcesso: ['', [Validators.required]]
     })
   }
 
   login() {
     const cpfDigitado = this.loginForm.get('cpf').value;
-    const senha = this.loginForm.get('senha').value;
-
-    // var cpfEmiter = {
-    //   cpf:cpfDigitado
-    // }
-    // this.cpf.emit(cpfEmiter);
+    const senha = this.loginForm.get('senhaAcesso').value;
 
     this.autorizacao.autenticar(cpfDigitado, senha)
       .subscribe(() => this.router.navigate(['feed', cpfDigitado]),

@@ -12,9 +12,9 @@
                 <br>
 
                 <mat-form-field>
-                    <input type="password" matInput placeholder="Senha" formControlName="senha">
+                    <input type="password" matInput placeholder="Senha" formControlName="senhaAcesso">
                 </mat-form-field>
-                <small *ngIf="loginForm.get('senha').errors && loginForm.get('senha').touched" class="text-danger d-block">Senha é um campo obrigatório</small>
+                <small *ngIf="loginForm.get('senhaAcesso').errors && loginForm.get('senhaAcesso').touched" class="text-danger d-block">Senha é um campo obrigatório</small>
 
                 <div class="button">
                     <button mat-raised-button>Entrar</button>
