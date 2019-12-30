@@ -18,8 +18,8 @@ export class InativarContaComponent implements OnInit {
   cliente: Cliente;
   conta: Conta;
 
-  indexCpf: number;
-  indexNumeroConta: number;
+  cpf: string;
+  indexCPF: number;
   numeroConta: number;
 
   constructor(
@@ -32,7 +32,7 @@ export class InativarContaComponent implements OnInit {
 
   ngOnInit() {
     this.getIndexCPF();
-    this.onInfoConta();
+    this.onInfoCliente();
 
     this.inativarContaFormGroup = this.formBuilder.group({
       senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
@@ -46,39 +46,34 @@ export class InativarContaComponent implements OnInit {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         console.log(getCpf,
-          this.indexCpf = clientex.findIndex(obj =>
+          this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-          this.onInfoConta())
+            this.onInfoCliente())
       );
   }
-
-  // getNumeroConta() {
-  //   const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
-
-  //   return this.infoContaService.getInfoConta()
-  //     .subscribe(clientex =>
-  //       console.log(getCpf,
-  //         this.indexCpf = clientex.findIndex(obj =>
-  //           obj.cpf == getCpf),
-  //         this.onInfoConta())
-  //     )
-  // }
-
-  onInfoConta() {
-    return this.inativarContaService.getInfoConta()
-      .subscribe(clientex =>
-        this.conta.flagAtivo = clientex[this.indexNumeroConta].flagAtivo,
-      );
+  onInfoCliente() {
+    return this.infoContaService.getInfoCliente()
+      .subscribe(clientex => {
+        this.cpf = clientex[this.indexCPF].cpf;
+      });
   }
+
 
   inativarConta() {
+    this.getIndexCPF();
+    this.onInfoCliente();
+
     const newConta = this.inativarContaFormGroup.getRawValue() as Conta;
     this.inativarContaService
-      .inativarConta(this.numeroConta, newConta)
+      .inativarConta(this.cpf, newConta)
       .subscribe(
-        () => this.router.navigate(['/home']),
+        // () => this.router.navigate(['/home']),
+        () => this.reload(),
         err => console.log(err)
       );
   }
-
+  reload() {
+    alert("Informações alteradas com sucesso!");
+    window.location.reload();
+  }
 }
