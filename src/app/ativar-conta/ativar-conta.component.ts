@@ -17,7 +17,9 @@ export class AtivarContaComponent implements OnInit {
   onAtivar(){
     if(this.ativar == false){
       this.ativar = true;
-    } 
+    } else {
+      this.ativar = false;
+    }
   }
 
 }

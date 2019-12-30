@@ -33,6 +33,6 @@ export class CadastroService {
 
     return this
       .http.post(API + '/api/Clientes', cliente,
-        { headers: { 'Content-Type': 'application/json' } })
+        { headers: { 'Content-Type': 'application/json' } }).subscribe()
   }
 }
