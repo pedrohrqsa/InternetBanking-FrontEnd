@@ -14,6 +14,7 @@ const API = environment.API_URL;
 export class InativarContaService {
   
   private apiConta = API + "/api/Conta/";
+  private apiClienteLogin = API + "/api/clienteLogin/";
 
   constructor(
     private http: HttpClient
@@ -23,10 +24,13 @@ export class InativarContaService {
     return this.http.get<Conta[]>(this.apiConta);
   }
 
-  inativarConta(numeroConta: number, conta: Conta, clienteLogin: ClienteLogin) {
-    return this
-      .http.put(this.apiConta + numeroConta, conta,
-        { headers: { 'Content-Type': 'application/json' } })
+  getInfoLogin(): Observable<ClienteLogin[]> {
+    return this.http.get<ClienteLogin[]>(this.apiClienteLogin);
   }
 
+  inativarConta(cpf: string, conta: Conta) {
+    return this
+      .http.put(this.apiConta + cpf, conta,
+        { headers: { 'Content-Type': 'application/json' } })
+  }
 }

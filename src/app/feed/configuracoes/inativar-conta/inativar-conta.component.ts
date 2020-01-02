@@ -20,8 +20,8 @@ export class InativarContaComponent implements OnInit {
   cliente: Cliente;
   conta: Conta;
 
-  indexCpf: number;
-  indexNumeroConta: number;
+  cpf: string;
+  indexCPF: number;
   numeroConta: number;
 
   constructor(
@@ -35,7 +35,7 @@ export class InativarContaComponent implements OnInit {
 
   ngOnInit() {
     this.getIndexCPF();
-    this.onInfoConta();
+    this.onInfoCliente();
 
     this.inativarContaFormGroup = this.formBuilder.group({
       senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
@@ -49,9 +49,9 @@ export class InativarContaComponent implements OnInit {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         console.log(getCpf,
-          this.indexCpf = clientex.findIndex(obj =>
+          this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
-          this.onInfoConta())
+          this.onInfoCliente())
       );
   }
 
@@ -59,34 +59,30 @@ export class InativarContaComponent implements OnInit {
     this.userService.logout();
     this.router.navigate(['']);
   }
-  // getNumeroConta() {
-  //   const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
 
-  //   return this.infoContaService.getInfoConta()
-  //     .subscribe(clientex =>
-  //       console.log(getCpf,
-  //         this.indexCpf = clientex.findIndex(obj =>
-  //           obj.cpf == getCpf),
-  //         this.onInfoConta())
-  //     )
-  // }
-
-  onInfoConta() {
-    return this.inativarContaService.getInfoConta()
-      .subscribe(clientex =>
-        this.conta.flagAtivo = clientex[this.indexNumeroConta].flagAtivo,
-      );
+  onInfoCliente() {
+    return this.infoContaService.getInfoCliente()
+      .subscribe(clientex => {
+        this.cpf = clientex[this.indexCPF].cpf;
+      });
   }
 
+
   inativarConta() {
+    this.getIndexCPF();
+    this.onInfoCliente();
+
     const newConta = this.inativarContaFormGroup.getRawValue() as Conta;
     const newClienteLogin = this.inativarContaFormGroup.getRawValue() as ClienteLogin;
     this.inativarContaService
-      .inativarConta(this.numeroConta, newConta, newClienteLogin)
+      .inativarConta(this.cpf, newConta)
       .subscribe(
         () => this.logout(),
         err => console.log(err)
       );
   }
-
+  reload() {
+    alert("Informações alteradas com sucesso!");
+    window.location.reload();
+  }
 }

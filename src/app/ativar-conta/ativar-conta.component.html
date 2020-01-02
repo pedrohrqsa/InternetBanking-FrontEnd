@@ -5,14 +5,18 @@
             <h3>Parece que você já tem uma conta no nosso banco.</h3>
 
             <p>Para ativar sua conta confirme seus dados pessoais:</p>
-            
+            <form>
                 <p><input type="text" placeholder="CPF"></p>
                 <p><input type="text" placeholder="RG"></p>
                 <p><input type="date" placeholder="Data de Nascimento"></p>
-
-                <button mat-raised-button (click)="onAtivar()">Verificar Dados</button>
-
-                <div *ngIf="ativar == true">
+                
+                <div class="botao">
+                    <button mat-raised-button (click)="onAtivar()">Verificar Dados</button>
+                </div>
+            </form>
+            
+            <form *ngIf="ativar == true">
+                <div >
                     <p>Crie sua nova senha para acessar:</p>
                     <p><input type="password" placeholder="Nova senha de acesso"></p>
                     <p><input type="password" placeholder="Confirmar senha de acesso"></p>
@@ -21,9 +25,11 @@
                     <p><input type="password" placeholder="Nova senha de transações"></p>
                     <p><input type="password" placeholder="Confirmar senha de transações"></p>
 
-                    <button mat-raised-button >Ativar Conta</button>
+                    <div class="botao">
+                        <button mat-raised-button >Ativar Conta</button>
+                    </div>
                 </div>
-                
+            </form>
         </div>
     </div>
 </div>
