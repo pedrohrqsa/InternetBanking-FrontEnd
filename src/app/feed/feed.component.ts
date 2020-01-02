@@ -23,7 +23,7 @@ export class FeedComponent implements OnInit {
   saldo: boolean = false;
   indexCPF: number;
   saldoAtual: number;
-  infoSaldo: string = "Mostrar Saldo";
+  infoSaldo: string = "Saldo disponível";
 
 
   constructor(
@@ -53,12 +53,12 @@ export class FeedComponent implements OnInit {
 
   onSaldo(){
     if(this.saldo == false){
-      this.infoSaldo = "Ocultar Saldo";
+      this.infoSaldo = "Ocultar saldo";
       this.config = false;
       this.saldo = true;
     } else {
       this.saldo = false;
-      this.infoSaldo = "Mostrar Saldo";
+      this.infoSaldo = "Saldo disponível";
     }
   }
 

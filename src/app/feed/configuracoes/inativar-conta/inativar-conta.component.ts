@@ -78,7 +78,7 @@ export class InativarContaComponent implements OnInit {
       .inativarConta(this.cpf, newConta)
       .subscribe(
         () => this.logout(),
-        err => console.log(err)
+        err => alert("Não foi possível desativar sua conta. Você digitou alguma informação incorretamente!")
       );
   }
   reload() {

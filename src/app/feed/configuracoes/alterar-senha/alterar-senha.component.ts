@@ -80,7 +80,7 @@ export class AlterarSenhaComponent implements OnInit {
       .alterarSenha(this.cpf, newClienteLogin)
       .subscribe(
         () => this.reload(),
-        err => console.log(err)
+        err => alert("Não foi possível alterar sua senha. Você digitou alguma informação incorretamente!")
       );
   }
 

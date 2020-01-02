@@ -70,7 +70,8 @@ export class SaqueComponent {
     transacao2.numeroContaOrigem = this.numeroConta;
     this.senhaTransacoes = transacao2.senhaTransacoes;
     
-    this.servico.Saque(transacao2).subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+    this.servico.Saque(transacao2).subscribe(() => this.router.navigate(['feed/' + cpf]),
+    err => alert("Não foi possível fazer seu saque. Você digitou alguma informação incorretamente!"));
     this.form.reset();
   }
 }

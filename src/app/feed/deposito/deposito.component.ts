@@ -68,7 +68,8 @@ export class DepositoComponent {
     this.senhaTransacoes = transacao1.senhaTransacoes;
 
     this.servico.Deposito(transacao1)
-      .subscribe(() => this.router.navigate(['feed/' + cpf]), err => console.log(err));
+      .subscribe(() => this.router.navigate(['feed/' + cpf]),
+      err => alert("Não foi possível fazer seu depósito. Você digitou alguma informação incorretamente!"));
 
     this.form.reset();
     this.sucesso = true;

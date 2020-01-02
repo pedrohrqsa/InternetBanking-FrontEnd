@@ -76,7 +76,7 @@ export class TransferenciaComponent {
     this.servico.Transferecia(transacao3)
       .subscribe(() =>
         this.router.navigate(['feed/' + cpf]),
-        err => console.log(err));
+        err => alert("Não foi possível fazer sua transferência. Você digitou alguma informação incorretamente!"));
 
     this.form.reset();
   }
