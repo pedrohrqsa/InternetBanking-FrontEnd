@@ -28,7 +28,7 @@ export class InativarContaService {
     return this.http.get<ClienteLogin[]>(this.apiClienteLogin);
   }
 
-  inativarConta(cpf: string, conta: Conta) {
+  inativarConta(cpf: string, conta: ClienteLogin) {
     return this
       .http.put(this.apiConta + cpf, conta,
         { headers: { 'Content-Type': 'application/json' } })

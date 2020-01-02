@@ -19,7 +19,6 @@ export class InativarContaComponent implements OnInit {
   inativarContaFormGroup: FormGroup;
   cliente: Cliente;
   conta: Conta;
-
   cpf: string;
   indexCPF: number;
   numeroConta: number;
@@ -38,8 +37,7 @@ export class InativarContaComponent implements OnInit {
     this.onInfoCliente();
 
     this.inativarContaFormGroup = this.formBuilder.group({
-      senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+      senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     });
   }
 
@@ -72,15 +70,15 @@ export class InativarContaComponent implements OnInit {
     this.getIndexCPF();
     this.onInfoCliente();
 
-    const newConta = this.inativarContaFormGroup.getRawValue() as Conta;
     const newClienteLogin = this.inativarContaFormGroup.getRawValue() as ClienteLogin;
     this.inativarContaService
-      .inativarConta(this.cpf, newConta)
+      .inativarConta(this.cpf, newClienteLogin)
       .subscribe(
         () => this.logout(),
-        err => alert("Não foi possível desativar sua conta. Você digitou alguma informação incorretamente!")
+        err => alert("Não foi possível desativar sua conta. Você digitou alguma informação incorretamente ou saldo existente ainda na conta")
       );
   }
+  
   reload() {
     alert("Informações alteradas com sucesso!");
     window.location.reload();
