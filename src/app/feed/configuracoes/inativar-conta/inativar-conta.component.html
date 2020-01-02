@@ -5,9 +5,10 @@
     <p>Para desativar sua conta você deve inserir suas senhas de acesso e de transações.</p>
 
     <form [formGroup]="inativarContaFormGroup">
-        <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" placeholder="Senha de acesso"></p>
-        <p><input type="password" name="senhaTransacoes" formControlName="senhaTransacoes" placeholder="Senha de transações"></p>
+        <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" placeholder="Senha de acesso" minlength="8" maxlength="15"></p>
+        <p><input type="password" name="senhaTransacoes" formControlName="senhaTransacoes" placeholder="Senha de transações" minlength="4" maxlength="4"></p>
+        <p *ngIf="inativarContaFormGroup.invalid && inativarContaFormGroup.touched"><small>Algum campo possui informações inváilidas!</small></p>
+        
+        <button mat-raised-button (click)="inativarConta()" [disabled]="inativarContaFormGroup.invalid">Desativar Conta</button>
     </form>
-
-    <button mat-raised-button (click)="inativarConta()">Desativar Conta</button>
 </div>

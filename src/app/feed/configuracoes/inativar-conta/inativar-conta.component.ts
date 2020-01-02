@@ -6,6 +6,8 @@ import { Cliente } from 'src/app/Models/Cliente';
 import { Conta } from 'src/app/Models/Conta';
 import { InativarContaService } from './inativar-conta.service';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
+import { UserService } from 'src/app/core/user/user.service';
+import { ClienteLogin } from 'src/app/Models/ClienteLogin';
 
 @Component({
   selector: 'app-inativar-conta',
@@ -27,7 +29,8 @@ export class InativarContaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private infoContaService: InfoContaService,
-    private inativarContaService: InativarContaService
+    private inativarContaService: InativarContaService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -52,6 +55,10 @@ export class InativarContaComponent implements OnInit {
       );
   }
 
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['']);
+  }
   // getNumeroConta() {
   //   const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
 
@@ -73,10 +80,11 @@ export class InativarContaComponent implements OnInit {
 
   inativarConta() {
     const newConta = this.inativarContaFormGroup.getRawValue() as Conta;
+    const newClienteLogin = this.inativarContaFormGroup.getRawValue() as ClienteLogin;
     this.inativarContaService
-      .inativarConta(this.numeroConta, newConta)
+      .inativarConta(this.numeroConta, newConta, newClienteLogin)
       .subscribe(
-        () => this.router.navigate(['/home']),
+        () => this.logout(),
         err => console.log(err)
       );
   }

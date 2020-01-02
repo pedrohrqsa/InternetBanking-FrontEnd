@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorStateMatcher } from '@angular/material';
-import { FormControl, FormGroupDirective, NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { ClienteLogin } from 'src/app/Models/ClienteLogin';
 import { AlterarSenhaService } from './alterar-senha.service';
+import { ErrorStateMatcher } from '@angular/material';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+export class PasswordMatcher implements ErrorStateMatcher{
+  isErrorState(control: FormControl | null, form: FormGroupDirective| NgForm | null): boolean {
     const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
     const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
     return (invalidCtrl || invalidParent);
@@ -22,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class AlterarSenhaComponent implements OnInit {
 
   alterarSenhaFormGroup: FormGroup;
-  matcher = new MyErrorStateMatcher();
+  passwordMatcher = new PasswordMatcher();
 
   indexCPF: number;
   senha: string;
