@@ -30,8 +30,8 @@
             <input class="data" [matDatepicker]="nascimento" name="dtNascimento" formControlName="dtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
-            <input (keypress)="letterOnly($event)" name="Nacionalidade" formControlName="Nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
-            <input (keypress)="letterOnly($event)" name="Naturalidade" formControlName="Naturalidade" value="{{this.naturalidade}}" placeholder="Naturalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="nacionalidade" formControlName="nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
+            <input (keypress)="letterOnly($event)" name="naturalidade" formControlName="naturalidade" value="{{this.naturalidade}}" placeholder="Naturalidade" maxlength="20">
         </form>
     </div>
 </div>
