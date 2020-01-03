@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SaldoService } from './shared/saldo/saldo.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { SaldoService } from './shared/saldo/saldo.service';
 import { InfoContaService } from './infos-conta/Infos-conta.service';
 import { UserService } from '../core/user/user.service';
 
@@ -32,7 +33,7 @@ export class FeedComponent implements OnInit {
     private infoContaService: InfoContaService,
     private userService: UserService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.getIndexCPF();
@@ -43,16 +44,16 @@ export class FeedComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  onConfig(){
-    if(this.config == false){
+  onConfig() {
+    if (this.config == false) {
       this.config = true;
     } else {
       this.config = false;
     }
   }
 
-  onSaldo(){
-    if(this.saldo == false){
+  onSaldo() {
+    if (this.saldo == false) {
       this.infoSaldo = "Ocultar saldo";
       this.config = false;
       this.saldo = true;
@@ -62,7 +63,7 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  onInicio(){
+  onInicio() {
     this.inicio = true;
     this.extrato = false;
     this.deposito = false;
@@ -75,7 +76,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onExtrato(){
+  onExtrato() {
     this.inicio = false;
     this.extrato = true;
     this.deposito = false;
@@ -88,7 +89,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onDeposito(){
+  onDeposito() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = true;
@@ -101,7 +102,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onSaque(){
+  onSaque() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = false;
@@ -114,7 +115,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onTransferencia(){
+  onTransferencia() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = false;
@@ -127,7 +128,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onAlterarDados(){
+  onAlterarDados() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = false;
@@ -140,7 +141,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onAlterarSenha(){
+  onAlterarSenha() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = false;
@@ -153,7 +154,7 @@ export class FeedComponent implements OnInit {
     this.config = false;
   }
 
-  onDesativarConta(){
+  onDesativarConta() {
     this.inicio = false;
     this.extrato = false;
     this.deposito = false;
@@ -171,9 +172,8 @@ export class FeedComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf))
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf))
       );
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SaldoService } from './saldo.service';
-import { DecimalPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { SaldoService } from './saldo.service';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
 
 @Component({
@@ -10,17 +10,15 @@ import { InfoContaService } from '../../infos-conta/Infos-conta.service';
   styleUrls: ['./saldo.component.css']
 })
 export class SaldoComponent implements OnInit {
+  
+  saldoAtual: number;
+  indexCPF: number;
 
   constructor(
     private saldoService: SaldoService,
     private activatedRoute: ActivatedRoute,
     private infoContaService: InfoContaService,
   ) { }
-
-  saldoAtual: number;
-  indexCPF: number;
-
-
 
   ngOnInit() {
     this.getIndexCPF();
@@ -32,9 +30,9 @@ export class SaldoComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf))
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf)
+        )
       );
   }
 

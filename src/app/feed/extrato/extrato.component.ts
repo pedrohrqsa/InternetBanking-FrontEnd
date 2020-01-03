@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExtratoService } from './extrato.service';
 import { ActivatedRoute } from '@angular/router';
+
+import { ExtratoService } from './extrato.service';
 import { InfoContaService } from '../infos-conta/Infos-conta.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class ExtratoComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private extratoService: ExtratoService,
+  constructor(
+    private extratoService: ExtratoService,
     private activatedRoute: ActivatedRoute,
     private infoContaService: InfoContaService
-    ) { }
+  ) { }
 
   displayedColumns: string[] = ['dtTransacao', 'idTipoTransacao', 'valor'];
 
@@ -40,19 +42,18 @@ export class ExtratoComponent implements OnInit {
 
     return this.extratoService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
-            this.onInfoConta())
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf),
+          this.onInfoConta())
       );
   }
 
-  extrato(){
+  extrato() {
     this.extratoService.getInfoExtrato(this.getCpf)
-    .subscribe(stream => {
-      this.dataSource = new MatTableDataSource(stream);
-      this.dataSource.paginator = this.paginator;
-    });
+      .subscribe(stream => {
+        this.dataSource = new MatTableDataSource(stream);
+        this.dataSource.paginator = this.paginator;
+      });
   }
 
   onInfoConta() {

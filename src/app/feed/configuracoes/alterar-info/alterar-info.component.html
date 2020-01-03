@@ -22,12 +22,12 @@
 
     <div class="direita">
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
-            <input (keypress)="letterOnly($event)" name="Nome" formControlName="Nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="Sobrenome" formControlName="Sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" readonly="readonly" name="Cpf" formControlName="Cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11">
-            <input name="Rg" formControlName="Rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9">
-            <input (keypress)="letterOnly($event)" name="OrgaoEmissor" formControlName="OrgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
-            <input class="data" [matDatepicker]="nascimento" name="DtNascimento" formControlName="DtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
+            <input (keypress)="letterOnly($event)" name="nome" formControlName="nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="sobrenome" formControlName="sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11">
+            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9">
+            <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input class="data" [matDatepicker]="nascimento" name="dtNascimento" formControlName="dtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
             <input (keypress)="letterOnly($event)" name="Nacionalidade" formControlName="Nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
@@ -53,10 +53,10 @@
 
     <div class="direita">
         <form [formGroup]="alterarFamiliaresFormGroup" *ngIf="editarFamiliares == true">
-            <input (keypress)="letterOnly($event)" name="NomeMae" formControlName="NomeMae" value="{{this.nomeMae}}" placeholder="Nome da mãe" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="SobrenomeMae" formControlName="SobrenomeMae" value="{{this.sobrenomeMae}}" placeholder="Sobrenome da mãe" maxlength="50">
-            <input (keypress)="letterOnly($event)" name="NomePai" formControlName="NomePai" value="{{this.nomePai}}" placeholder="Nome do pai" maxlength="40">
-            <input (keypress)="letterOnly($event)" name="SobrenomePai" formControlName="SobrenomePai" value="{{this.sobrenomePai}}" placeholder="Sobrenome do pai" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="nomeMae" formControlName="nomeMae" value="{{this.nomeMae}}" placeholder="Nome da mãe" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="sobrenomeMae" formControlName="sobrenomeMae" value="{{this.sobrenomeMae}}" placeholder="Sobrenome da mãe" maxlength="50">
+            <input (keypress)="letterOnly($event)" name="nomePai" formControlName="nomePai" value="{{this.nomePai}}" placeholder="Nome do pai" maxlength="40">
+            <input (keypress)="letterOnly($event)" name="sobrenomePai" formControlName="sobrenomePai" value="{{this.sobrenomePai}}" placeholder="Sobrenome do pai" maxlength="50">
         </form>
     </div>
 </div>
@@ -78,9 +78,9 @@
     </div>
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
-            <input name="Email" formControlName="Email" value="{{this.email}}" placeholder="Email" maxlength="30">
-            <input (keypress)="numberOnly($event)" name="TelResid" formControlName="TelResid" value="{{this.telResid}}" placeholder="Telefone residencial" minlength="8" maxlength="10">
-            <input (keypress)="numberOnly($event)" name="TelCel" formControlName="TelCel" value="{{this.telCel}}" placeholder="Telefone celular" minlength="9" maxlength="11">
+            <input name="email" formControlName="email" value="{{this.email}}" placeholder="Email" maxlength="30">
+            <input (keypress)="numberOnly($event)" name="telResid" formControlName="telResid" value="{{this.telResid}}" placeholder="Telefone residencial" minlength="8" maxlength="10">
+            <input (keypress)="numberOnly($event)" name="telCel" formControlName="telCel" value="{{this.telCel}}" placeholder="Telefone celular" minlength="9" maxlength="11">
         </form>
     </div>
 </div>

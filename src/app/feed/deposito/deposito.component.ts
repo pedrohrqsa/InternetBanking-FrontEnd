@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+
 import { DepositoService } from './deposito.service';
 import { Transacao } from 'src/app/Models/Transacao';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { InfoContaService } from '../infos-conta/Infos-conta.service';
-import { Conta } from 'src/app/Models/Conta';
 
 @Component({
   selector: 'app-deposito',
@@ -28,11 +27,10 @@ export class DepositoComponent {
     senhaTransacoes: new FormControl('')
   });
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(
     private servico: DepositoService,
     private infoContaService: InfoContaService,
     private router: Router,
-    private http: HttpClient,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -43,9 +41,8 @@ export class DepositoComponent {
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf),
           this.onInfoConta())
       );
   }
@@ -69,9 +66,9 @@ export class DepositoComponent {
 
     this.servico.Deposito(transacao1)
       .subscribe(() => this.router.navigate(['feed/' + cpf]),
-      err => alert("Não foi possível fazer seu depósito. Você digitou alguma informação incorretamente!"));
+        err => alert("Não foi possível fazer seu depósito. Você digitou alguma informação incorretamente!"));
 
     this.form.reset();
     this.sucesso = true;
-   }
+  }
 }

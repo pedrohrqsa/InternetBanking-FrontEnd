@@ -1,5 +1,5 @@
-import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../core/auth.service';
@@ -40,6 +40,10 @@ export class LoginComponent implements OnInit {
 
     this.autorizacao.autenticar(cpfDigitado, senha)
       .subscribe(() => this.router.navigate(['feed', cpfDigitado]),
-        err => { alert("CPF ou Senha inválidos."); this.loginForm.reset() });
+        err => {
+          alert("CPF ou Senha inválidos.");
+          this.loginForm.reset()
+        }
+      );
   }
 }

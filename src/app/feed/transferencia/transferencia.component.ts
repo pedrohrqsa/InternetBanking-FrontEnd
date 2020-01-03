@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { InfoContaService } from '../infos-conta/Infos-conta.service';
-import { HttpClient } from '@angular/common/http';
 import { Transacao } from 'src/app/Models/Transacao';
 import { TransferenciaService } from './transferencia.service';
 
@@ -32,7 +32,6 @@ export class TransferenciaComponent {
 
   constructor(private infoContaService: InfoContaService,
     private router: Router,
-    private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private servico: TransferenciaService) { }
 
@@ -46,9 +45,8 @@ export class TransferenciaComponent {
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf),
           this.onInfoConta())
       );
   }
@@ -80,6 +78,4 @@ export class TransferenciaComponent {
 
     this.form.reset();
   }
-
-
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AlterarInfoService } from './alterar-info.service';
 import { Cliente } from 'src/app/Models/Cliente';
@@ -7,7 +8,6 @@ import { Familiares } from 'src/app/Models/Familiares';
 import { Contato } from 'src/app/Models/Contato';
 import { Endereco } from 'src/app/Models/Endereco';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alterar-info',
@@ -59,7 +59,6 @@ export class AlterarInfoComponent implements OnInit {
   telCel: string;
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private infoContaService: InfoContaService,
     private alterarInfoService: AlterarInfoService,
@@ -74,27 +73,27 @@ export class AlterarInfoComponent implements OnInit {
     this.onInfoEndereco();
 
     this.alterarPerfilFormGroup = this.formBuilder.group({
-      Nome: ['', [Validators.required, Validators.maxLength(40)]],
-      Sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
-      Cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
-      Rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      OrgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      DtNascimento: ['', [Validators.required]],
-      Nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
-      Naturalidade: ['', [Validators.required, Validators.maxLength(20)]]
+      nome: ['', [Validators.required, Validators.maxLength(40)]],
+      sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]],
+      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      orgaoEmissor: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      dtNascimento: ['', [Validators.required]],
+      nacionalidade: ['', [Validators.required, Validators.maxLength(20)]],
+      naturalidade: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
     this.alterarFamiliaresFormGroup = this.formBuilder.group({
-      NomeMae: ['', [Validators.required, Validators.maxLength(40)]],
-      SobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
-      NomePai: ['', [Validators.maxLength(40)]],
-      SobrenomePai: ['', [Validators.maxLength(50)]]
+      nomeMae: ['', [Validators.required, Validators.maxLength(40)]],
+      sobrenomeMae: ['', [Validators.required, Validators.maxLength(50)]],
+      nomePai: ['', [Validators.maxLength(40)]],
+      sobrenomePai: ['', [Validators.maxLength(50)]]
     });
 
     this.alterarContatoFormGroup = this.formBuilder.group({
-      Email: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
-      TelResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      TelCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      email: ['', [Validators.required, Validators.email, , Validators.maxLength(30)]],
+      telResid: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      telCel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(11), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
 
     this.alterarEnderecoFormGroup = this.formBuilder.group({
@@ -137,9 +136,8 @@ export class AlterarInfoComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf),
           this.onInfoCliente(),
           this.onInfoFamiliares(),
           this.onInfoContato(),
@@ -235,7 +233,7 @@ export class AlterarInfoComponent implements OnInit {
       .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
         () => this.reload(),
-        err => console.log(err)
+        err => alert("Não foi possível alterar suas informações de perfil. Está faltando alguma informação!")
       );
   }
 
@@ -245,7 +243,7 @@ export class AlterarInfoComponent implements OnInit {
       .alterarInfoFamiliares(this.cpf, newFamiliares)
       .subscribe(
         () => this.reload(),
-        err => console.log(err)
+        err => alert("Não foi possível alterar as informações de seus familiares. Está faltando alguma informação!")
       );
   }
 
@@ -255,7 +253,7 @@ export class AlterarInfoComponent implements OnInit {
       .alterarInfoContato(this.cpf, newContato)
       .subscribe(
         () => this.reload(),
-        err => console.log(err)
+        err => alert("Não foi possível alterar suas informações de contato. Está faltando alguma informação!")
       );
   }
 
@@ -265,7 +263,7 @@ export class AlterarInfoComponent implements OnInit {
       .alterarInfoEndereco(this.cpf, newEndereco)
       .subscribe(
         () => this.reload(),
-        err => console.log(err)
+        err => alert("Não foi possível alterar suas informações de endereço. Está faltando alguma informação!")
       );
   }
 

@@ -56,8 +56,7 @@ export class InfosContaComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
+        (this.indexCPF = clientex.findIndex(obj =>
             obj.cpf == getCpf),
             this.onInfoConta())
       );
@@ -75,7 +74,7 @@ export class InfosContaComponent implements OnInit {
   onInfoConta() {
     return this.infoContaService.getInfoConta()
       .subscribe(clientex =>
-        this.numeroConta = clientex[this.indexCPF].numeroConta,
+        this.numeroConta = clientex[this.indexCPF].numeroConta
       );
   }
 

@@ -67,7 +67,6 @@ export class AlterarInfoService {
 
   alterarInfoEndereco(cpf: string, endereco: Endereco) {
     const apiEndereco = '/api/Enderecos/' + cpf;
-    console.log(endereco);
     return this
       .http.put(API + apiEndereco, endereco,
         { headers: { 'Content-Type': 'application/json' } })

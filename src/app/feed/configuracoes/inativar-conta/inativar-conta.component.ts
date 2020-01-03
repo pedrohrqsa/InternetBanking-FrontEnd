@@ -46,9 +46,8 @@ export class InativarContaComponent implements OnInit {
 
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
-        console.log(getCpf,
-          this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
+        (this.indexCPF = clientex.findIndex(obj =>
+          obj.cpf == getCpf),
           this.onInfoCliente())
       );
   }
@@ -78,7 +77,7 @@ export class InativarContaComponent implements OnInit {
         err => alert("Não foi possível desativar sua conta. Você digitou alguma informação incorretamente ou saldo existente ainda na conta")
       );
   }
-  
+
   reload() {
     alert("Informações alteradas com sucesso!");
     window.location.reload();
