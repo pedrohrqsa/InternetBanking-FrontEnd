@@ -9,14 +9,15 @@
                 <p><input type="text" placeholder="CPF"></p>
                 <p><input type="text" placeholder="RG"></p>
                 <p><input type="date" placeholder="Data de Nascimento"></p>
-                
+
                 <div class="botao">
-                    <button mat-raised-button (click)="onAtivar()">Verificar Dados</button>
+                    <button mat-raised-button (click)="onVerificarInfos()">Verificar Dados</button>
                 </div>
             </form>
-            
+
+            <!-- <form [formGroup]="alterarSenhaFormGroup"> -->
             <form *ngIf="ativar == true">
-                <div >
+                <div>
                     <p>Crie sua nova senha para acessar:</p>
                     <p><input type="password" placeholder="Nova senha de acesso"></p>
                     <p><input type="password" placeholder="Confirmar senha de acesso"></p>
@@ -26,10 +27,11 @@
                     <p><input type="password" placeholder="Confirmar senha de transações"></p>
 
                     <div class="botao">
-                        <button mat-raised-button >Ativar Conta</button>
+                        <button mat-raised-button>Ativar Conta</button>
                     </div>
                 </div>
             </form>
+            <!-- </form> -->
         </div>
     </div>
 </div>
