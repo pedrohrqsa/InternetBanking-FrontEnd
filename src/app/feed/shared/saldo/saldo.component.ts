@@ -10,7 +10,7 @@ import { InfoContaService } from '../../infos-conta/Infos-conta.service';
   styleUrls: ['./saldo.component.css']
 })
 export class SaldoComponent implements OnInit {
-  
+
   saldoAtual: number;
   indexCPF: number;
 
@@ -31,12 +31,13 @@ export class SaldoComponent implements OnInit {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         (this.indexCPF = clientex.findIndex(obj =>
-          obj.cpf == getCpf)
+          obj.cpf == getCpf,  this.onSaldo())
         )
       );
   }
 
   onSaldo() {
+    this.getIndexCPF();
     return this.saldoService.GetInfoSaldo()
       .subscribe(saldox =>
         this.saldoAtual = saldox[this.indexCPF].saldoAtual
