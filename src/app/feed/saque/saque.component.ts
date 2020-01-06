@@ -27,6 +27,9 @@ export class SaqueComponent {
   numeroConta: number;
   senhaTransacoes: string;
 
+  erro: boolean = false;
+  sucesso: boolean = false;
+
   constructor(
     private servico: SaqueService,
     private infoContaService: InfoContaService,
@@ -68,8 +71,16 @@ export class SaqueComponent {
     transacao2.numeroContaOrigem = this.numeroConta;
     this.senhaTransacoes = transacao2.senhaTransacoes;
 
-    this.servico.Saque(transacao2).subscribe(() => this.router.navigate(['feed/' + cpf]),
-      err => alert("Não foi possível fazer seu saque. Você digitou alguma informação incorretamente!"));
+    this.servico.Saque(transacao2).subscribe(() => {
+      this.router.navigate(['feed/' + cpf]);
+      this.sucesso = true;
+      this.erro = false;
+    },
+      err => {
+        console.log("Erro de chamado");
+        this.erro = true;
+        this.sucesso = false;
+    });
     this.form.reset();
   }
 }

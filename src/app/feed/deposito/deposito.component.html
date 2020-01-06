@@ -2,8 +2,11 @@
 <mat-divider></mat-divider>
 <br>
 <br>
-<form [formGroup]="form">     
+<form [formGroup]="form">
     <p><input type="number" placeholder="Valor (R$)" formControlName="valor"></p>
     <p><input type="password" placeholder="Senha de transações" formControlName="senhaTransacoes"></p>
-    <p><button mat-raised-button (click)="onDeposito()">Depositar</button></p>
+    <p><button mat-button (click)="onDeposito()">Depositar</button></p>
+
+    <small class="erro" *ngIf="erro == true">Algo deu Errado!</small>
+    <small class="sucesso" *ngIf="sucesso == true">Sucesso!</small>
 </form>

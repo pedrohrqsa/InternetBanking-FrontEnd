@@ -8,6 +8,6 @@
         <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" placeholder="Senha de acesso" minlength="8" maxlength="15"></p>
         <p *ngIf="inativarContaFormGroup.invalid && inativarContaFormGroup.touched"><small>Algum campo possui informações inváilidas!</small></p>
 
-        <button mat-raised-button (click)="inativarConta()" [disabled]="inativarContaFormGroup.invalid">Desativar Conta</button>
+        <button mat-button (click)="inativarConta()" [disabled]="inativarContaFormGroup.invalid">Desativar Conta</button>
     </form>
 </div>

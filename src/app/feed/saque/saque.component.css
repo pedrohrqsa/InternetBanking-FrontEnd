@@ -10,8 +10,25 @@ b{
     color: #5D8BE8;;
 }
 
+button{
+    background-color: #5D8BE8;
+    color: white;
+}
+
+button:hover{
+    background-color: rgb(39, 62, 107);
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.sucesso{
+    color: green;
+}
+
+.erro{
+    color: red;
 }

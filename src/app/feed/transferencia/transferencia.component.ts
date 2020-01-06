@@ -23,6 +23,8 @@ export class TransferenciaComponent {
   numeroContaDestino: number;
   valor: number;
   senhaTransacoes: string;
+  sucesso: boolean = false;
+  erro: boolean = false;
 
   form: FormGroup = new FormGroup({
     numeroContaDestino: new FormControl(''),
@@ -72,10 +74,16 @@ export class TransferenciaComponent {
     transacao3.numeroContaDestino = this.form.get('numeroContaDestino').value;
 
     this.servico.Transferecia(transacao3)
-      .subscribe(() =>
-        this.router.navigate(['feed/' + cpf]),
-        err => alert("Não foi possível fazer sua transferência. Você digitou alguma informação incorretamente!"));
-
+      .subscribe(() => {
+        this.router.navigate(['feed/' + cpf]);
+        this.sucesso = true;
+        this.erro = false;
+      },
+        err => {
+          console.log("Erro de chamado");
+          this.erro = true;
+          this.sucesso = false;
+      });
     this.form.reset();
   }
 }

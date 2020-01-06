@@ -21,6 +21,7 @@ export class DepositoComponent {
   numeroConta: number;
   senhaTransacoes: string;
   sucesso: boolean = false;
+  erro: boolean = false;
 
   form: FormGroup = new FormGroup({
     valor: new FormControl(''),
@@ -65,8 +66,16 @@ export class DepositoComponent {
     this.senhaTransacoes = transacao1.senhaTransacoes;
 
     this.servico.Deposito(transacao1)
-      .subscribe(() => this.router.navigate(['feed/' + cpf]),
-        err => alert("Não foi possível fazer seu depósito. Você digitou alguma informação incorretamente!"));
+      .subscribe(() => {
+        this.router.navigate(['feed/' + cpf]);
+        this.sucesso = true;
+        this.erro = false;
+      },
+        err => {
+          console.log("Erro de chamado");
+          this.erro = true;
+          this.sucesso = false;
+      });
 
     this.form.reset();
     this.sucesso = true;

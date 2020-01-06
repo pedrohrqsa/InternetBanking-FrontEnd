@@ -6,5 +6,8 @@
     <p><input type="number" placeholder="Nº da Conta a ser Transferido" formControlName="numeroContaDestino"></p>
     <p><input type="number" placeholder="Valor (R$)" formControlName="valor"></p>
     <p><input type="password" placeholder="Senha de Transações" formControlName="senhaTransacoes"></p>
-    <p><button mat-raised-button (click)="onTransferencia()">Transferir</button></p>
+    <p><button mat-button (click)="onTransferencia()">Transferir</button></p>
+
+    <small class="erro" *ngIf="erro == true">Algo deu Errado!</small>
+    <small class="sucesso" *ngIf="sucesso == true">Sucesso!</small>
 </form>

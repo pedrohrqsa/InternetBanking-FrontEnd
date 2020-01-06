@@ -13,3 +13,12 @@ mat-divider{
 small {
     color: red;
 }
+
+button{
+    background-color: #5D8BE8;
+    color: white;
+}
+
+button:hover{
+    background-color: rgb(39, 62, 107);
+}
