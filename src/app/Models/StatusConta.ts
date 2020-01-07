@@ -1,5 +1,7 @@
 export interface StatusConta {
     cpf: string,
     rg: string,
-    dtNascimento: Date
+    dtNascimento: Date,
+    senhaTransacoes: string,
+    senhaAcesso: string
 }
