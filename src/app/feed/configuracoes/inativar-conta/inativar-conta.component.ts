@@ -22,6 +22,7 @@ export class InativarContaComponent implements OnInit {
   cpf: string;
   indexCPF: number;
   numeroConta: number;
+  erro: boolean = false;
 
   constructor(
     private router: Router,
@@ -74,7 +75,10 @@ export class InativarContaComponent implements OnInit {
       .inativarConta(this.cpf, newClienteLogin)
       .subscribe(
         () => this.logout(),
-        err => alert("Não foi possível desativar sua conta. Você digitou alguma informação incorretamente ou saldo existente ainda na conta")
+        err => {
+          console.log("Erro ao desativar conta");
+          this.erro = true;
+        }
       );
   }
 
