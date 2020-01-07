@@ -10,7 +10,7 @@ const API = environment.API_URL;
 @Injectable({
   providedIn: 'root'
 })
-export class AlterarSenhaService {
+export class AtivarContaService {
 
   private apiClienteLogin = API + "/api/ClienteLogin/";
 
