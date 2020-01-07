@@ -2,9 +2,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { ClienteLogin } from 'src/app/Models/ClienteLogin';
-
+import { Status } from '../Models/StatusConta';
 const API = environment.API_URL;
 
 @Injectable({
@@ -12,19 +10,12 @@ const API = environment.API_URL;
 })
 export class AtivarContaService {
 
-  private apiClienteLogin = API + "/api/ClienteLogin/";
+  private apiStatus = API + "/api/conta/ativar";
+  constructor(private http: HttpClient) { }
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  getInfoClienteLogin(): Observable<ClienteLogin[]> {
-    return this.http.get<ClienteLogin[]>(this.apiClienteLogin);
-  }
-
-  alterarSenha(cpf: string, clienteLogin: ClienteLogin) {
+  ativarConta(cpf: string, status: Status) {
     return this
-      .http.put(this.apiClienteLogin + cpf, clienteLogin,
+      .http.put(this.apiStatus + cpf, status,
         { headers: { 'Content-Type': 'application/json' } })
   }
 }

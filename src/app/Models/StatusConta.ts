@@ -1,4 +1,4 @@
-export interface StatusConta {
+export interface Status {
     cpf: string,
     rg: string,
     dtNascimento: Date,
