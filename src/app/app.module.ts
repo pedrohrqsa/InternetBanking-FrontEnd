@@ -18,6 +18,7 @@ import { HeaderModule } from './header/header.module';
 import { InfoContaService } from './feed/infos-conta/Infos-conta.service';
 import { InfosContaModule } from './feed/infos-conta/infos-conta.module';
 import { AtivarContaComponent } from './ativar-conta/ativar-conta.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AtivarContaComponent } from './ativar-conta/ativar-conta.component';
     FeedModule,
     HomeModule,
     HeaderModule,
-    InfosContaModule
+    InfosContaModule,
+    ReactiveFormsModule
   ],
   providers: [InfoContaService],
   bootstrap: [AppComponent]

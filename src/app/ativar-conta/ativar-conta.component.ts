@@ -18,7 +18,10 @@ export class AtivarContaComponent implements OnInit {
   cpf: string;
   dtNascimento: Date;
 
-  constructor(private alterarSenhaService: AlterarSenhaService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) { }
+  constructor(
+    private alterarSenhaService: AlterarSenhaService, 
+    private activatedRoute: ActivatedRoute,
+     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }

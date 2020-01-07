@@ -5,18 +5,17 @@
             <h3>Parece que você já tem uma conta no nosso banco.</h3>
 
             <p>Para ativar sua conta confirme seus dados pessoais:</p>
-            <form [FormGroup]="ativarContaFormGroup">
-                <p><input type="text" placeholder="CPF"></p>
-                <p><input type="text" placeholder="RG"></p>
-                <p><input type="date" placeholder="Data de Nascimento"></p>
+            <!-- <form [FormGroup]="ativarContaFormGroup"> -->
+            <p><input type="text" placeholder="CPF"></p>
+            <p><input type="text" placeholder="RG"></p>
+            <p><input type="date" placeholder="Data de Nascimento"></p>
 
-                <div class="botao">
-                    <button mat-raised-button (click)="onVerificarInfos()">Verificar Dados</button>
-                </div>
-            </form>
+            <div class="botao">
+                <button mat-raised-button (click)="onVerificarInfos()">Verificar Dados</button>
+            </div>
+            <!-- </form> -->
 
-            <!-- <form [formGroup]="alterarSenhaFormGroup"> -->
-            <form *ngIf="ativar == true">
+            <form [formGroup]="alterarSenhaFormGroup">
                 <div>
                     <p>Crie sua nova senha para acessar:</p>
                     <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" minlength="8" maxlength="15" placeholder="Nova senha de acesso"></p>
@@ -24,14 +23,13 @@
 
                     <p>Crie sua nova senha para efetuar transações:</p>
                     <p><input type="password" name="senhaTransacoes" formControlName="senhaTransacoes" minlength="4" maxlength="4" placeholder="Nova senha de transações"></p>
-                    <p><input type="password" minlength="4" maxlength="4" placeholder="Confirmar senha de transações" ></p>
+                    <p><input type="password" minlength="4" maxlength="4" placeholder="Confirmar senha de transações"></p>
 
                     <div class="botao">
                         <button mat-raised-button>Ativar Conta</button>
                     </div>
                 </div>
             </form>
-            <!-- </form> -->
         </div>
     </div>
 </div>
