@@ -9,7 +9,8 @@
         <p><input matInput type="password" name="antigaSenha" formControlName="antigaSenha" placeholder="Insira sua senha atual" minlength="8" maxlength="15"></p>
         <p><input matInput type="password" name="novaSenha" formControlName="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15"></p>            
         <p><input matInput type="password" name="confirmacaoNovaSenha" formControlName="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15" [errorStateMatcher]="passwordMatcher"></p>
-        <p *ngIf="alterarSenhaFormGroup.invalid && alterarSenhaFormGroup.touched"><small>Algum campo possui informações inváilidas!</small></p>
+        <br>
+        <p *ngIf="alterarSenhaFormGroup.invalid && alterarSenhaFormGroup.touched"><small>Algum campo possui informações inválidas!</small></p>
 
         <button mat-button (click)="alterarSenha()" [disabled]="alterarSenhaFormGroup.invalid">Confirmar Alteração</button>
     </form>
