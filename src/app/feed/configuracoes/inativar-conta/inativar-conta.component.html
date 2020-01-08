@@ -9,6 +9,21 @@
         <p *ngIf="inativarContaFormGroup.invalid && inativarContaFormGroup.touched"><small>Algum campo possui informações inváilidas!</small></p>
 
         <button mat-button (click)="inativarConta()" [disabled]="inativarContaFormGroup.invalid">Desativar Conta</button>
-        <p><small *ngIf="erro == true">Não foi possível desativar sua conta. Você digitou alguma informação incorretamente ou saldo existente ainda na conta</small></p>
+        <div *ngIf="erro==true">
+        <br>
+            <p>
+                <small>
+                    Não foi possível desativar sua conta.
+                </small>
+            <br>
+                <small>
+                    Você digitou alguma informação incorretamente.
+                </small>
+            <br>    
+                <small>
+                    Ou ainda há saldo existente ainda na conta.
+                </small>
+            </p>
+        </div>
     </form>
 </div>
