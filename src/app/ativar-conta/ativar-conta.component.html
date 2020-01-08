@@ -6,8 +6,8 @@
 
             <form [formGroup]="AtivarContaFormGroup">
                 <p>Para ativar sua conta confirme seus dados pessoais:</p>
-                <p><input type="text" name="cpf" formControlName="cpf" placeholder="CPF"></p>
-                <p><input type="text" name="RG" formControlName="RG" placeholder="RG"></p>
+                <p><input type="text" name="cpf" formControlName="cpf" placeholder="CPF" maxlength="11"></p>
+                <p><input type="text" name="rg" formControlName="rg" placeholder="RG" maxlength="9"></p>
                 <p><input type="date" name="dtNascimento" formControlName="dtNascimento" placeholder="Data de Nascimento"></p>
                 <div>
                     <p>Crie sua nova senha para acessar:</p>

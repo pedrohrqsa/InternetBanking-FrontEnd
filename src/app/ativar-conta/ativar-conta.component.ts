@@ -31,22 +31,20 @@ export class AtivarContaComponent implements OnInit {
 
   ngOnInit() {
     this.AtivarContaFormGroup = this.formBuilder.group({
-      rg: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       cpf: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      dtNascimento: ['' , [Validators.required/*, Validators.minLength(8), Validators.maxLength(15)*/]] ,
-      senhaAcesso: [''  , [Validators.required/*, Validators.minLength(8), Validators.maxLength(15)*/]] ,
-      senhaTransacoes: ['', [Validators.required/*, Validators.minLength(4), Validators.maxLength(4)*/]]
-    },
-      // { validator: this.checkPasswords }
-    );
+      dtNascimento: ['' , [Validators.required/*, Validators.minLength(8), Validators.maxLength(15)*/]],
+      senhaAcesso: [''  , [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+    });
   }
 
   getIndexCPF() {
-    // const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
+    const getCpf = this.cpf;
     return this.alterarSenhaService.getInfoClienteLogin()
       .subscribe(clientex =>
         (this.indexCPF = clientex.findIndex(obj =>
-          obj.cpf == this.cpf),
+          obj.cpf == getCpf),
           this.onInfoClienteLogin()
         ));
   }
@@ -65,7 +63,7 @@ export class AtivarContaComponent implements OnInit {
     const newStatus = this.AtivarContaFormGroup.getRawValue() as Status;
 
     this.ativarContaService
-      .ativarConta(this.cpf, newStatus)
+      .ativarConta(newStatus)
       .subscribe(
         () => this.reload(),
         err => alert("Não foi possível reativar sua conta."));

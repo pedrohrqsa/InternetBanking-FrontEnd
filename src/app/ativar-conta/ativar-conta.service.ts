@@ -13,9 +13,9 @@ export class AtivarContaService {
   private apiStatus = API + "/api/conta/ativar";
   constructor(private http: HttpClient) { }
 
-  ativarConta(cpf: string, status: Status) {
+  ativarConta(status: Status) {
     return this
-      .http.put(this.apiStatus + cpf, status,
+      .http.put(this.apiStatus , status,
         { headers: { 'Content-Type': 'application/json' } })
   }
 }
