@@ -7,14 +7,23 @@
     background-size: cover;
 }
 .container{
-    margin-left: -15px;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .content{
-    width: 30vw;
+    width: 50vw;
     padding: 20px;
-    height: 92vh;
+    height: 62vh;
     background-color: whitesmoke;
+    text-align: center;
+}
+
+.titulo{
+    float: right;
+    color: white;
     text-align: center;
 }
 
