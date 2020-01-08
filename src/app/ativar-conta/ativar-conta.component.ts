@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteLogin } from '../Models/ClienteLogin';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlterarSenhaService } from '../feed/configuracoes/alterar-senha/alterar-senha.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Status } from '../Models/StatusConta';
 import { AtivarContaService } from './ativar-conta.service';
 
@@ -16,15 +16,15 @@ export class AtivarContaComponent implements OnInit {
   constructor(
     private alterarSenhaService: AlterarSenhaService,
     private ativarContaService: AtivarContaService,
-    private activatedRoute: ActivatedRoute, 
-    private formBuilder : FormBuilder) { }
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
   ativar: boolean = false;
   AtivarContaFormGroup: FormGroup;
 
   indexCPF: number;
   cpf: string;
-  rg:string;
+  rg: string;
   dtNascimento: Date;
   senhaAcesso: string;
   senhaTransacoes: string;
@@ -33,8 +33,8 @@ export class AtivarContaComponent implements OnInit {
     this.AtivarContaFormGroup = this.formBuilder.group({
       rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       cpf: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      dtNascimento: ['' , [Validators.required/*, Validators.minLength(8), Validators.maxLength(15)*/]],
-      senhaAcesso: [''  , [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      dtNascimento: ['', [Validators.required/*, Validators.minLength(8), Validators.maxLength(15)*/]],
+      senhaAcesso: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
     });
   }
@@ -65,12 +65,18 @@ export class AtivarContaComponent implements OnInit {
     this.ativarContaService
       .ativarConta(newStatus)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível reativar sua conta."));
+        () => {
+          this.AtivarContaFormGroup.reset();
+          this.reload();
+        },
+        err => {
+          console.log(err);
+          alert("Não foi possível reativar sua conta.");
+        }
+      );
   }
 
   reload() {
-    alert("Sua conta foi reativada com SUCESSO!");
-    window.location.reload();
+    this.router.navigate(['']);
   }
 }
