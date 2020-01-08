@@ -8,7 +8,11 @@
                 <p>Para ativar sua conta confirme seus dados pessoais:</p>
                 <p><input type="text" name="cpf" formControlName="cpf" placeholder="CPF" maxlength="11"></p>
                 <p><input type="text" name="rg" formControlName="rg" placeholder="RG" maxlength="9"></p>
-                <p><input type="date" name="dtNascimento" formControlName="dtNascimento" placeholder="Data de Nascimento"></p>
+                <p>
+                    <input class="data" type="date" name="dtNascimento" formControlName="dtNascimento" placeholder="Data de Nascimento">
+                    <mat-datepicker-toggle matSuffix [for]="dtNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker #dtNascimento></mat-datepicker>
+                </p>
                 <div>
                     <p>Crie sua nova senha para acessar:</p>
                     <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" minlength="8" maxlength="15" placeholder="Nova senha de acesso"></p>

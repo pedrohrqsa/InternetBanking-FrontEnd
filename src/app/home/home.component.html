@@ -1,14 +1,11 @@
 <app-header></app-header>
-
 <div class="background">
-    <div class="center">
-        <div class="teste">
-            <h3>Livre-se das preocupações,</h3>
-            <h3>para viver o que você quiser.</h3>
-            <button routerLink="cadastro">Abra sua conta agora!</button>
+    <div class="container">
+        <div class="content">
+            <h3>Livre-se das preocupações!</h3>
+            <p><button [routerLink]="['/cadastro']" class="botao">Abra sua conta já!</button></p>
+            <h3>Precisa reativar sua conta?</h3>
+            <p><button class="botao" [routerLink]="['/ativar']">Reative já!</button></p>
         </div>
-    </div>
-    <div class="titulo-container">
-        <h1>Internet Banking</h1>
     </div>
 </div>

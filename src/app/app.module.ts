@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatDatepickerModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeModule,
     HeaderModule,
     InfosContaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [InfoContaService],
   bootstrap: [AppComponent]
