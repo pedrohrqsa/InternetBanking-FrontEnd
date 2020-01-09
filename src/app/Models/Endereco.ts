@@ -1,6 +1,6 @@
 export interface Endereco {
     logradouro: string;
-    numero: number;
+    numero: string;
     complemento: string;
     bairro: string;
     cidade: string;

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteLogin } from '../Models/ClienteLogin';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlterarSenhaService } from '../feed/configuracoes/alterar-senha/alterar-senha.service';
 import { Router } from '@angular/router';
+
 import { Status } from '../Models/StatusConta';
+import { AlterarSenhaService } from '../feed/configuracoes/alterar-senha/alterar-senha.service';
 import { AtivarContaService } from './ativar-conta.service';
 
 @Component({

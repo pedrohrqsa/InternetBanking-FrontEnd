@@ -107,7 +107,7 @@
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
             <input (keypress)="letterOnly($event)" name="logradouro" formControlName="logradouro" value="{{this.logradouro}}" placeholder="logradouro" maxlength="50">
-            <input (keypress)="numberOnly($event)" type="number" name="numero" formControlName="numero" value="{{this.numero}}" placeholder="numero" maxlength="5">
+            <input (keypress)="numberOnly($event)" name="numero" formControlName="numero" value="{{this.numero}}" placeholder="numero" maxlength="5">
             <input (keypress)="letterOnly($event)" name="complemento" formControlName="complemento" value="{{this.complemento}}" placeholder="complemento" maxlength="30">
             <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}}" placeholder="bairro" maxlength="20">
             <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" value="{{this.cidade}}" placeholder="cidade" maxlength="30">

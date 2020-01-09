@@ -47,7 +47,7 @@ export class AlterarInfoComponent implements OnInit {
   sobrenomePai: string;
 
   logradouro: string;
-  numero: number;
+  numero: string;
   complemento: string;
   bairro: string;
   cidade: string;
