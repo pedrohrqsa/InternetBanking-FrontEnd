@@ -9,7 +9,7 @@
     <div class="cadastro">
         <mat-vertical-stepper class="stepper" [linear]="false">
             <mat-step label="Dados pessoais">
-                <form [formGroup]="dadosPessoaisFormGroup" (submit)="onCadastro()">
+                <form [formGroup]="dadosPessoaisFormGroup">
 
                     <mat-form-field class="w-475 mr-3">
                         <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="CPF" formControlName="cpf" minlength="11" maxlength="11">
@@ -62,8 +62,6 @@
                 </form>
             </mat-step>
 
-
-
             <mat-step label="Informações familiares">
                 <form [formGroup]="FamiliaresFormGroup">
                     <mat-form-field class="w-475 mr-3">
@@ -111,8 +109,6 @@
                 </div>
             </mat-step>
 
-
-
             <mat-step label="Endereço">
                 <form [formGroup]="enderecoFormGroup">
                     <mat-form-field class="w-100">
@@ -149,8 +145,6 @@
                     <button mat-button matStepperNext>Próximo</button>
                 </div>
             </mat-step>
-
-
 
             <mat-step label="Confirmação">
                 <form [formGroup]="clienteLoginFormGroup">
