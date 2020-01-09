@@ -37,6 +37,8 @@ export class CadastroComponent implements OnInit {
   clienteLoginFormGroup: FormGroup;
   senhaFormGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
+  Foto: File = null;  
+
 
   fileToUpload: File = null;
 
@@ -88,7 +90,10 @@ export class CadastroComponent implements OnInit {
   }
 
   onCadastro() {
-    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
+
+    const Foto = new FormData();
+    Foto.append('file', this.Foto);
+    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;    
     const familiares = this.FamiliaresFormGroup.getRawValue() as Familiares;
     const contato = this.contatoFormGroup.getRawValue() as Contato;
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
@@ -102,6 +107,10 @@ export class CadastroComponent implements OnInit {
         () => this.router.navigate(['']),
         err => console.log(err)
       );
+  }
+
+  fileProgress(fileInput: any) {
+    this.Foto = <File>fileInput.target.files[0];    
   }
 
   numberOnly(event): boolean {
