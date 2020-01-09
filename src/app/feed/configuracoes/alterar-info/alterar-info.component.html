@@ -14,20 +14,22 @@
         <p><b>CPF:</b> {{this.cpf}}</p>
         <p><b>RG:</b> {{this.rg}}</p>
         <p><b>Órgão emissor:</b> {{this.orgaoEmissor}}</p>
-        <p><b>Data de nascimento:</b> {{this.dtNascimento}}</p>
+        <p><b>Data de nascimento:</b> {{this.dt1}}</p>
         <p><b>Nacionalidade:</b> {{this.nacionalidade}}</p>
         <p><b>Naturalidade:</b> {{this.naturalidade}}</p>
         <br>
+        <small class="sucesso" *ngIf="sucessoPerfil==true">Informações alteradas com sucesso</small>
+        <small class="erro" *ngIf="erroPerfil==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
 
     <div class="direita">
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="nome" formControlName="nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="sobrenome" formControlName="sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11">
-            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9">
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11" disabled>
+            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9" disabled>
             <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
-            <input class="data" [matDatepicker]="nascimento" name="dtNascimento" formControlName="dtNascimento" value="{{this.dtNascimento}}" placeholder="Data de nascimento" minlength="8" maxlength="8">
+            <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dt1}}" minlength="8" maxlength="8" disabled>
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
             <input (keypress)="letterOnly($event)" name="nacionalidade" formControlName="nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
@@ -49,6 +51,9 @@
         <p><b>Sobrenome da mãe:</b> {{this.sobrenomeMae}}</p>
         <p><b>Nome do pai:</b> {{this.nomePai}}</p>
         <p><b>Sobrenome do pai:</b> {{this.sobrenomePai}}</p>
+
+        <small class="sucesso" *ngIf="sucessoFamiliares==true">Informações alteradas com sucesso</small>
+        <small class="erro" *ngIf="erroFamiliares==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
 
     <div class="direita">
@@ -75,6 +80,8 @@
         <p><b>Email:</b> {{this.email}}</p>
         <p><b>Telefone residencial:</b> {{this.telResid}}</p>
         <p><b>Telefone celular:</b> {{this.telCel}}</p>
+        <small class="sucesso" *ngIf="sucessoContato==true">Informações alteradas com sucesso</small>
+        <small class="erro" *ngIf="erroContato==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
@@ -103,6 +110,8 @@
         <p><b>Cidade:</b> {{this.cidade}}</p>
         <p><b>Estado:</b> {{this.siglaEstado}}</p>
         <p><b>CEP:</b> {{this.cep}}</p>
+        <small class="sucesso" *ngIf="sucessoEndereco==true">Informações alteradas com sucesso</small>
+        <small class="erro" *ngIf="erroEndereco==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">

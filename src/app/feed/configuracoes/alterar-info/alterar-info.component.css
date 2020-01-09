@@ -54,3 +54,11 @@ button:hover{
 .alterarInfo {
     margin-left: 5px;
 }
+
+.sucesso{
+    color: green;
+}
+
+.erro{
+    color: red;
+}

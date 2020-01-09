@@ -21,6 +21,18 @@ export class AlterarInfoComponent implements OnInit {
   alterarContatoFormGroup: FormGroup;
   alterarEnderecoFormGroup: FormGroup;
 
+  sucessoPerfil: boolean = false;
+  erroPerfil: boolean = false;
+
+  sucessoFamiliares: boolean = false;
+  erroFamiliares: boolean = false;
+
+  sucessoContato: boolean = false;
+  erroContato: boolean = false;
+
+  sucessoEndereco: boolean = false;
+  erroEndereco: boolean = false;
+
   editarPerfil: boolean = false;
   editarFamiliares: boolean = false;
   editarContato: boolean = false;
@@ -37,7 +49,8 @@ export class AlterarInfoComponent implements OnInit {
   cpf: string;
   rg: string;
   orgaoEmissor: string;
-  dtNascimento: string;
+  dtNascimento: any;
+  dt1: string;
   nacionalidade: string;
   naturalidade: string;
 
@@ -155,7 +168,8 @@ export class AlterarInfoComponent implements OnInit {
         this.cpf = clientex[this.indexCPF].cpf;
         this.rg = clientex[this.indexCPF].rg;
         this.orgaoEmissor = clientex[this.indexCPF].orgaoEmissor;
-        this.dtNascimento = clientex[this.indexCPF].dtNascimento.toString().substring(0, 10);
+        this.dtNascimento = clientex[this.indexCPF].dtNascimento;
+        this.dt1 = clientex[this.indexCPF].dtNascimento.toString().substring(0, 10);
         this.nacionalidade = clientex[this.indexCPF].nacionalidade;
         this.naturalidade = clientex[this.indexCPF].naturalidade;
       });
@@ -229,11 +243,20 @@ export class AlterarInfoComponent implements OnInit {
   // MÉTODOS "saltarAlteracoes": MÉTODOS QUE ENVIAM AS NOVAS INFORMAÇÕES PARA AS APIs
   salvarAlteracoesPerfil() {
     const newPerfil = this.alterarPerfilFormGroup.getRawValue() as Cliente;
+    newPerfil.cpf = this.cpf;
+    newPerfil.rg = this.rg;
+    newPerfil.dtNascimento = this.dtNascimento;
     this.alterarInfoService
       .alterarInfoPerfil(this.cpf, newPerfil)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível alterar suas informações de perfil. Está faltando alguma informação!")
+        () => {
+          this.sucessoPerfil = true;
+          this.erroPerfil = false;
+        },
+        err => {
+          this.erroPerfil = true;
+          this.sucessoPerfil = false;
+        }
       );
   }
 
@@ -242,8 +265,14 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoFamiliares(this.cpf, newFamiliares)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível alterar as informações de seus familiares. Está faltando alguma informação!")
+        () => {
+          this.sucessoFamiliares = true;
+          this.erroFamiliares = false;
+        },
+        err => {
+          this.erroFamiliares = true;
+          this.sucessoFamiliares = false;
+        }
       );
   }
 
@@ -252,8 +281,14 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoContato(this.cpf, newContato)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível alterar suas informações de contato. Está faltando alguma informação!")
+        () => {
+          this.sucessoContato = true;
+          this.erroContato = false;
+        },
+        err => {
+          this.sucessoContato = false;
+          this.erroContato = true;
+        }
       );
   }
 
@@ -262,13 +297,14 @@ export class AlterarInfoComponent implements OnInit {
     this.alterarInfoService
       .alterarInfoEndereco(this.cpf, newEndereco)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível alterar suas informações de endereço. Está faltando alguma informação!")
+        () => {
+          this.sucessoEndereco = true;
+          this.erroEndereco = false;
+        },
+        err => {
+          this.erroEndereco = true;
+          this.sucessoEndereco = false;
+        }
       );
-  }
-
-  reload() {
-    alert("Informações alteradas com sucesso!");
-    window.location.reload();
   }
 }
