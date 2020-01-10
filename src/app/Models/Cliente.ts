@@ -19,4 +19,5 @@ export interface Cliente{
     Contatos:Array<Contato>;
     Endereco:Array<Endereco>;
     Conta : Array<Conta>;
+    Foto: Array<File>;
 }

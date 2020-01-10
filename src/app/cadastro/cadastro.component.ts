@@ -11,6 +11,7 @@ import { Contato } from '../Models/Contato';
 import { Endereco } from '../Models/Endereco';
 import { ClienteLogin } from '../Models/ClienteLogin';
 import { Conta } from '../Models/Conta';
+import { Foto } from '../Models/Foto';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -36,8 +37,9 @@ export class CadastroComponent implements OnInit {
   enderecoFormGroup: FormGroup;
   clienteLoginFormGroup: FormGroup;
   senhaFormGroup: FormGroup;
+  fotoFormGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
-  Foto: File = null;  
+  Foto: File = null;
 
 
   fileToUpload: File = null;
@@ -87,13 +89,24 @@ export class CadastroComponent implements OnInit {
     this.senhaFormGroup = this._formBuilder.group({
       senhaTransacoes: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
     });
+
+    this.fotoFormGroup = this._formBuilder.group({
+      foto: ['', [Validators.required]]
+    });
+  }
+
+
+  fileProgress(fileInput: any) {
+    this.Foto = <File>fileInput.target.files[0];
   }
 
   onCadastro() {
-
+    const foto = this.fotoFormGroup.getRawValue() as File;
+    this.Foto = foto;
     const Foto = new FormData();
     Foto.append('file', this.Foto);
-    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;    
+
+    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
     const familiares = this.FamiliaresFormGroup.getRawValue() as Familiares;
     const contato = this.contatoFormGroup.getRawValue() as Contato;
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
@@ -102,17 +115,13 @@ export class CadastroComponent implements OnInit {
     clienteLogin.cpf = cliente.cpf;
 
     this.servico
-      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes)
+      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes, foto)
       .subscribe(
         () => this.router.navigate(['']),
         err => console.log(err)
-      );
-  }
-
-  fileProgress(fileInput: any) {
-    this.Foto = <File>fileInput.target.files[0];    
-  }
-
+        );
+      }
+      
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {

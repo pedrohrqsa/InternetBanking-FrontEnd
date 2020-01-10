@@ -50,10 +50,11 @@
                     <mat-form-field class="w-475 ml-4">
                         <input matInput (keypress)="letterOnly($event)" name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade" maxlength="20">
                     </mat-form-field>
-
+                </form>
+                <form [formGroup]="fotoFormGroup">
                     <label class="image-upload-container btn btn-bwm">
                         <span>Selecione uma imagem da parte frontal e traseira do seu documento digitalizado.</span>
-                        <input type="file" name="image" (change)="fileProgress($event)" />
+                        <input type="file" name="image" (change)="fileProgress($event)"  formControlName="foto" />
                     </label>
 
                     <div>
