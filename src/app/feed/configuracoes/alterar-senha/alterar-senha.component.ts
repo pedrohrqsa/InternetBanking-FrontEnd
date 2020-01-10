@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ClienteLogin } from 'src/app/Models/ClienteLogin';
 import { AlterarSenhaService } from './alterar-senha.service';
 
-export class PasswordMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
-    return (invalidCtrl || invalidParent);
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          return;
+      }
+
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
   }
 }
 
@@ -22,7 +30,6 @@ export class PasswordMatcher implements ErrorStateMatcher {
 export class AlterarSenhaComponent implements OnInit {
 
   alterarSenhaFormGroup: FormGroup;
-  passwordMatcher = new PasswordMatcher();
 
   indexCPF: number;
   senha: string;
@@ -43,7 +50,7 @@ export class AlterarSenhaComponent implements OnInit {
       novaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       confirmacaoNovaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     },
-      { validator: this.checkPasswords }
+      { validator: MustMatch('novaSenha', 'confirmacaoNovaSenha')}
     );
   }
 
