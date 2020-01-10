@@ -50,13 +50,6 @@
                     <mat-form-field class="w-475 ml-4">
                         <input matInput (keypress)="letterOnly($event)" name="naturalidade" placeholder="Naturalidade" formControlName="naturalidade" maxlength="20">
                     </mat-form-field>
-                </form>
-                <form [formGroup]="fotoFormGroup">
-                    <label class="image-upload-container btn btn-bwm">
-                        <span>Selecione uma imagem da parte frontal e traseira do seu documento digitalizado.</span>
-                        <input type="file" name="image" (change)="fileProgress($event)"  formControlName="foto" />
-                    </label>
-
                     <div>
                         <button mat-button matStepperNext>Próximo</button>
                     </div>
@@ -177,10 +170,22 @@
                     <p>Clicando no botão 'Finalizar', você confirma que deseja se cadastrar no InternetBanking.
                         <div>
                             <button mat-button matStepperPrevious>Voltar</button>
-                            <button mat-button (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Finalizar</button>
+                            <button mat-button matStepperNext (click)="onCadastro()" [disabled]="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Próximo</button>
 
                             <small *ngIf="dadosPessoaisFormGroup.invalid && contatoFormGroup.invalid && enderecoFormGroup.invalid && FamiliaresFormGroup.invalid">Algum formulário possui informações incorretas!</small>
                         </div>
+                </form>
+            </mat-step>
+            <mat-step label="Foto">
+                <form [formGroup]="fotoFormGroup">
+                    <label class="image-upload-container btn btn-bwm">
+                        <span>Selecione uma imagem da parte frontal e traseira do seu documento digitalizado.</span>
+                        <input type="file" name="image" (change)="fileProgress($event)"  formControlName="foto" />
+                    </label>
+                    <div>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext (click)="onUpload()">Finalizar</button>
+                    </div>
                 </form>
             </mat-step>
         </mat-vertical-stepper>

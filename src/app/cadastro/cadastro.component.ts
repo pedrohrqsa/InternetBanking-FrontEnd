@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm, FormControl } from '@angular/forms';
+import {
+  FormBuilder, FormGroup, Validators,
+  FormGroupDirective, NgForm, FormControl
+} from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -11,7 +14,8 @@ import { Contato } from '../Models/Contato';
 import { Endereco } from '../Models/Endereco';
 import { ClienteLogin } from '../Models/ClienteLogin';
 import { Conta } from '../Models/Conta';
-import { Foto } from '../Models/Foto';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -41,13 +45,13 @@ export class CadastroComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   Foto: File = null;
 
-
   fileToUpload: File = null;
 
   constructor(
     private router: Router,
     private servico: CadastroService,
-    private _formBuilder: FormBuilder) { }
+    private _formBuilder: FormBuilder,
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -101,11 +105,6 @@ export class CadastroComponent implements OnInit {
   }
 
   onCadastro() {
-    const foto = this.fotoFormGroup.getRawValue() as File;
-    this.Foto = foto;
-    const Foto = new FormData();
-    Foto.append('file', this.Foto);
-
     const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
     const familiares = this.FamiliaresFormGroup.getRawValue() as Familiares;
     const contato = this.contatoFormGroup.getRawValue() as Contato;
@@ -115,13 +114,32 @@ export class CadastroComponent implements OnInit {
     clienteLogin.cpf = cliente.cpf;
 
     this.servico
-      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes, foto)
+      .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes)
       .subscribe(
-        () => this.router.navigate(['']),
+        // () => this.router.navigate(['']),
+        () => console.log("RODOU PORRA"),
         err => console.log(err)
-        );
-      }
-      
+      );
+  }
+
+  selectedFile: File
+  onUpload() {
+    const cliente = this.dadosPessoaisFormGroup.getRawValue() as Cliente;
+
+    this.selectedFile = this.Foto;
+    const uploadData = new FormData();
+
+    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+    this.http.post(environment.API_URL + '/api/upload/'+ cliente.cpf, uploadData, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event => {
+        console.log(event);
+        this.router.navigate([''])
+      });
+  }
+
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
