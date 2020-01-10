@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatCommonModule, MatInputModule, MatButtonModule, MatDividerModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatCommonModule, MatInputModule, MatButtonModule, MatDividerModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AlterarSenhaComponent } from './alterar-senha.component';
 
@@ -10,8 +10,8 @@ import { AlterarSenhaComponent } from './alterar-senha.component';
   imports: [
     CommonModule,
     MatCommonModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatButtonModule,
     MatDividerModule

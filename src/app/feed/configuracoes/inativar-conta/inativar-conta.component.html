@@ -2,7 +2,7 @@
     <h1>Desativar conta</h1>
     <mat-divider></mat-divider>
     <h4>Deseja realmente desativar a sua conta do InternetBanking?</h4>
-    <p>Para desativar sua conta você deve inserir suas senhas de acesso e de transações.</p>
+    <p>Para desativar sua conta, por favor insira sua senha de acesso.</p>
 
     <form [formGroup]="inativarContaFormGroup">
         <p><input type="password" name="senhaAcesso" formControlName="senhaAcesso" placeholder="Senha de acesso" minlength="8" maxlength="15"></p>
@@ -21,7 +21,7 @@
                 </small>
             <br>    
                 <small>
-                    Ou ainda há saldo existente ainda na conta.
+                    Ou ainda há saldo existente na conta.
                 </small>
             </p>
         </div>
