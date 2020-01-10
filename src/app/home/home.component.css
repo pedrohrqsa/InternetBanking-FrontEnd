@@ -1,6 +1,6 @@
 .background{
     width: 100vw;
-    height: 92vh;
+    height: 91.5vh;
     background-image: url("../../assets/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -9,16 +9,14 @@
 .container{
     display: flex;
     justify-content: center;
-    padding: 0;
-    margin: 0;
+    width: 50vw;
+    height: 40vh;
 }
 
 .content{
-    width: 50vw;
-    padding: 20px;
-    height: 62vh;
-    background-color: whitesmoke;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .titulo{
@@ -28,13 +26,18 @@
 }
 
 button{
-    color: white;
-    background-color: #5D8BE8;
+    color: #5D8BE8;
+    background-color: white;
     border: none;
+    font-size: larger;
     height: 50px;
     width: 200px;
 }
 
-h3{
-    color: #5D8BE8;
+h3, h1{
+    color: white;
+}
+
+h1{
+     font-size: 72px;
 }
