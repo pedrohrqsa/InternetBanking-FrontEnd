@@ -51,3 +51,11 @@ input{
 form .dados{
     justify-content: center;
 }
+
+.sucesso{
+    color: green;
+}
+
+.erro{
+    color: red;
+}

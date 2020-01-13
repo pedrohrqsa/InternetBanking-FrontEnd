@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     this.autorizacao.autenticar(cpfDigitado, senha)
       .subscribe(() => this.router.navigate(['feed', cpfDigitado]),
         err => {
-          alert("CPF ou Senha inválidos.");
           this.loginForm.reset()
         }
       );

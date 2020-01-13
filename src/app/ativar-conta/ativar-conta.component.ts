@@ -29,6 +29,9 @@ export class AtivarContaComponent implements OnInit {
   senhaAcesso: string;
   senhaTransacoes: string;
 
+  sucesso: boolean = false;
+  erro: boolean = false;
+
   ngOnInit() {
     this.AtivarContaFormGroup = this.formBuilder.group({
       rg: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
@@ -68,10 +71,13 @@ export class AtivarContaComponent implements OnInit {
         () => {
           this.AtivarContaFormGroup.reset();
           this.reload();
+          this.sucesso = true;
+          this.erro = false;
         },
         err => {
-          console.log(err);
-          alert("Não foi possível reativar sua conta.");
+          console.log("Erro de chamado");
+          this.erro = true;
+          this.sucesso = false;
         }
       );
   }

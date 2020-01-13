@@ -35,6 +35,9 @@ export class AlterarSenhaComponent implements OnInit {
   senha: string;
   cpf: string;
 
+  sucesso: boolean = false;
+  erro: boolean = false;
+
   constructor(
     private alterarSenhaService: AlterarSenhaService,
     private formBuilder: FormBuilder,
@@ -85,13 +88,20 @@ export class AlterarSenhaComponent implements OnInit {
     this.alterarSenhaService
       .alterarSenha(this.cpf, newClienteLogin)
       .subscribe(
-        () => this.reload(),
-        err => alert("Não foi possível alterar sua senha. Você digitou alguma informação incorretamente!")
+        () => {
+          this.reload(),
+          this.sucesso = true;
+          this.erro = false;
+        },
+          err =>{
+            console.log("Erro de chamado");
+            this.erro = true;
+            this.sucesso = false;
+          }
       );
   }
 
   reload() {
-    alert("Informações alteradas com sucesso!");
     window.location.reload();
   }
 

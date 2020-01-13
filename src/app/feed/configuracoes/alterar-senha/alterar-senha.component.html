@@ -10,8 +10,11 @@
         <p><input type="password" name="novaSenha" formControlName="novaSenha" placeholder="Insira sua nova senha" minlength="8" maxlength="15"></p>            
         <p><input type="password" name="confirmacaoNovaSenha" formControlName="confirmacaoNovaSenha" placeholder="Confirme sua nova senha" minlength="8" maxlength="15"></p>
         <br>
-        <p *ngIf="alterarSenhaFormGroup.invalid && alterarSenhaFormGroup.touched"><small>Algum campo possui informações inválidas!</small></p>
-
+        
         <button mat-button (click)="alterarSenha()" [disabled]="alterarSenhaFormGroup.invalid">Confirmar Alteração</button>
+        <br>
+        <p *ngIf="alterarSenhaFormGroup.invalid && alterarSenhaFormGroup.touched"><small>Algum campo possui informações inválidas!</small></p>
+        <small class="erro" *ngIf="erro == true">Algo deu Errado!</small>
+        <small class="sucesso" *ngIf="sucesso == true">Sucesso!</small>
     </form>
 </div>

@@ -20,6 +20,7 @@ export class DepositoComponent {
   saldoAtual: number;
   numeroConta: number;
   senhaTransacoes: string;
+  
   sucesso: boolean = false;
   erro: boolean = false;
 

@@ -22,3 +22,11 @@ button{
 button:hover{
     background-color: rgb(39, 62, 107);
 }
+
+.sucesso{
+    color: green;
+}
+
+.erro{
+    color: red;
+}

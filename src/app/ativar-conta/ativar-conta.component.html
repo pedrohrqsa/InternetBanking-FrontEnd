@@ -23,6 +23,9 @@
                     <div class="botao">
                         <button mat-raised-button (click)="onAtivar()">Ativar Conta</button>
                     </div>
+                    <br>
+                    <small class="erro" *ngIf="erro == true">Algo deu Errado!</small>
+                    <small class="sucesso" *ngIf="sucesso == true">Sucesso!</small>
                 </div>
             </form>
         </div>
