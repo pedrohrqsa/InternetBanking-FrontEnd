@@ -174,11 +174,7 @@ export class CadastroComponent implements OnInit {
   }
 
   onBuscaCEP(){
-
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
-
-   
-
     this.servico.buscaCEP(endereco.cep)
       .subscribe(
         address => this.enderecoFormGroup = this._formBuilder.group({
@@ -191,9 +187,5 @@ export class CadastroComponent implements OnInit {
           cep: [address.cep.replace("-",""), [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
         })
       );
-
-
-    
-
   }
 }

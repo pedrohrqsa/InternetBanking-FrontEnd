@@ -121,7 +121,7 @@
             <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}}" placeholder="bairro" maxlength="20">
             <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" value="{{this.cidade}}" placeholder="cidade" maxlength="30">
             <input (keypress)="letterOnly($event)" name="siglaEstado" formControlName="siglaEstado" value="{{this.siglaEstado}}" placeholder="siglaEstado" minlength="2" maxlength="2">
-            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8">
+            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
         </form>
     </div>
 </div>

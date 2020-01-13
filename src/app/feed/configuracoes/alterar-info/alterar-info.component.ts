@@ -8,6 +8,7 @@ import { Familiares } from 'src/app/Models/Familiares';
 import { Contato } from 'src/app/Models/Contato';
 import { Endereco } from 'src/app/Models/Endereco';
 import { InfoContaService } from '../../infos-conta/Infos-conta.service';
+import { CadastroService } from 'src/app/cadastro/cadastro.service';
 
 @Component({
   selector: 'app-alterar-info',
@@ -75,7 +76,8 @@ export class AlterarInfoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private infoContaService: InfoContaService,
     private alterarInfoService: AlterarInfoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private servico: CadastroService,
   ) { }
 
   ngOnInit() {
@@ -305,6 +307,22 @@ export class AlterarInfoComponent implements OnInit {
           this.erroEndereco = true;
           this.sucessoEndereco = false;
         }
+      );
+  }
+
+  onBuscaCEP(){
+    const endereco = this.alterarEnderecoFormGroup.getRawValue() as Endereco;
+    this.servico.buscaCEP(endereco.cep)
+      .subscribe(
+        address => this.alterarEnderecoFormGroup = this.formBuilder.group({
+          logradouro: [address.logradouro, [Validators.required, Validators.maxLength(50)]],
+          numero: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+          complemento: [address.complemento, [Validators.maxLength(30)]],
+          bairro: [address.bairro, [Validators.required, Validators.maxLength(20)]],
+          cidade: [address.localidade, [Validators.required, Validators.maxLength(30)]],
+          siglaEstado: [address.uf, [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+          cep: [address.cep.replace("-",""), [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
+        })
       );
   }
 }
