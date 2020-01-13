@@ -16,7 +16,6 @@ import { ClienteLogin } from '../Models/ClienteLogin';
 import { Conta } from '../Models/Conta';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Address } from '../Models/Address';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -46,8 +45,6 @@ export class CadastroComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   Foto: File = null;
 
-  
-
   fileToUpload: File = null;
 
   constructor(
@@ -55,8 +52,6 @@ export class CadastroComponent implements OnInit {
     private servico: CadastroService,
     private _formBuilder: FormBuilder,
     private http: HttpClient) { }
-
-
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -104,7 +99,6 @@ export class CadastroComponent implements OnInit {
     });
   }
 
-
   fileProgress(fileInput: any) {
     this.Foto = <File>fileInput.target.files[0];
   }
@@ -121,8 +115,7 @@ export class CadastroComponent implements OnInit {
     this.servico
       .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes)
       .subscribe(
-        // () => this.router.navigate(['']),
-        () => console.log("RODOU PORRA"),
+        () => this.router.navigate(['']),
         err => console.log(err)
       );
   }
@@ -135,7 +128,7 @@ export class CadastroComponent implements OnInit {
     const uploadData = new FormData();
 
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-    this.http.post(environment.API_URL + '/api/upload/'+ cliente.cpf, uploadData, {
+    this.http.post(environment.API_URL + '/api/upload/' + cliente.cpf, uploadData, {
       reportProgress: true,
       observe: 'events'
     })
@@ -173,7 +166,7 @@ export class CadastroComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  onBuscaCEP(){
+  onBuscaCEP() {
     const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
     this.servico.buscaCEP(endereco.cep)
       .subscribe(
@@ -184,8 +177,7 @@ export class CadastroComponent implements OnInit {
           bairro: [address.bairro, [Validators.required, Validators.maxLength(20)]],
           cidade: [address.localidade, [Validators.required, Validators.maxLength(30)]],
           siglaEstado: [address.uf, [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
-          cep: [address.cep.replace("-",""), [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
-        })
-      );
+          cep: [address.cep.replace("-", ""), [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
+        }));
   }
 }

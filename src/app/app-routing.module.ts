@@ -12,10 +12,10 @@ import { AtivarContaComponent } from './ativar-conta/ativar-conta.component';
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent, /*canActivate: [AuthGuard]*/ },
-  { path: 'cadastro', component: CadastroComponent, /*canActivate: [AuthGuard]*/ },
-  { path: 'feed/:cpf', component: FeedComponent, /*canActivate: [AuthGuard]*/ },
-  { path: 'ativar', component: AtivarContaComponent, /*canActivate: [AuthGuard]*/ },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'cadastro', component: CadastroComponent, canActivate: [AuthGuard] },
+  { path: 'feed/:cpf', component: FeedComponent, canActivate: [AuthGuard] },
+  { path: 'ativar', component: AtivarContaComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

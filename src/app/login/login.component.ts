@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../core/auth.service';
+import { AuthGuard } from '../core/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private autorizacao: AuthService,
+    private auth: AuthGuard,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -37,12 +39,11 @@ export class LoginComponent implements OnInit {
   login() {
     const cpfDigitado = this.loginForm.get('cpf').value;
     const senha = this.loginForm.get('senhaAcesso').value;
-
+    this.auth.cpf(cpfDigitado);
     this.autorizacao.autenticar(cpfDigitado, senha)
-      .subscribe(() => this.router.navigate(['feed', cpfDigitado]),
+      .subscribe(() => this.router.navigate(['feed/', cpfDigitado]),
         err => {
           this.loginForm.reset()
-        }
-      );
+        });
   }
 }
