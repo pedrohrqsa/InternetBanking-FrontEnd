@@ -14,7 +14,7 @@
         <p><b>CPF:</b> {{this.cpf}}</p>
         <p><b>RG:</b> {{this.rg}}</p>
         <p><b>Órgão emissor:</b> {{this.orgaoEmissor}}</p>
-        <p><b>Data de nascimento:</b> {{this.dt1}}</p>
+        <p><b>Data de nascimento:</b> {{this.dtNascimento | date: 'dd/MM/yyyy'}}</p>
         <p><b>Nacionalidade:</b> {{this.nacionalidade}}</p>
         <p><b>Naturalidade:</b> {{this.naturalidade}}</p>
         <br>
@@ -29,7 +29,7 @@
             <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11" disabled>
             <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9" disabled>
             <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
-            <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dt1}}" minlength="8" maxlength="8" disabled>
+            <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dtNascimento | date: 'dd/MM/yyyy'}} " minlength="8" maxlength="8" disabled>
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
             <input (keypress)="letterOnly($event)" name="nacionalidade" formControlName="nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
@@ -121,7 +121,7 @@
             <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}}" placeholder="bairro" maxlength="20">
             <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" value="{{this.cidade}}" placeholder="cidade" maxlength="30">
             <input (keypress)="letterOnly($event)" name="siglaEstado" formControlName="siglaEstado" value="{{this.siglaEstado}}" placeholder="siglaEstado" minlength="2" maxlength="2">
-            <input (keypress)="letterOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8">
+            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8">
         </form>
     </div>
 </div>
