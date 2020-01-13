@@ -105,6 +105,15 @@
 
             <mat-step label="Endereço">
                 <form [formGroup]="enderecoFormGroup">
+
+                    <mat-form-field class="w-475 mr-3">
+                        <input matInput (keypress)="numberOnly($event)" type="text" name="cep" placeholder="CEP" formControlName="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
+                    </mat-form-field>
+
+                    <mat-form-field class="w-475 mr-3">
+                        <input matInput (keypress)="letterOnly($event)" name="cidade" placeholder="Cidade" formControlName="cidade" maxlength="30">
+                    </mat-form-field>
+
                     <mat-form-field class="w-100">
                         <input matInput name="logradouro" placeholder="Logradouro" formControlName="logradouro" maxlength="50">
                     </mat-form-field>
@@ -113,7 +122,7 @@
                         <input matInput (keypress)="numberOnly($event)" name="numero" placeholder="Número" formControlName="numero" maxlength="5">
                     </mat-form-field>
 
-                    <mat-form-field class="w-475 ml-4">
+                    <mat-form-field class="w-475 mr-3">
                         <input matInput name="complemento" placeholder="Complemento" formControlName="complemento" maxlength="30">
                     </mat-form-field>
 
@@ -121,19 +130,10 @@
                         <input matInput name="bairro" placeholder="Bairro" formControlName="bairro" maxlength="20">
                     </mat-form-field>
 
-                    <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="cidade" placeholder="Cidade" formControlName="cidade" maxlength="30">
-                    </mat-form-field>
-
                     <mat-form-field class="w-475 mr-3">
                         <input matInput (keypress)="letterOnly($event)" name="estado" placeholder="Sigla do estado" formControlName="siglaEstado" minlength="2" maxlength="2">
                     </mat-form-field>
-
-                    <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="numberOnly($event)" type="text" name="cep" placeholder="CEP" formControlName="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
-                    </mat-form-field>
                 </form>
-
                 <div>
                     <button mat-button matStepperPrevious>Voltar</button>
                     <button mat-button matStepperNext>Próximo</button>

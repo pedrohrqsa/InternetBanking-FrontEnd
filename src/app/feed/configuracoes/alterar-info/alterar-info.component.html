@@ -103,25 +103,25 @@
 
 <div class="conteudo">
     <div class="esquerda">
+        <p><b>CEP:</b> {{this.cep}}</p>
         <p><b>Logradouro:</b> {{this.logradouro}}</p>
         <p><b>Número:</b> {{this.numero}}</p>
         <p><b>Complemento: </b> {{this.complemento}}</p>
         <p><b>Bairro:</b> {{this.bairro}}</p>
         <p><b>Cidade:</b> {{this.cidade}}</p>
         <p><b>Estado:</b> {{this.siglaEstado}}</p>
-        <p><b>CEP:</b> {{this.cep}}</p>
         <small class="sucesso" *ngIf="sucessoEndereco==true">Informações alteradas com sucesso</small>
         <small class="erro" *ngIf="erroEndereco==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
+            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
             <input (keypress)="letterOnly($event)" name="logradouro" formControlName="logradouro" value="{{this.logradouro}}" placeholder="logradouro" maxlength="50">
             <input (keypress)="numberOnly($event)" name="numero" formControlName="numero" value="{{this.numero}}" placeholder="numero" maxlength="5">
             <input (keypress)="letterOnly($event)" name="complemento" formControlName="complemento" value="{{this.complemento}}" placeholder="complemento" maxlength="30">
             <input (keypress)="letterOnly($event)" name="bairro" formControlName="bairro" value="{{this.bairro}}" placeholder="bairro" maxlength="20">
             <input (keypress)="letterOnly($event)" name="cidade" formControlName="cidade" value="{{this.cidade}}" placeholder="cidade" maxlength="30">
             <input (keypress)="letterOnly($event)" name="siglaEstado" formControlName="siglaEstado" value="{{this.siglaEstado}}" placeholder="siglaEstado" minlength="2" maxlength="2">
-            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
         </form>
     </div>
 </div>

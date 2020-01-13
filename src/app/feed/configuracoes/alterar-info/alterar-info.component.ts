@@ -254,6 +254,8 @@ export class AlterarInfoComponent implements OnInit {
         () => {
           this.sucessoPerfil = true;
           this.erroPerfil = false;
+          this.onInfoCliente();
+          this.onEditarPerfil();
         },
         err => {
           this.erroPerfil = true;
@@ -270,6 +272,8 @@ export class AlterarInfoComponent implements OnInit {
         () => {
           this.sucessoFamiliares = true;
           this.erroFamiliares = false;
+          this.onInfoFamiliares();
+          this.onEditarFamiliares();
         },
         err => {
           this.erroFamiliares = true;
@@ -286,6 +290,8 @@ export class AlterarInfoComponent implements OnInit {
         () => {
           this.sucessoContato = true;
           this.erroContato = false;
+          this.onInfoContato();
+          this.onEditarContato();
         },
         err => {
           this.sucessoContato = false;
@@ -302,6 +308,8 @@ export class AlterarInfoComponent implements OnInit {
         () => {
           this.sucessoEndereco = true;
           this.erroEndereco = false;
+          this.onInfoEndereco();
+          this.onEditarEndereco();
         },
         err => {
           this.erroEndereco = true;

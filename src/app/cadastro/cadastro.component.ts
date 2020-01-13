@@ -115,7 +115,7 @@ export class CadastroComponent implements OnInit {
     this.servico
       .cadastro(cliente, familiares, contato, endereco, clienteLogin, senhaTransacoes)
       .subscribe(
-        () => this.router.navigate(['']),
+        () => console.log("Usuário cadastrado!"),
         err => console.log(err)
       );
   }
