@@ -130,7 +130,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="numberOnly($event)" type="text" name="cep" placeholder="CEP" formControlName="cep" minlength="8" maxlength="8">
+                        <input matInput (keypress)="numberOnly($event)" type="text" name="cep" placeholder="CEP" formControlName="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
                     </mat-form-field>
                 </form>
 

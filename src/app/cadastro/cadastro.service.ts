@@ -8,6 +8,10 @@ import { Familiares } from '../Models/Familiares';
 import { Contato } from '../Models/Contato';
 import { Endereco } from '../Models/Endereco';
 import { Conta } from '../Models/Conta';
+import { Observable } from 'rxjs';
+import { Address } from '../Models/Address';
+
+
 
 const API = environment.API_URL;
 
@@ -36,5 +40,15 @@ export class CadastroService {
         { headers: { 'Content-Type': 'application/json' } })
   }
 
+  buscaCEP(cep: string):Observable<Address>{
 
-}
+
+    return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`);
+    
+  }
+
+
+  }
+
+
+

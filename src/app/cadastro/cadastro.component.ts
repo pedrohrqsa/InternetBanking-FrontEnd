@@ -16,6 +16,7 @@ import { ClienteLogin } from '../Models/ClienteLogin';
 import { Conta } from '../Models/Conta';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Address } from '../Models/Address';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -45,6 +46,8 @@ export class CadastroComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   Foto: File = null;
 
+  
+
   fileToUpload: File = null;
 
   constructor(
@@ -52,6 +55,8 @@ export class CadastroComponent implements OnInit {
     private servico: CadastroService,
     private _formBuilder: FormBuilder,
     private http: HttpClient) { }
+
+
 
   ngOnInit() {
     this.dadosPessoaisFormGroup = this._formBuilder.group({
@@ -166,5 +171,29 @@ export class CadastroComponent implements OnInit {
     let pass = group.controls.senhaAcesso.value;
     let confirmPass = group.controls.confirmacaoSenha.value;
     return pass === confirmPass ? null : { notSame: true }
+  }
+
+  onBuscaCEP(){
+
+    const endereco = this.enderecoFormGroup.getRawValue() as Endereco;
+
+   
+
+    this.servico.buscaCEP(endereco.cep)
+      .subscribe(
+        address => this.enderecoFormGroup = this._formBuilder.group({
+          logradouro: [address.logradouro, [Validators.required, Validators.maxLength(50)]],
+          numero: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+          complemento: [address.complemento, [Validators.maxLength(30)]],
+          bairro: [address.bairro, [Validators.required, Validators.maxLength(20)]],
+          cidade: [address.localidade, [Validators.required, Validators.maxLength(30)]],
+          siglaEstado: [address.uf, [Validators.required, Validators.maxLength(2), Validators.maxLength(2)]],
+          cep: [address.cep.replace("-",""), [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]]
+        })
+      );
+
+
+    
+
   }
 }
