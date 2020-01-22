@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfosContaComponent } from './infos-conta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule } from '@angular/material';
 import { SaldoModule } from '../shared/saldo/saldo.module';
 
 
@@ -17,7 +17,8 @@ import { SaldoModule } from '../shared/saldo/saldo.module';
     MatInputModule,
     MatButtonModule,
     SaldoModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   exports: [InfosContaComponent]
 })

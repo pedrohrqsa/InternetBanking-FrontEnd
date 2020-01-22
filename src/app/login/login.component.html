@@ -15,7 +15,7 @@
                     <input type="password" matInput placeholder="Senha" formControlName="senhaAcesso">
                 </mat-form-field>
                 <small *ngIf="loginForm.get('senhaAcesso').errors && loginForm.get('senhaAcesso').touched" class="text-danger d-block">Senha é um campo obrigatório</small>
-
+                <small *ngIf="desativado == true" class="text-danger d-block">Você inseriu dados incorretos ou sua conta está bloqueada, verifique as informações ou reative para acessar.</small>
                 <div class="button">
                     <button mat-raised-button>Entrar</button>
                 </div>

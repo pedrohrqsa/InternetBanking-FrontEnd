@@ -28,5 +28,3 @@ export class InfoContaService {
         return this.http.get<Agencia[]>(this.apiAgencia);
     }
 }
-
-

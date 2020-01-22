@@ -24,6 +24,10 @@
   background-color: rgb(44, 44, 128);
 }
 
+.saldo{
+  background-color: rgb(44, 44, 128);
+}
+
 .menu-lateral .config{
   position: absolute;
   width: 23vw;

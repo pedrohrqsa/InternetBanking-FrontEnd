@@ -18,6 +18,8 @@ export class InfosContaComponent implements OnInit {
   numeroConta: number;
   numeroAgencia: number;
   indexCPF: number;
+  saldo: number;
+  mostrarSaldo: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -44,11 +46,21 @@ export class InfosContaComponent implements OnInit {
     this.onInfoCliente();
     this.onInfoConta();
     this.onInfoAgencia();
+    this.onInfoSaldo();
   }
 
   logout() {
     this.userService.logout();
     this.router.navigate(['']);
+  }
+
+  getSaldo(){
+    this.onInfoSaldo();
+    if(this.mostrarSaldo == false){
+      this.mostrarSaldo = true;
+    } else {
+      this.mostrarSaldo = false;
+    }
   }
 
   getIndexCPF() {
@@ -67,6 +79,14 @@ export class InfosContaComponent implements OnInit {
       .subscribe(clientex => {
         this.nome = clientex[this.indexCPF].nome;
         this.sobrenome = clientex[this.indexCPF].sobrenome;
+      }
+      );
+  }
+
+  onInfoSaldo() {
+    return this.infoContaService.getInfoConta()
+      .subscribe(clientex => {
+        this.saldo = clientex[this.indexCPF].saldoAtual;
       }
       );
   }

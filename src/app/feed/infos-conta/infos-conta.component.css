@@ -18,6 +18,19 @@ p{
     font-size: 30px;
 }
 
+mat-icon{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+mat-icon:hover{
+    color: gray;
+}
+
+strong{
+    font-weight: lighter;
+}
+
 mat-form-field {
     width: 95%;
 }

@@ -14,6 +14,7 @@ import { AuthGuard } from '../core/auth.guard';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  desativado: boolean = false;
 
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
@@ -43,7 +44,8 @@ export class LoginComponent implements OnInit {
     this.autorizacao.autenticar(cpfDigitado, senha)
       .subscribe(() => this.router.navigate(['feed/', cpfDigitado]),
         err => {
-          this.loginForm.reset()
+          this.loginForm.reset();
+          this.desativado = true;
         });
   }
 }
