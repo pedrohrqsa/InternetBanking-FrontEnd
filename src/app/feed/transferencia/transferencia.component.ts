@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { InfoContaService } from '../infos-conta/Infos-conta.service';
@@ -35,12 +35,19 @@ export class TransferenciaComponent {
   constructor(private infoContaService: InfoContaService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private servico: TransferenciaService) { }
+    private servico: TransferenciaService,
+    private _formBuilder: FormBuilder
+    ) { }
 
   submit() { }
 
   ngOnInit(): void {
     this.getIndexCPF();
+    this.form = this._formBuilder.group({
+      numeroContaDestino: [''],
+      valor: ['0'],
+      senhaTransacoes: ['']
+    })
   }
 
   getIndexCPF() {

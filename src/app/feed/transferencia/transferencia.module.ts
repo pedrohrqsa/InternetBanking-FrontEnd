@@ -4,6 +4,7 @@ import { TransferenciaComponent } from './transferencia.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatSidenavModule, MatListModule, MatBottomSheet, MatDialogModule, MatBottomSheetContainer, MatBottomSheetModule, MatDividerModule } from '@angular/material';
 import { SaldoModule } from '../shared/saldo/saldo.module';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [TransferenciaComponent],
@@ -19,7 +20,8 @@ import { SaldoModule } from '../shared/saldo/saldo.module';
     MatListModule,
     MatDialogModule,
     MatBottomSheetModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxCurrencyModule
   ],
   exports: [TransferenciaComponent],
   providers: [MatBottomSheet],

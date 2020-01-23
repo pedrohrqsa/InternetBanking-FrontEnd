@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 import { SaqueService } from './saque.service';
@@ -34,12 +34,17 @@ export class SaqueComponent {
     private servico: SaqueService,
     private infoContaService: InfoContaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.getIndexCPF();
     this.onInfoConta();
+    this.form = this._formBuilder.group({
+      valor: ['0'],
+      senhaTransacoes: ['']
+    })
   }
 
   getIndexCPF() {
@@ -75,6 +80,8 @@ export class SaqueComponent {
       this.router.navigate(['feed/' + cpf]);
       this.sucesso = true;
       this.erro = false;
+
+      this.ngOnInit();
     },
       err => {
         console.log("Erro de chamado");

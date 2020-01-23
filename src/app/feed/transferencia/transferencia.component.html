@@ -4,7 +4,7 @@
 <br>
 <form [formGroup]="form">      
     <p><input type="number" placeholder="Nº da Conta a ser Transferido" formControlName="numeroContaDestino"></p>
-    <p><input type="number" placeholder="Valor (R$)" formControlName="valor"></p>
+    <p><input placeholder="Valor (R$)" formControlName="valor" currencyMask [options]="{ prefix: 'R$', thousands: '.', decimal: ',', align: 'left'}"></p>
     <p><input type="password" placeholder="Senha de Transações" formControlName="senhaTransacoes"></p>
     <p><button mat-button (click)="onTransferencia()">Transferir</button></p>
     <br>

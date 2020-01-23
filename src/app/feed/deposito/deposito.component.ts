@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 import { DepositoService } from './deposito.service';
@@ -33,13 +33,19 @@ export class DepositoComponent {
     private servico: DepositoService,
     private infoContaService: InfoContaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getIndexCPF();
+    this.form = this._formBuilder.group({
+      valor: ['0'],
+      senhaTransacoes: ['']
+    })
   }
 
   getIndexCPF() {
+
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
@@ -58,8 +64,7 @@ export class DepositoComponent {
 
   onDeposito() {
     this.getIndexCPF();
-    const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
-
+    const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");    
     const transacao1 = this.form.getRawValue() as Transacao;
     transacao1.numeroConta = this.numeroConta;
     transacao1.idTipoTransacao = 1;
@@ -68,9 +73,11 @@ export class DepositoComponent {
 
     this.servico.Deposito(transacao1)
       .subscribe(() => {
-        this.router.navigate(['feed/' + cpf]);
+        this.router.navigate(['feed/' + cpf]);        
         this.sucesso = true;
         this.erro = false;
+        this.ngOnInit();
+        
       },
         err => {
           console.log("Erro de chamado");
@@ -78,7 +85,12 @@ export class DepositoComponent {
           this.sucesso = false;
       });
 
-    this.form.reset();
+    
+    
+
+
+    
     this.sucesso = true;
+
   }
 }

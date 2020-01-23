@@ -24,11 +24,6 @@
   background-color: rgb(44, 44, 128);
 }
 
-.saldo{
-  background-color: white;
-  color: rgb(44, 44, 128);
-}
-
 .menu-lateral .config{
   position: absolute;
   width: 23vw;
@@ -71,8 +66,14 @@
   padding-top: 15px;
 }
 
-.saldo{
+button .saldo{
   height: 50px;
+  margin-top: 50px;
   width: 100%;
   background-color: rgb(44, 44, 128);
+  color: white;
+}
+
+button .botaoSaldo{
+  background-color: white;
 }

@@ -9,7 +9,7 @@
     <br>
     <button mat-button (click)="onTransferencia()">Transferência</button>  
     <br>
-    <button class="saldo" mat-button class="botaoSaldo" (click)="onSaldo()">{{this.infoSaldo}}
+    <button class="botaoSaldo" mat-button (click)="onSaldo()">{{this.infoSaldo}}
         <mat-icon *ngIf="icone == true">visibility</mat-icon>
         <mat-icon *ngIf="icone == false">visibility_off</mat-icon>
     </button>

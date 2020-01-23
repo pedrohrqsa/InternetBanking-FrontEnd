@@ -3,7 +3,7 @@
 <form [formGroup]="form"> 
     <br>
     <br>    
-    <p><input type="number" placeholder="Valor (R$)" formControlName="valor"></p>
+    <p><input formControlName="valor" currencyMask [options]="{ prefix: 'R$', thousands: '.', decimal: ',', align: 'left'}"></p>
     <p><input type="password" placeholder="Senha de transações" formControlName="senhaTransacoes"></p>
     <p><button mat-button (click)="onSaque()">Sacar</button></p>
     <br>

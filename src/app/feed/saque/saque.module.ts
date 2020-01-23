@@ -4,6 +4,7 @@ import { SaqueComponent } from './saque.component';
 import { MatInputModule, MatFormFieldModule, MatButtonModule, MatSidenavModule, MatListModule, MatBottomSheet, MatDialogModule, MatBottomSheetContainer, MatBottomSheetModule, MatDividerModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SaldoModule } from '../shared/saldo/saldo.module';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 
 
@@ -21,7 +22,8 @@ import { SaldoModule } from '../shared/saldo/saldo.module';
     MatListModule,
     MatDialogModule,
     MatBottomSheetModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxCurrencyModule
   ],
   exports: [SaqueComponent],
   providers: [MatBottomSheet],
