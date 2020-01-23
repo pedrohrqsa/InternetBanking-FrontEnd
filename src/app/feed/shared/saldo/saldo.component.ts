@@ -14,6 +14,7 @@ export class SaldoComponent implements OnInit {
   saldoAtual: number;
   indexCPF: number;
   progresso = 0;
+  mostrar = false;
 
   constructor(
     private saldoService: SaldoService,
@@ -23,6 +24,16 @@ export class SaldoComponent implements OnInit {
 
   ngOnInit() {
     this.getIndexCPF();
+    this.onSaldo();
+  }
+
+  mostrarSaldo(){
+    if(!this.mostrar){
+      this.mostrar = true;
+    } else {
+      this.mostrar = false;
+    }
+
     this.onSaldo();
   }
 

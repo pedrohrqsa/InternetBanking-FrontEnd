@@ -1,5 +1,12 @@
 .content{
+    display: flex;
     margin-top: 15px;
-    text-align: center;
-    color: white;
+    justify-content: center;
+    align-content: center;
+    color: rgb(44, 44, 128);
+    cursor: pointer;
+}
+
+b{
+    font-weight: light;
 }

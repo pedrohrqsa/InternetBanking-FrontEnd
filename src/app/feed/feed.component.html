@@ -9,14 +9,9 @@
     <br>
     <button mat-button (click)="onTransferencia()">Transferência</button>  
     <br>
-    <button class="botaoSaldo" mat-button (click)="onSaldo()">{{this.infoSaldo}}
-        <mat-icon *ngIf="icone == true">visibility</mat-icon>
-        <mat-icon *ngIf="icone == false">visibility_off</mat-icon>
-    </button>
-
-        <div *ngIf="saldo == true" class="saldo">
-            <app-saldo></app-saldo>
-        </div>
+    <div class="saldo">
+        <app-saldo></app-saldo>
+    </div>
 
     <button mat-button (click)="onConfig()" class="botaoConfig">Configurações</button>
     <br>

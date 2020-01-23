@@ -66,14 +66,9 @@
   padding-top: 15px;
 }
 
-button .saldo{
+.saldo{
   height: 50px;
-  margin-top: 50px;
   width: 100%;
-  background-color: rgb(44, 44, 128);
-  color: white;
-}
-
-button .botaoSaldo{
   background-color: white;
+  color: rgb(44, 44, 128);
 }
