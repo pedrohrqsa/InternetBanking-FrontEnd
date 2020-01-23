@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaldoComponent } from './saldo.component';
 import { MatIconModule } from '@angular/material';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -9,7 +10,8 @@ import { MatIconModule } from '@angular/material';
   declarations: [SaldoComponent],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [SaldoComponent]
 })

@@ -23,6 +23,7 @@
     "@angular/router": "~8.2.4",
     "bootstrap": "^4.3.1",
     "jwt-decode": "^2.2.0",
+    "ngx-mask": "^8.1.7",
     "npm": "^6.13.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login.component';
 import { CommonModule } from '@angular/common';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [LoginComponent],
   providers: []

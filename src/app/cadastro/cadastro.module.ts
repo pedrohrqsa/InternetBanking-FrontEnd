@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from '../header/header.module';
 import { MatFormFieldModule, MatInputModule, MatCommonModule, MatOptionModule, MatSelectModule, MatStepperModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatIconModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule, 
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     CadastroComponent

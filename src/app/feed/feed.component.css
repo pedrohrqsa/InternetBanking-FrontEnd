@@ -25,7 +25,8 @@
 }
 
 .saldo{
-  background-color: rgb(44, 44, 128);
+  background-color: white;
+  color: rgb(44, 44, 128);
 }
 
 .menu-lateral .config{

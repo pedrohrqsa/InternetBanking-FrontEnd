@@ -12,7 +12,7 @@
                 <form [formGroup]="dadosPessoaisFormGroup">
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="CPF" formControlName="cpf" minlength="11" maxlength="11">
+                        <input matInput (keypress)="numberOnly($event)" name="cpf" placeholder="CPF" formControlName="cpf" minlength="14" maxlength="14" [dropSpecialCharacters]="true" mask="000.000.000-00">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
@@ -24,11 +24,11 @@
                     <br>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput name="rg" placeholder="RG" formControlName="rg" minlength="9" maxlength="9">
+                        <input matInput name="rg" placeholder="RG" formControlName="rg" minlength="12" maxlength="12" mask="00.000.000-A">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="letterOnly($event)" name="orgao-emissor" placeholder="Órgão emissor" formControlName="orgaoEmissor" minlength="5" maxlength="5">
+                        <input matInput (keypress)="letterOnly($event)" name="orgao-emissor" placeholder="Órgão emissor" formControlName="orgaoEmissor" minlength="6" maxlength="6" [dropSpecialCharacters]="true" mask="SSS-SS">
                     </mat-form-field>
 
                     <br>
@@ -89,11 +89,11 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 mr-3">
-                        <input matInput (keypress)="numberOnly($event)" name="tel-residencial" placeholder="Telefone residencial" formControlName="telResid" minlength="8" maxlength="10">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-residencial" placeholder="Telefone residencial" formControlName="telResid" minlength="8" maxlength="13" [dropSpecialCharacters]="true" mask="(00)0000-0000">
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput (keypress)="numberOnly($event)" name="tel-celular" placeholder="Telefone celular" formControlName="telCel" minlength="9" maxlength="11">
+                        <input matInput (keypress)="numberOnly($event)" name="tel-celular" placeholder="Telefone celular" formControlName="telCel" minlength="9" maxlength="14" [dropSpecialCharacters]="true" mask="(00)00000-0000">
                     </mat-form-field>
                 </form>
 

@@ -11,9 +11,9 @@
     <div class="esquerda">
         <p><b>Nome:</b> {{this.nome}}</p>
         <p><b>Sobrenome:</b> {{this.sobrenome}}</p>
-        <p><b>CPF:</b> {{this.cpf}}</p>
-        <p><b>RG:</b> {{this.rg}}</p>
-        <p><b>Órgão emissor:</b> {{this.orgaoEmissor}}</p>
+        <p><b>CPF:</b> {{this.cpf | mask: '000.000.000-00'}}</p>
+        <p><b>RG:</b> {{this.rg | mask: '00.000.000-A'}}</p>
+        <p><b>Órgão emissor:</b> {{this.orgaoEmissor | mask: 'SSS-SS'}}</p>
         <p><b>Data de nascimento:</b> {{this.dtNascimento | date: 'dd/MM/yyyy'}}</p>
         <p><b>Nacionalidade:</b> {{this.nacionalidade}}</p>
         <p><b>Naturalidade:</b> {{this.naturalidade}}</p>
@@ -26,9 +26,9 @@
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="nome" formControlName="nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="sobrenome" formControlName="sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="11" maxlength="11" disabled>
-            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="9" maxlength="9" disabled>
-            <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5">
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="14" maxlength="14" [dropSpecialCharacters]="true" mask="000.000.000-00" disabled>
+            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="12" maxlength="12" disabled [dropSpecialCharacters]="true" mask="00.000.000-A">
+            <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5" [dropSpecialCharacters]="true" mask="SSS-SS">
             <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dtNascimento | date: 'dd/MM/yyyy'}} " minlength="8" maxlength="8" disabled>
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
@@ -78,16 +78,16 @@
 <div class="conteudo">
     <div class="esquerda">
         <p><b>Email:</b> {{this.email}}</p>
-        <p><b>Telefone residencial:</b> {{this.telResid}}</p>
-        <p><b>Telefone celular:</b> {{this.telCel}}</p>
+        <p><b>Telefone residencial:</b> {{this.telResid | mask: '(00) 0000-0000'}}</p>
+        <p><b>Telefone celular:</b> {{this.telCel| mask: '(00) 00000-0000'}}</p>
         <small class="sucesso" *ngIf="sucessoContato==true">Informações alteradas com sucesso</small>
         <small class="erro" *ngIf="erroContato==true">Ocorreu um erro ao alterar suas informações</small>
     </div>
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
             <input name="email" formControlName="email" value="{{this.email}}" placeholder="Email" maxlength="30">
-            <input (keypress)="numberOnly($event)" name="telResid" formControlName="telResid" value="{{this.telResid}}" placeholder="Telefone residencial" minlength="8" maxlength="10">
-            <input (keypress)="numberOnly($event)" name="telCel" formControlName="telCel" value="{{this.telCel}}" placeholder="Telefone celular" minlength="9" maxlength="11">
+            <input (keypress)="numberOnly($event)" name="telResid" formControlName="telResid" value="{{this.telResid}}" placeholder="Telefone residencial" minlength="8" maxlength="13" [dropSpecialCharacters]='true' mask="(00) 0000-0000">
+            <input (keypress)="numberOnly($event)" name="telCel" formControlName="telCel" value="{{this.telCel}}" placeholder="Telefone celular" minlength="9" maxlength="14" [dropSpecialCharacters]='true' mask="(00) 00000-0000">
         </form>
     </div>
 </div>
@@ -103,7 +103,7 @@
 
 <div class="conteudo">
     <div class="esquerda">
-        <p><b>CEP:</b> {{this.cep}}</p>
+        <p><b>CEP:</b> {{this.cep | mask: '00000-000'}}</p>
         <p><b>Logradouro:</b> {{this.logradouro}}</p>
         <p><b>Número:</b> {{this.numero}}</p>
         <p><b>Complemento: </b> {{this.complemento}}</p>

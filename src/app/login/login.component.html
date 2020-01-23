@@ -5,7 +5,7 @@
                 <h2 class="titulo">Login</h2>
                 
                 <mat-form-field>
-                    <input (keypress)="numberOnly($event)" type="text" matInput placeholder="CPF" formControlName="cpf" ngModel maxlength="11" autofocus>
+                    <input (keypress)="numberOnly($event)" type="text" matInput placeholder="CPF" formControlName="cpf" mask="000.000.000-00" [dropSpecialCharacters]="true" ngModel maxlength="14" autofocus>
                 </mat-form-field>
                 <small *ngIf="loginForm.get('cpf').errors && loginForm.get('cpf').touched" class="text-danger d-block">CPF é um campo obrigatório</small>
 

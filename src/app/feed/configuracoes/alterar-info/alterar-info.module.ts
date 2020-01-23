@@ -4,6 +4,7 @@ import { MatDividerModule, MatCommonModule, MatButtonModule, MatDatepickerModule
 
 import { AlterarInfoComponent } from './alterar-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [AlterarInfoComponent],
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [AlterarInfoComponent]
 })

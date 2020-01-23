@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DepositoComponent } from './deposito.component';
 import { SaldoModule } from '../shared/saldo/saldo.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [DepositoComponent],
@@ -23,7 +24,8 @@ import { SaldoModule } from '../shared/saldo/saldo.module';
     MatListModule,
     MatDialogModule,
     MatBottomSheetModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [DepositoComponent],
   providers: [MatBottomSheet],

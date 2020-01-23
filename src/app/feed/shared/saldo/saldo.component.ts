@@ -13,6 +13,7 @@ export class SaldoComponent implements OnInit {
 
   saldoAtual: number;
   indexCPF: number;
+  progresso = 0;
 
   constructor(
     private saldoService: SaldoService,
@@ -39,8 +40,8 @@ export class SaldoComponent implements OnInit {
   onSaldo() {
     this.getIndexCPF();
     return this.saldoService.GetInfoSaldo()
-      .subscribe(saldox =>
-        this.saldoAtual = saldox[this.indexCPF].saldoAtual
+      .subscribe(
+        saldox => this.saldoAtual = saldox[this.indexCPF].saldoAtual
       );
   }
 }

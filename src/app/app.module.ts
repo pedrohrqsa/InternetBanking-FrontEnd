@@ -19,6 +19,7 @@ import { InfoContaService } from './feed/infos-conta/Infos-conta.service';
 import { InfosContaModule } from './feed/infos-conta/infos-conta.module';
 import { AtivarContaComponent } from './ativar-conta/ativar-conta.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderModule,
     InfosContaModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [InfoContaService],
   bootstrap: [AppComponent]
