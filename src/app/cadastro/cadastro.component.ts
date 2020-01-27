@@ -44,6 +44,8 @@ export class CadastroComponent implements OnInit {
   fotoFormGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
   Foto: File = null;
+  dataLimiter = new Date();
+
 
   fileToUpload: File = null;
 
@@ -54,6 +56,9 @@ export class CadastroComponent implements OnInit {
     private http: HttpClient) { }
 
   ngOnInit() {
+    this.dataLimiter.setUTCFullYear(this.dataLimiter.getFullYear()-18);
+    this.dataLimiter.setUTCDate(this.dataLimiter.getDate()+1);
+
     this.dadosPessoaisFormGroup = this._formBuilder.group({
       nome: ['', [Validators.required, Validators.maxLength(40)]],
       sobrenome: ['', [Validators.required, Validators.maxLength(50)]],
