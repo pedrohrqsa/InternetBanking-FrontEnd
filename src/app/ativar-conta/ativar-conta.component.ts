@@ -78,9 +78,9 @@ export class AtivarContaComponent implements OnInit {
       .subscribe(
         () => {
           this.AtivarContaFormGroup.reset();
-          this.reload();
           this.sucesso = true;
           this.erro = false;
+          setTimeout(() => this.reload(), 3000);
         },
         err => {
           console.log("Erro de chamado");
