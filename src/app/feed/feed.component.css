@@ -49,8 +49,8 @@
 
 .botaoConfig{
   position: absolute;
+  z-index: 9999;
   bottom: 50px;
-  margin-left: -23vw;
 }
 
 .logout{

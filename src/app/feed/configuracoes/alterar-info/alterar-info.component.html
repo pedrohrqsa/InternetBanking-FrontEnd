@@ -26,10 +26,10 @@
         <form [formGroup]="alterarPerfilFormGroup" *ngIf="editarPerfil == true">
             <input (keypress)="letterOnly($event)" name="nome" formControlName="nome" value="{{this.nome}}" placeholder="Nome" maxlength="40">
             <input (keypress)="letterOnly($event)" name="sobrenome" formControlName="sobrenome" value="{{this.sobrenome}}" placeholder="Sobrenome" maxlength="50">
-            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf}}" placeholder="CPF" minlength="14" maxlength="14" [dropSpecialCharacters]="true" mask="000.000.000-00" disabled>
-            <input name="Rg" formControlName="rg" value="{{this.rg}}" placeholder="RG" minlength="12" maxlength="12" disabled [dropSpecialCharacters]="true" mask="00.000.000-A">
-            <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor}}" placeholder="Órgão emissor" minlength="5" maxlength="5" [dropSpecialCharacters]="true" mask="SSS-SS">
-            <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dtNascimento | date: 'dd/MM/yyyy'}} " minlength="8" maxlength="8" disabled>
+            <input (keypress)="numberOnly($event)" readonly="readonly" name="cpf" formControlName="cpf" value="{{this.cpf | mask: '000.000.000-00'}}" placeholder="CPF" minlength="14" maxlength="14" [dropSpecialCharacters]="true" mask="000.000.000-00" disabled>
+            <input name="Rg" formControlName="rg" value="{{this.rg | mask: '00.000.000-A'}}" placeholder="RG" minlength="12" maxlength="12" disabled [dropSpecialCharacters]="true" mask="00.000.000-A">
+            <input (keypress)="letterOnly($event)" name="orgaoEmissor" formControlName="orgaoEmissor" value="{{this.orgaoEmissor | mask: 'SSS-SS'}}" placeholder="Órgão emissor" minlength="6" maxlength="6" [dropSpecialCharacters]="true" mask="SSS-SS">
+            <input class="data" [matDatepicker]="nascimento" placeholder="{{this.dtNascimento | date: 'dd/MM/yyyy'}} " min="12-12-2012" minlength="8" maxlength="8" disabled>
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
             <input (keypress)="letterOnly($event)" name="nacionalidade" formControlName="nacionalidade" value="{{this.nacionalidade}}" placeholder="Nacionalidade" maxlength="20">
@@ -86,8 +86,8 @@
     <div class="direita">
         <form [formGroup]="alterarContatoFormGroup" *ngIf="editarContato == true">
             <input name="email" formControlName="email" value="{{this.email}}" placeholder="Email" maxlength="30">
-            <input (keypress)="numberOnly($event)" name="telResid" formControlName="telResid" value="{{this.telResid}}" placeholder="Telefone residencial" minlength="8" maxlength="13" [dropSpecialCharacters]='true' mask="(00) 0000-0000">
-            <input (keypress)="numberOnly($event)" name="telCel" formControlName="telCel" value="{{this.telCel}}" placeholder="Telefone celular" minlength="9" maxlength="14" [dropSpecialCharacters]='true' mask="(00) 00000-0000">
+            <input (keypress)="numberOnly($event)" name="telResid" formControlName="telResid" value="{{this.telResid | mask: '(00)0000-0000'}}" placeholder="Telefone residencial" minlength="8" maxlength="13" [dropSpecialCharacters]='true' mask="(00) 0000-0000">
+            <input (keypress)="numberOnly($event)" name="telCel" formControlName="telCel" value="{{this.telCel | mask: '(00)00000-0000'}}" placeholder="Telefone celular" minlength="9" maxlength="14" [dropSpecialCharacters]='true' mask="(00) 00000-0000">
         </form>
     </div>
 </div>
@@ -115,7 +115,7 @@
     </div>
     <div class="direita">
         <form [formGroup]="alterarEnderecoFormGroup" *ngIf="editarEndereco == true">
-            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep}}" placeholder="cep" minlength="8" maxlength="8" (blur)="onBuscaCEP()">
+            <input (keypress)="numberOnly($event)" name="cep" formControlName="cep" value="{{this.cep | mask: '00000-000'}}" placeholder="cep" minlength="9" maxlength="9" (blur)="onBuscaCEP()" [dropSpecialCharacters]='true' mask="00000-000">
             <input (keypress)="letterOnly($event)" name="logradouro" formControlName="logradouro" value="{{this.logradouro}}" placeholder="logradouro" maxlength="50">
             <input (keypress)="numberOnly($event)" name="numero" formControlName="numero" value="{{this.numero}}" placeholder="numero" maxlength="5">
             <input (keypress)="letterOnly($event)" name="complemento" formControlName="complemento" value="{{this.complemento}}" placeholder="complemento" maxlength="30">
