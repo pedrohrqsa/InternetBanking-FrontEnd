@@ -143,6 +143,14 @@ export class CadastroComponent implements OnInit {
       });
   }
 
+  nonTypingField(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode >= 0 && charCode <= 255) {
+      return false;
+    }
+    return true;
+  }
+
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {

@@ -16,7 +16,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-475 ml-4">
-                        <input matInput [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="dtNascimento" minlength="8" maxlength="8"  max="{{this.dataLimiter | date: 'yyyy-MM-dd'}}">
+                        <input matInput (keypress)="nonTypingField($event)" [matDatepicker]="nascimento" name="data-nascimento" placeholder="Data de nascimento" formControlName="dtNascimento" minlength="8" maxlength="8"  max="{{this.dataLimiter | date: 'yyyy-MM-dd'}}">
                         <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
                         <mat-datepicker #nascimento></mat-datepicker>
                     </mat-form-field>
