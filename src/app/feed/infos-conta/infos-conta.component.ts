@@ -54,9 +54,9 @@ export class InfosContaComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  getSaldo(){
+  getSaldo() {
     this.onInfoSaldo();
-    if(this.mostrarSaldo == false){
+    if (this.mostrarSaldo == false) {
       this.mostrarSaldo = true;
     } else {
       this.mostrarSaldo = false;
@@ -69,8 +69,8 @@ export class InfosContaComponent implements OnInit {
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
         (this.indexCPF = clientex.findIndex(obj =>
-            obj.cpf == getCpf),
-            this.onInfoConta())
+          obj.cpf == getCpf),
+          this.onInfoConta())
       );
   }
 
@@ -79,16 +79,14 @@ export class InfosContaComponent implements OnInit {
       .subscribe(clientex => {
         this.nome = clientex[this.indexCPF].nome;
         this.sobrenome = clientex[this.indexCPF].sobrenome;
-      }
-      );
+      });
   }
 
   onInfoSaldo() {
     return this.infoContaService.getInfoConta()
       .subscribe(clientex => {
         this.saldo = clientex[this.indexCPF].saldoAtual;
-      }
-      );
+      });
   }
 
   onInfoConta() {
@@ -102,7 +100,6 @@ export class InfosContaComponent implements OnInit {
   onInfoAgencia() {
     return this.infoContaService.getInfoAgencia()
       .subscribe(clientex =>
-        this.numeroAgencia = clientex[0].numeroAgencia,
-      );
+        this.numeroAgencia = clientex[0].numeroAgencia);
   }
 }

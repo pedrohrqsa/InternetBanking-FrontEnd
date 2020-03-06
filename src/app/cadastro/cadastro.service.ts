@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-import { Cliente} from '../Models/Cliente';
+import { Cliente } from '../Models/Cliente';
 import { ClienteLogin } from '../Models/ClienteLogin';
 import { Familiares } from '../Models/Familiares';
 import { Contato } from '../Models/Contato';
@@ -40,15 +40,10 @@ export class CadastroService {
         { headers: { 'Content-Type': 'application/json' } })
   }
 
-  buscaCEP(cep: string):Observable<Address>{
-
-
+  buscaCEP(cep: string): Observable<Address> {
     return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`);
-    
   }
-
-
-  }
+}
 
 
 

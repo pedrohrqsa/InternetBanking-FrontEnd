@@ -64,8 +64,7 @@ export class InativarContaComponent implements OnInit {
         this.cpf = clientex[this.indexCPF].cpf;
       });
   }
-
-
+  
   inativarConta() {
     this.getIndexCPF();
     this.onInfoCliente();
@@ -78,8 +77,7 @@ export class InativarContaComponent implements OnInit {
         err => {
           console.log("Erro ao desativar conta");
           this.erro = true;
-        }
-      );
+        });
   }
 
   reload() {

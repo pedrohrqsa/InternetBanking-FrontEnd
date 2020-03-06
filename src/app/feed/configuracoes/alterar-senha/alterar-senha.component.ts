@@ -7,18 +7,18 @@ import { AlterarSenhaService } from './alterar-senha.service';
 
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
 
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-          return;
-      }
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+      return;
+    }
 
-      if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ mustMatch: true });
-      } else {
-          matchingControl.setErrors(null);
-      }
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ mustMatch: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
   }
 }
 
@@ -53,7 +53,7 @@ export class AlterarSenhaComponent implements OnInit {
       novaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       confirmacaoNovaSenha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     },
-      { validator: MustMatch('novaSenha', 'confirmacaoNovaSenha')}
+      { validator: MustMatch('novaSenha', 'confirmacaoNovaSenha') }
     );
   }
 
@@ -71,16 +71,14 @@ export class AlterarSenhaComponent implements OnInit {
         (this.indexCPF = clientex.findIndex(obj =>
           obj.cpf == getCpf),
           this.onInfoClienteLogin()
-        )
-      );
+        ));
   }
 
   onInfoClienteLogin() {
     return this.alterarSenhaService.getInfoClienteLogin()
       .subscribe(clientex => {
         this.cpf = clientex[this.indexCPF].cpf;
-      },
-      );
+      });
   }
 
   alterarSenha() {
@@ -90,19 +88,17 @@ export class AlterarSenhaComponent implements OnInit {
       .subscribe(
         () => {
           this.reload(),
-          this.sucesso = true;
+            this.sucesso = true;
           this.erro = false;
         },
-          err =>{
-            console.log("Erro de chamado");
-            this.erro = true;
-            this.sucesso = false;
-          }
-      );
+        err => {
+          console.log("Erro de chamado");
+          this.erro = true;
+          this.sucesso = false;
+        });
   }
 
   reload() {
     window.location.reload();
   }
-
 }

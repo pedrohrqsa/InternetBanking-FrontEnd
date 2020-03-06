@@ -14,7 +14,7 @@ export class TransferenciaService {
     private apiTransacao = this.API + '/api/Transacao';
 
     constructor(private http: HttpClient) { }
-    
+
     Transferecia(transacao3: Transacao) {
         return this
             .http.post(this.apiTransacao, transacao3,

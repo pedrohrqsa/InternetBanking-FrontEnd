@@ -45,7 +45,6 @@ export class DepositoComponent {
   }
 
   getIndexCPF() {
-
     const getCpf = this.activatedRoute.snapshot.paramMap.get('cpf');
     return this.infoContaService.getInfoCliente()
       .subscribe(clientex =>
@@ -77,20 +76,12 @@ export class DepositoComponent {
         this.sucesso = true;
         this.erro = false;
         this.ngOnInit();
-        
       },
         err => {
           console.log("Erro de chamado");
           this.erro = true;
           this.sucesso = false;
       });
-
-    
-    
-
-
-    
     this.sucesso = true;
-
   }
 }

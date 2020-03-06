@@ -53,24 +53,20 @@ export class SaqueComponent {
       .subscribe(clientex =>
         (this.indexCPF = clientex.findIndex(obj =>
           obj.cpf == getCpf),
-          this.onInfoConta())
-      );
+          this.onInfoConta()));
   }
 
   onInfoConta() {
     return this.infoContaService.getInfoConta()
       .subscribe(clientex =>
-        this.numeroConta = clientex[this.indexCPF].numeroConta,
-      );
+        this.numeroConta = clientex[this.indexCPF].numeroConta);
   }
 
   onSaque() {
     this.getIndexCPF();
-
     const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
 
     const transacao2 = this.form.getRawValue() as Transacao;
-
     transacao2.numeroConta = this.numeroConta;
     transacao2.idTipoTransacao = 2;
     transacao2.numeroContaOrigem = this.numeroConta;
@@ -80,14 +76,13 @@ export class SaqueComponent {
       this.router.navigate(['feed/' + cpf]);
       this.sucesso = true;
       this.erro = false;
-
       this.ngOnInit();
     },
       err => {
         console.log("Erro de chamado");
         this.erro = true;
         this.sucesso = false;
-    });
+      });
     this.form.reset();
   }
 }

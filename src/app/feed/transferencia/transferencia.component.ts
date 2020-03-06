@@ -37,7 +37,7 @@ export class TransferenciaComponent {
     private activatedRoute: ActivatedRoute,
     private servico: TransferenciaService,
     private _formBuilder: FormBuilder
-    ) { }
+  ) { }
 
   submit() { }
 
@@ -56,8 +56,7 @@ export class TransferenciaComponent {
       .subscribe(clientex =>
         (this.indexCPF = clientex.findIndex(obj =>
           obj.cpf == getCpf),
-          this.onInfoConta())
-      );
+          this.onInfoConta()));
   }
 
   onInfoConta() {
@@ -67,13 +66,10 @@ export class TransferenciaComponent {
       );
   }
   onTransferencia() {
-
     this.getIndexCPF();
-
     const cpf = this.activatedRoute.snapshot.paramMap.get("cpf");
 
     const transacao3 = this.form.getRawValue() as Transacao;
-
     transacao3.numeroConta = this.numeroConta;
     transacao3.numeroContaOrigem = this.numeroConta;
     transacao3.idTipoTransacao = 3;
@@ -90,7 +86,7 @@ export class TransferenciaComponent {
           console.log("Erro de chamado");
           this.erro = true;
           this.sucesso = false;
-      });
+        });
     this.form.reset();
   }
 }

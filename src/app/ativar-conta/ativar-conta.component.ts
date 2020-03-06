@@ -86,8 +86,7 @@ export class AtivarContaComponent implements OnInit {
           console.log("Erro de chamado");
           this.erro = true;
           this.sucesso = false;
-        }
-      );
+        });
   }
 
   reload() {

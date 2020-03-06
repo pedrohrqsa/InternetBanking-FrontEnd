@@ -31,5 +31,4 @@ export class ConfiguracoesComponent implements OnInit {
     this.senha = false;
     this.dados = false;
   }
-
 }
