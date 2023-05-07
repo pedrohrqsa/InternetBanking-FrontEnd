@@ -26,7 +26,7 @@
     "ng2-money-mask": "^2.1.0",
     "ngx-currency": "^2.2.1",
     "ngx-mask": "^8.1.7",
-    "npm": "^6.13.0",
+    "npm": "^9.6.6",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.3",
-    "@angular/cli": "~8.3.3",
+    "@angular/cli": "~16.0.0",
     "@angular/compiler-cli": "~8.2.4",
     "@angular/language-service": "~8.2.4",
     "@types/jasmine": "~3.3.8",
